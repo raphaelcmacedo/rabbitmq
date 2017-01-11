@@ -38,6 +38,12 @@ namespace Rabbit.Controllers
             return View();
         }
 
+        public ActionResult Unlisten()
+        {
+            Queue.Receive.listen = false;
+            return View();
+        }
+
         public ActionResult Fetch()
         {
             if (ModelState.IsValid)

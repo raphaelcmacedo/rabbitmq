@@ -21,6 +21,30 @@
         });
     });
 
+    //Listen
+    $("#listen").click(function (e) {
+        var action = '';
+
+        if ($("#listen").is(":checked")) {
+            action = 'Listen';
+        }
+        else {
+            action = 'Unlisten';
+        }
+
+
+        $.ajax({
+            url: "Rabbit/" + action,
+            type: 'POST',
+            data: { },
+            success: function (object) {
+                if (!object.Success) {
+                    alert(object.Message);
+                }
+            }
+        });
+    });
+
 
     //Fetch
    function fetch () {

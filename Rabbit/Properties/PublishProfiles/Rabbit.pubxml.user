@@ -94,10 +94,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/10/2017 15:00:23</publishTime>
     </File>
     <File Include="bin/Queue.dll">
-      <publishTime>01/11/2017 12:34:16</publishTime>
+      <publishTime>01/11/2017 16:55:32</publishTime>
     </File>
     <File Include="bin/Rabbit.dll">
-      <publishTime>01/11/2017 12:34:20</publishTime>
+      <publishTime>01/11/2017 16:55:36</publishTime>
     </File>
     <File Include="bin/RabbitMQ.Client.dll">
       <publishTime>01/10/2017 15:11:13</publishTime>

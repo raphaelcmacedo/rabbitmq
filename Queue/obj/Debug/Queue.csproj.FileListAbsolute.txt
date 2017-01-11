@@ -1,0 +1,7 @@
+D:\Desenvolvimento\Rabbit\Queue\bin\Debug\Queue.dll
+D:\Desenvolvimento\Rabbit\Queue\bin\Debug\Queue.pdb
+D:\Desenvolvimento\Rabbit\Queue\bin\Debug\RabbitMQ.Client.dll
+D:\Desenvolvimento\Rabbit\Queue\bin\Debug\RabbitMQ.Client.xml
+D:\Desenvolvimento\Rabbit\Queue\obj\Debug\Queue.csprojResolveAssemblyReference.cache
+D:\Desenvolvimento\Rabbit\Queue\obj\Debug\Queue.dll
+D:\Desenvolvimento\Rabbit\Queue\obj\Debug\Queue.pdb

@@ -1,0 +1,67 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<!--
+    <div class="row">
+    <div class="col-lg-6">
+        <div class="form-group">
+            <label for="text">Add to queue</label>
+            <input class="form-control" id="text" name="text" placeholder="Add your message">
+            <span class="input-group-btn">
+                <button class="btn btn-secondary" id="btnAdd" type="button">Add</button>
+            </span>
+        </div>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Fetch from queue</h2>
+        <button id="btnFetch" class="btn btn-primary">Fetch</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <label>Queue</label>
+        <textarea id="queue" name="queue"></textarea>
+
+    </div>
+
+</div>
+-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            
+        </div><!--.col -->
+        <div class="col-md-8">
+            <h3>
+                Send a message
+            </h3>
+            
+            <!-- NOTE: TB3 form width default is 100%, so they expan to your <div> -->
+            <form>
+                <label for="txtComment">Message:</label>
+                <input type="text" name="text" id="text" class="form-control" placeholder="Enter a message here">
+                <br>
+                <button type="button" id="btnAdd" class="btn btn-success">Send</button>
+                
+            </form>
+            <hr>
+
+            <h3>
+                Messages
+            </h3>
+            
+            <br>
+            <textarea id="queue" name="queue" class="form-control" rows="10"></textarea>
+
+            
+            <hr>
+        </div><!--.col -->
+    </div><!--./row -->
+</div><!--./container -->

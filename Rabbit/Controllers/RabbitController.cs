@@ -32,16 +32,14 @@ namespace Rabbit.Controllers
             return View();
         }
 
-        public ActionResult Listen()
+        public void Listen()
         {
             Queue.Receive.Main();
-            return View();
         }
 
-        public ActionResult Unlisten()
+        public void Unlisten()
         {
             Queue.Receive.listen = false;
-            return View();
         }
 
         public ActionResult Fetch()

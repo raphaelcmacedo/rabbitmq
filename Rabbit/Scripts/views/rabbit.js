@@ -12,7 +12,7 @@
             success: function (object) {
                 clearForm();
                 if (object.Success) {
-                    alert("Added to queue successfully");
+                    //alert("Added to queue successfully");
                 } else {
                     alert(object.Message);
                 }
@@ -36,12 +36,11 @@
         $.ajax({
             url: "Rabbit/" + action,
             type: 'POST',
-            data: { },
-            success: function (object) {
-                if (!object.Success) {
-                    alert(object.Message);
-                }
+            error:function(e){
+                alert(e);
+
             }
+        
         });
     });
 
@@ -78,17 +77,11 @@
            });
        }
 
+
     };
 
     function clearForm() {
         $("#text").val('');
     }
 
-    function Listen() {
-        $.ajax({
-            url: "Rabbit/Listen",
-            type: 'POST',
-            data: {}
-        });
-    }
 });

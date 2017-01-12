@@ -43,9 +43,8 @@
                 Send a message
             </h3>
             
-            <!-- NOTE: TB3 form width default is 100%, so they expan to your <div> -->
             <form>
-                <label for="txtComment">Message:</label>
+                <label for="text">Message:</label>
                 <input type="text" name="text" id="text" class="form-control" placeholder="Enter a message here">
                 <br>
                 <button type="button" id="btnAdd" class="btn btn-success">Send</button>
@@ -58,6 +57,12 @@
             </h3>
             
             <br>
+
+            <label for="listen">Listen:</label>
+            <input type="checkbox" name="listen" id="listen">
+            
+            <br>    
+
             <textarea id="queue" name="queue" class="form-control" rows="10"></textarea>
 
             

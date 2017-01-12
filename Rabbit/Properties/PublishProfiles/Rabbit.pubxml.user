@@ -94,10 +94,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/10/2017 15:00:23</publishTime>
     </File>
     <File Include="bin/Queue.dll">
-      <publishTime>01/11/2017 16:55:32</publishTime>
+      <publishTime>01/12/2017 10:08:01</publishTime>
     </File>
     <File Include="bin/Rabbit.dll">
-      <publishTime>01/11/2017 16:55:36</publishTime>
+      <publishTime>01/12/2017 11:52:23</publishTime>
     </File>
     <File Include="bin/RabbitMQ.Client.dll">
       <publishTime>01/10/2017 15:11:13</publishTime>
@@ -235,7 +235,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/10/2017 15:00:13</publishTime>
     </File>
     <File Include="Scripts/views/rabbit.js">
-      <publishTime>01/11/2017 11:50:00</publishTime>
+      <publishTime>01/12/2017 11:44:41</publishTime>
     </File>
     <File Include="Scripts/_references.js">
       <publishTime>01/10/2017 15:45:03</publishTime>
@@ -283,7 +283,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/10/2017 14:59:57</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>01/11/2017 11:51:49</publishTime>
+      <publishTime>01/12/2017 14:09:05</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>01/10/2017 15:00:16</publishTime>

@@ -52,6 +52,7 @@ namespace Rabbit.Controllers
                 {
                     
                     string message = Queue.Receive.message;
+                    Queue.Receive.message = string.Empty;
                     return Json(new { Success = true, data = message }, JsonRequestBehavior.AllowGet);
                 }
                 catch (Exception e)

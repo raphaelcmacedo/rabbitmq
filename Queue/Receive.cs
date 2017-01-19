@@ -55,5 +55,45 @@ namespace Queue
                 
             }
         }
+
+        public static string GetOneMessage(bool simulateError = false, bool simulateRejection = false)
+        {
+            string message = string.Empty;
+            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1" };
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+
+
+                bool noAck = false;
+                BasicGetResult result = channel.BasicGet("prion", noAck);
+                if (result == null)
+                {
+                    throw new Exception("Queue is empty.");
+                }
+                else {
+                    IBasicProperties props = result.BasicProperties;
+                    byte[] body = result.Body;
+                    message = System.Text.Encoding.UTF8.GetString(body);
+                    if (simulateError)
+                    {
+                        throw new Exception("Simulated error. The ack has not been sent.");
+                    }
+                }
+                // acknowledge receipt of the message
+                if (simulateRejection)
+                {
+                    channel.BasicReject(result.DeliveryTag, false);
+                    throw new Exception("The message " + message + " has been rejected.");
+                }
+                else
+                {
+                    channel.BasicAck(result.DeliveryTag, false);
+                }
+                
+            }
+
+            return message;
+        }
     }
 }

@@ -21,6 +21,65 @@
         });
     });
 
+    //Fetch 1 Message
+    $("#btnFetch").click(function (e) {
+        $.ajax({
+            url: "Rabbit/FetchOneMessage",
+            type: 'POST',
+            data: { simulateError: false, simulateRejection: false },
+            success: function (object) {
+                if (object.Success) {
+                    var message = object.data;
+                    var queue = $("#queue").val();
+
+                    if (queue.length > 0) {
+                        queue += "\r\n";
+                    }
+
+                    queue += message;
+                    $("#queue").val(queue);
+                } else {
+                    alert(object.Message);
+                }
+
+            }
+        });
+    });
+
+    //Fetch error
+    $("#btnError").click(function (e) {
+        $.ajax({
+            url: "Rabbit/FetchOneMessage",
+            type: 'POST',
+            data: { simulateError: true, simulateRejection: false },
+            success: function (object) {
+                if (object.Success) {
+                    
+                } else {
+                    alert(object.Message);
+                }
+
+            }
+        });
+    });
+
+    //Reject
+    $("#btnReject").click(function (e) {
+        $.ajax({
+            url: "Rabbit/FetchOneMessage",
+            type: 'POST',
+            data: { simulateError: false, simulateRejection: true },
+            success: function (object) {
+                if (object.Success) {
+
+                } else {
+                    alert(object.Message);
+                }
+
+            }
+        });
+    });
+
     //Listen
     $("#listen").click(function (e) {
         var action = '';

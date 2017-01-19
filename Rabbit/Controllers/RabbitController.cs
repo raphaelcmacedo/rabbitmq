@@ -62,5 +62,24 @@ namespace Rabbit.Controllers
 
             return View();
         }
+
+        public ActionResult FetchOneMessage(bool simulateError, bool simulateRejection)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    string message = Queue.Receive.GetOneMessage(simulateError, simulateRejection);
+                    return Json(new { Success = true, data = message }, JsonRequestBehavior.AllowGet);
+                }
+                catch (Exception e)
+                {
+                    return Json(new { Success = false, Message = e.Message });
+                }
+
+            }
+
+            return View();
+        }
     }
 }

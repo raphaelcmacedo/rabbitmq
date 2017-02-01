@@ -11,16 +11,20 @@ namespace Queue
         public static string message { get; set; }
         public static bool listen { get; set; }
 
-        public static void Main()
+        public static void CreateListener(bool durable)
         {
-
+            string queue = "prion";
+            if (durable)
+            {
+                queue = "prionDurable";
+            }
             listen = true;
             var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.QueueDeclare(queue: "prion",
-                                        durable: false,
+                channel.QueueDeclare(queue: queue,
+                                        durable: true,
                                         exclusive: false,
                                         autoDelete: false,
                                         arguments: null);
@@ -34,30 +38,27 @@ namespace Queue
                     }
                     message += Encoding.UTF8.GetString(body);
                 };
-                channel.BasicConsume(queue: "prion",
+                channel.BasicConsume(queue: queue,
                                         noAck: true,
                                         consumer: consumer);
 
-                /*
-                System.IO.StreamWriter file = new System.IO.StreamWriter("d:\\logs\\rabbit_log.txt");
-                file.WriteLine(consumer.Model.ToString());
-                file.Close();
-                */
                 
                 while (listen)
                 { }
 
-                /*
-                file = new System.IO.StreamWriter("d:\\logs\\rabbit_log.txt");
-                file.WriteLine("Deu ruim");
-                file.Close();
-                */
+                
                 
             }
         }
 
-        public static string GetOneMessage(bool simulateError = false, bool simulateRejection = false)
+        public static string GetOneMessage(bool durable, bool simulateError = false, bool simulateRejection = false)
         {
+            string queue = "prion";
+            if (durable)
+            {
+                queue = "prionDurable";
+            }
+
             string message = string.Empty;
             var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1" };
             using (var connection = factory.CreateConnection())
@@ -66,7 +67,7 @@ namespace Queue
 
 
                 bool noAck = false;
-                BasicGetResult result = channel.BasicGet("prion", noAck);
+                BasicGetResult result = channel.BasicGet(queue, noAck);
                 if (result == null)
                 {
                     throw new Exception("Queue is empty.");

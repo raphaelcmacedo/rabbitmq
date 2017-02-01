@@ -8,14 +8,22 @@ namespace Queue
 {
     public class Send
     {
-        public static void Main(string message)
+        public static void Main(string message, bool durable)
         {
             var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.QueueDeclare(queue: "prion",
-                                     durable: false,                                    
+                string queue = "prion";
+                var properties = channel.CreateBasicProperties();
+                if (durable)
+                {
+                    queue = "prionDurable";
+                    properties.Persistent = true;
+                }
+
+                channel.QueueDeclare(queue: queue,
+                                     durable: durable,                                    
                                      exclusive: false,
                                      autoDelete: false,
                                      arguments: null);
@@ -23,7 +31,7 @@ namespace Queue
                 var body = Encoding.UTF8.GetBytes(message);
 
                 channel.BasicPublish(exchange: "",
-                                     routingKey: "prion",
+                                     routingKey: queue,
                                      basicProperties: null,
                                      body: body);
             }

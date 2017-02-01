@@ -13,13 +13,13 @@ namespace Rabbit.Controllers
             return View();
         }
         
-        public ActionResult Add(String text)
+        public ActionResult Add(string text, bool durable)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    Queue.Send.Main(text);
+                    Queue.Send.Main(text, durable);
                     return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
                 }
                 catch (Exception e)
@@ -32,17 +32,17 @@ namespace Rabbit.Controllers
             return View();
         }
 
-        public void Listen()
+        public void Listen(bool durable)
         {
-            Queue.Receive.Main();
+            Queue.Receive.CreateListener(durable);
         }
 
-        public void Unlisten()
+        public void Unlisten(bool durable)
         {
             Queue.Receive.listen = false;
         }
 
-        public ActionResult Fetch()
+        public ActionResult Fetch(bool durable)
         {
             if (ModelState.IsValid)
             {
@@ -63,13 +63,13 @@ namespace Rabbit.Controllers
             return View();
         }
 
-        public ActionResult FetchOneMessage(bool simulateError, bool simulateRejection)
+        public ActionResult FetchOneMessage(bool simulateError, bool simulateRejection, bool durable)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    string message = Queue.Receive.GetOneMessage(simulateError, simulateRejection);
+                    string message = Queue.Receive.GetOneMessage(durable, simulateError, simulateRejection);
                     return Json(new { Success = true, data = message }, JsonRequestBehavior.AllowGet);
                 }
                 catch (Exception e)

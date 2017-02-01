@@ -2,37 +2,6 @@
     ViewBag.Title = "Home Page";
 }
 
-<!--
-    <div class="row">
-    <div class="col-lg-6">
-        <div class="form-group">
-            <label for="text">Add to queue</label>
-            <input class="form-control" id="text" name="text" placeholder="Add your message">
-            <span class="input-group-btn">
-                <button class="btn btn-secondary" id="btnAdd" type="button">Add</button>
-            </span>
-        </div>
-    </div>
-  </div>
-
-<div class="row">
-    <div class="col-md-12">
-        <h2>Fetch from queue</h2>
-        <button id="btnFetch" class="btn btn-primary">Fetch</button>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-
-        <label>Queue</label>
-        <textarea id="queue" name="queue"></textarea>
-
-    </div>
-
-</div>
--->
-
 <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -40,10 +9,21 @@
         </div><!--.col -->
         <div class="col-md-8">
             <h3>
+                Settings
+            </h3>
+            
+            <label for="durable">Durable:</label>
+            <input type="checkbox" name="durable" id="durable">
+            <br />
+            <hr>
+
+            <h3>
                 Send a message
             </h3>
             
             <form>
+                
+
                 <label for="text">Message:</label>
                 <input type="text" name="text" id="text" class="form-control" placeholder="Enter a message here">
                 <br>

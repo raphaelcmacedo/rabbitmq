@@ -36,5 +36,24 @@ namespace Queue
                                      body: body);
             }
         }
+
+        public static void SendToExchange(string message, string exchange)
+        {
+            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1" };
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                channel.ExchangeDeclare(exchange: exchange, type: "fanout", durable: true);
+
+                var body = Encoding.UTF8.GetBytes(message);
+
+                channel.BasicPublish(exchange: exchange,
+                                     routingKey: "",
+                                     basicProperties: null,
+                                     body: body);
+            }
+        }
+
+
     }
 }

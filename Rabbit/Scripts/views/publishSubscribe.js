@@ -28,6 +28,10 @@
         var action = '';
         var $listen = e.target;
 
+        var consumerNumber = e.target.id;
+        consumerNumber = consumerNumber.slice(-1);
+        var exchange = $("#exchangeListener" + consumerNumber).val();
+        
         if ($listen.checked) {
             action = 'Listen';
         }
@@ -35,19 +39,16 @@
             action = 'Unlisten';
         }
 
-        var consumerNumber = e.target.id;
-        consumerNumber = consumerNumber.slice(-1);
-        var exchange = $("#exchangeListener" + consumerNumber).val();
-
         if (exchange === '') {
             alert('Please inform a exchange.');
+            e.target.checked = false;
             return;
         }
 
         $.ajax({
             url: "PublishSubscribe/" + action,
             type: 'POST',
-            data: { exchange: exchange },
+            data: { exchange: exchange, threadNumber: consumerNumber },
             error: function (e) {
                 alert(e);
 

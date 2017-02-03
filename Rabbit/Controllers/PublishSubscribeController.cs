@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,6 +10,8 @@ namespace Rabbit.Controllers
 {
     public class PublishSubscribeController : Controller
     {
+        private static Dictionary<string, Thread> threads = new Dictionary<string, Thread>();
+
         public ActionResult Index()
         {
             return View();
@@ -32,14 +36,19 @@ namespace Rabbit.Controllers
             return View();
         }
 
-        public void Listen(string exchange)
+        public void Listen(string exchange, string threadNumber)
         {
-            Queue.Receive.CreateListenerExchange(exchange);
+            var thread = new Thread(() => Queue.Receive.CreateListenerExchange(exchange));
+            thread.Start();
+            var id = thread.ManagedThreadId;
+            threads.Add(threadNumber, thread);
+            
         }
 
-        public void Unlisten(string exchange)
+        public void Unlisten(string exchange, string threadNumber)
         {
-            Queue.Receive.listen = false;
+            Thread thread = threads[threadNumber];
+            thread.Abort();
         }
 
         public ActionResult Fetch(bool durable)

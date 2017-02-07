@@ -10,15 +10,15 @@ namespace Queue
     {
         public static void Main(string message, bool durable)
         {
-            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1" };
+            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "dev"};
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                string queue = "prion";
+                string queue = "ha.prion";
                 var properties = channel.CreateBasicProperties();
                 if (durable)
                 {
-                    queue = "prionDurable";
+                    queue = "ha.prionDurable";
                     properties.Persistent = true;
                 }
 
@@ -39,7 +39,7 @@ namespace Queue
 
         public static void SendToExchange(string message, string exchange)
         {
-            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1" };
+            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "dev" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {

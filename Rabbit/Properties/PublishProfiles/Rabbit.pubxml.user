@@ -94,10 +94,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/10/2017 15:00:23</publishTime>
     </File>
     <File Include="bin/Queue.dll">
-      <publishTime>01/19/2017 17:43:21</publishTime>
+      <publishTime>02/07/2017 11:11:20</publishTime>
     </File>
     <File Include="bin/Rabbit.dll">
-      <publishTime>01/19/2017 17:43:25</publishTime>
+      <publishTime>02/07/2017 11:11:26</publishTime>
     </File>
     <File Include="bin/RabbitMQ.Client.dll">
       <publishTime>01/10/2017 15:11:13</publishTime>
@@ -234,11 +234,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/respond.min.js">
       <publishTime>01/10/2017 15:00:13</publishTime>
     </File>
+    <File Include="Scripts/views/publishSubscribe.js">
+      <publishTime>02/03/2017 14:05:43</publishTime>
+    </File>
     <File Include="Scripts/views/rabbit.js">
-      <publishTime>01/19/2017 17:20:51</publishTime>
+      <publishTime>02/07/2017 10:25:15</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>01/10/2017 15:45:03</publishTime>
+      <publishTime>02/02/2017 14:08:29</publishTime>
     </File>
     <File Include="Views/Account/ConfirmEmail.cshtml">
       <publishTime>01/10/2017 15:00:16</publishTime>
@@ -283,7 +286,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/10/2017 14:59:57</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>01/19/2017 17:15:35</publishTime>
+      <publishTime>02/07/2017 09:55:27</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>01/10/2017 15:00:16</publishTime>
@@ -303,6 +306,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
       <publishTime>01/10/2017 15:00:16</publishTime>
     </File>
+    <File Include="Views/PublishSubscribe/Index.cshtml">
+      <publishTime>02/02/2017 11:49:36</publishTime>
+    </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>01/10/2017 15:00:16</publishTime>
     </File>
@@ -310,7 +316,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/10/2017 15:00:16</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>01/10/2017 16:34:20</publishTime>
+      <publishTime>02/02/2017 11:53:24</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>01/10/2017 15:00:16</publishTime>

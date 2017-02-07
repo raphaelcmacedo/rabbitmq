@@ -63,13 +63,13 @@ namespace Rabbit.Controllers
             return View();
         }
 
-        public ActionResult FetchOneMessage(bool simulateError, bool simulateRejection, bool durable)
+        public ActionResult FetchOneMessage(bool simulateError, string queue, bool simulateRejection, bool durable)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    string message = Queue.Receive.GetOneMessage(durable, simulateError, simulateRejection);
+                    string message = Queue.Receive.GetOneMessage(durable, queue, simulateError, simulateRejection);
                     return Json(new { Success = true, data = message }, JsonRequestBehavior.AllowGet);
                 }
                 catch (Exception e)

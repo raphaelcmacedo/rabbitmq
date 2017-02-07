@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "Publish/Subscribe";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h3>
+                    Send a message
+                </h3>
+
+                <form>
+                    <label for="exchangeSend">Exchange:</label>
+                    <input type="text" name="exchangeSend" id="exchangeSend" class="form-control" placeholder="Enter an exhange name here">
+
+                    <label for="text">Message:</label>
+                    <input type="text" name="text" id="text" class="form-control" placeholder="Enter a message here">
+                    <br>
+                    <button type="button" id="btnAdd" class="btn btn-success">Send</button>
+
+                </form>
+                <hr>
+
+                <h3>
+                    Messages
+                </h3>
+
+                <br>
+
+            </div><!--.col -->
+            <div class="col-md-4"></div>
+        </div><!--./row -->
+    
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Consumer 1</h4>
+            <div class="well">
+                <label for="exchangeListener1">Exchange:</label>
+                <input type="text" name="exchangeListener1" id="exchangeListener1" class="form-control" placeholder="Enter an exhange name here">
+                <label for="listen1">Listen:</label>
+                <input type="checkbox" name="listen1" id="listen1">
+
+                <br>
+
+                <textarea id="queue1" name="queue1" class="form-control" rows="10"></textarea>
+            </div>
+            
+
+        </div><!--.col -->
+
+        <div class="col-md-4">
+            <h4>Consumer 2</h4>
+            <div class="well">
+                <label for="exchangeListener2">Exchange:</label>
+                <input type="text" name="exchangeListener1" id="exchangeListener2" class="form-control" placeholder="Enter an exhange name here">
+                <label for="listen2">Listen:</label>
+                <input type="checkbox" name="listen2" id="listen2">
+
+                <br>
+
+                <textarea id="queue2" name="queue2" class="form-control" rows="10"></textarea>
+            </div>
+            
+
+        </div><!--.col -->
+
+        <div class="col-md-4">
+            <h4>Consumer 3</h4>
+            <div class="well">
+                <label for="exchangeListener3">Exchange:</label>
+                <input type="text" name="exchangeListener1" id="exchangeListener3" class="form-control" placeholder="Enter an exhange name here">
+                <label for="listen3">Listen:</label>
+                <input type="checkbox" name="listen3" id="listen3">
+
+                <br>
+
+                <textarea id="queue3" name="queue3" class="form-control" rows="10"></textarea>
+
+            </div>
+            
+
+        </div><!--.col -->
+    </div><!--./row -->
+</div><!--./container -->

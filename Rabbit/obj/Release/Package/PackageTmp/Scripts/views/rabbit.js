@@ -5,10 +5,13 @@
        
     //Add
     $("#btnAdd").click(function (e) {
+        var text = $("#text").val();
+        var durable = $("#durable").is(":checked");
+
         $.ajax({
             url: "Rabbit/Add",
             type: 'POST',
-            data: { text: $("#text").val() },
+            data: { text: text, durable:durable  },
             success: function (object) {
                 clearForm();
                 if (object.Success) {
@@ -23,10 +26,13 @@
 
     //Fetch 1 Message
     $("#btnFetch").click(function (e) {
+        var durable = $("#durable").is(":checked");
+        var queue = $("#queueName").val();
+
         $.ajax({
             url: "Rabbit/FetchOneMessage",
             type: 'POST',
-            data: { simulateError: false, simulateRejection: false },
+            data: { simulateError: false, queue: queue, simulateRejection: false, durable:durable },
             success: function (object) {
                 if (object.Success) {
                     var message = object.data;
@@ -48,10 +54,13 @@
 
     //Fetch error
     $("#btnError").click(function (e) {
+        var durable = $("#durable").is(":checked");
+        var queue = $("#queueName").val();
+
         $.ajax({
             url: "Rabbit/FetchOneMessage",
             type: 'POST',
-            data: { simulateError: true, simulateRejection: false },
+            data: { simulateError: true, queue: queue, simulateRejection: false, durable: durable },
             success: function (object) {
                 if (object.Success) {
                     
@@ -65,10 +74,13 @@
 
     //Reject
     $("#btnReject").click(function (e) {
+        var durable = $("#durable").is(":checked");
+        var queue = $("#queueName").val();
+
         $.ajax({
             url: "Rabbit/FetchOneMessage",
             type: 'POST',
-            data: { simulateError: false, simulateRejection: true },
+            data: { simulateError: false, queue: queue, simulateRejection: true, durable: durable },
             success: function (object) {
                 if (object.Success) {
 
@@ -83,6 +95,7 @@
     //Listen
     $("#listen").click(function (e) {
         var action = '';
+        var durable = $("#durable").is(":checked");
 
         if ($("#listen").is(":checked")) {
             action = 'Listen';
@@ -95,6 +108,7 @@
         $.ajax({
             url: "Rabbit/" + action,
             type: 'POST',
+            data: {durable, durable}, 
             error:function(e){
                 alert(e);
 

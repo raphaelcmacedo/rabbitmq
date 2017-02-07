@@ -27,11 +27,12 @@
     //Fetch 1 Message
     $("#btnFetch").click(function (e) {
         var durable = $("#durable").is(":checked");
+        var queue = $("#queueName").val();
 
         $.ajax({
             url: "Rabbit/FetchOneMessage",
             type: 'POST',
-            data: { simulateError: false, simulateRejection: false, durable:durable },
+            data: { simulateError: false, queue: queue, simulateRejection: false, durable:durable },
             success: function (object) {
                 if (object.Success) {
                     var message = object.data;
@@ -54,11 +55,12 @@
     //Fetch error
     $("#btnError").click(function (e) {
         var durable = $("#durable").is(":checked");
+        var queue = $("#queueName").val();
 
         $.ajax({
             url: "Rabbit/FetchOneMessage",
             type: 'POST',
-            data: { simulateError: true, simulateRejection: false, durable: durable },
+            data: { simulateError: true, queue: queue, simulateRejection: false, durable: durable },
             success: function (object) {
                 if (object.Success) {
                     
@@ -73,11 +75,12 @@
     //Reject
     $("#btnReject").click(function (e) {
         var durable = $("#durable").is(":checked");
+        var queue = $("#queueName").val();
 
         $.ajax({
             url: "Rabbit/FetchOneMessage",
             type: 'POST',
-            data: { simulateError: false, simulateRejection: true, durable: durable },
+            data: { simulateError: false, queue: queue, simulateRejection: true, durable: durable },
             success: function (object) {
                 if (object.Success) {
 
@@ -116,7 +119,8 @@
 
 
     //Fetch
-   function fetch () {
+    function fetch() {
+       var durable = $("#durable").is(":checked");
        if (messages.length > 0){
            var message = messages[0];
            var queue = $("#queue").val();
@@ -132,10 +136,10 @@
            $.ajax({
                url: "Rabbit/Fetch",
                type: 'POST',
-               data: {},
+               data: {durable: durable},
                success: function (object) {
                    if (object.Success) {
-                       if (object.data.length > 0) {
+                       if (object.data != null && object.data.length > 0) {
                            messages = object.data.split('\r\n');
                            fetch();
                        }

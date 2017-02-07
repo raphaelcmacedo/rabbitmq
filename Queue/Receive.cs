@@ -13,13 +13,13 @@ namespace Queue
 
         public static void CreateListener(bool durable)
         {
-            string queue = "prion";
+            string queue = "ha.prion";
             if (durable)
             {
-                queue = "prionDurable";
+                queue = "ha.prionDurable";
             }
             listen = true;
-            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1" };
+            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "dev" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
@@ -55,7 +55,7 @@ namespace Queue
         {
             
             listen = true;
-            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1" };
+            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "dev" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
@@ -84,16 +84,19 @@ namespace Queue
             }
         }
 
-        public static string GetOneMessage(bool durable, bool simulateError = false, bool simulateRejection = false)
+        public static string GetOneMessage(bool durable, string queue = "ha.prion", bool simulateError = false, bool simulateRejection = false)
         {
-            string queue = "prion";
+            if (string.IsNullOrEmpty(queue))
+            {
+                queue = "ha.prion";
+            }
             if (durable)
             {
-                queue = "prionDurable";
+                queue = "ha.prionDurable";
             }
 
             string message = string.Empty;
-            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1" };
+            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "dev" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {

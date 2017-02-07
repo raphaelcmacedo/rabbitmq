@@ -13,13 +13,13 @@ namespace Rabbit.Controllers
             return View();
         }
         
-        public ActionResult Add(string text, bool durable)
+        public ActionResult Add(string text, string queue, bool durable)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    Queue.Send.Main(text, durable);
+                    Queue.Send.Main(text, queue, durable);
                     return Json(new { Success = true }, JsonRequestBehavior.AllowGet);
                 }
                 catch (Exception e)
@@ -32,9 +32,9 @@ namespace Rabbit.Controllers
             return View();
         }
 
-        public void Listen(bool durable)
+        public void Listen(string queue, bool durable)
         {
-            Queue.Receive.CreateListener(durable);
+            Queue.Receive.CreateListener(queue, durable);
         }
 
         public void Unlisten(bool durable)

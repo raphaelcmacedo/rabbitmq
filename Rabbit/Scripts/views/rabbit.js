@@ -6,12 +6,13 @@
     //Add
     $("#btnAdd").click(function (e) {
         var text = $("#text").val();
+        var queue = $("#queueName").val();
         var durable = $("#durable").is(":checked");
 
         $.ajax({
             url: "Rabbit/Add",
             type: 'POST',
-            data: { text: text, durable:durable  },
+            data: { text: text, queue: queue, durable:durable  },
             success: function (object) {
                 clearForm();
                 if (object.Success) {
@@ -95,6 +96,7 @@
     //Listen
     $("#listen").click(function (e) {
         var action = '';
+        var queue = $("#queueName").val();
         var durable = $("#durable").is(":checked");
 
         if ($("#listen").is(":checked")) {
@@ -108,7 +110,7 @@
         $.ajax({
             url: "Rabbit/" + action,
             type: 'POST',
-            data: {durable, durable}, 
+            data: {queue: queue, durable: durable}, 
             error:function(e){
                 alert(e);
 

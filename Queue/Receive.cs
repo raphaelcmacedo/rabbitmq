@@ -11,20 +11,16 @@ namespace Queue
         public static string message { get; set; }
         public static bool listen { get; set; }
 
-        public static void CreateListener(bool durable)
+        public static void CreateListener(string queue, bool durable)
         {
-            string queue = "ha.prion";
-            if (durable)
-            {
-                queue = "ha.prionDurable";
-            }
+            queue = Util.HandleQueueName(queue, durable);
             listen = true;
             var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "dev" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
                 channel.QueueDeclare(queue: queue,
-                                        durable: true,
+                                        durable: durable,
                                         exclusive: false,
                                         autoDelete: false,
                                         arguments: null);
@@ -86,14 +82,7 @@ namespace Queue
 
         public static string GetOneMessage(bool durable, string queue = "ha.prion", bool simulateError = false, bool simulateRejection = false)
         {
-            if (string.IsNullOrEmpty(queue))
-            {
-                queue = "ha.prion";
-            }
-            if (durable)
-            {
-                queue = "ha.prionDurable";
-            }
+            queue = Util.HandleQueueName(queue, durable);
 
             string message = string.Empty;
             var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "dev" };

@@ -8,17 +8,16 @@ namespace Queue
 {
     public class Send
     {
-        public static void Main(string message, bool durable)
+        public static void Main(string message, string queue, bool durable)
         {
             var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "dev"};
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                string queue = "ha.prion";
+                queue = Util.HandleQueueName(queue, durable);
                 var properties = channel.CreateBasicProperties();
                 if (durable)
                 {
-                    queue = "ha.prionDurable";
                     properties.Persistent = true;
                 }
 

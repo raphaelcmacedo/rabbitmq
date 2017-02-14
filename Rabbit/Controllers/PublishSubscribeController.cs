@@ -10,7 +10,7 @@ namespace Rabbit.Controllers
 {
     public class PublishSubscribeController : Controller
     {
-        private static Dictionary<string, Thread> threads = new Dictionary<string, Thread>();
+        private static Dictionary<string, Queue.ReceivePublishSubscribe> threads = new Dictionary<string, Queue.ReceivePublishSubscribe>();
 
         public ActionResult Index()
         {
@@ -38,17 +38,17 @@ namespace Rabbit.Controllers
 
         public void Listen(string exchange, string threadNumber)
         {
-            var thread = new Thread(() => Queue.Receive.CreateListenerExchange(exchange));
+            Queue.ReceivePublishSubscribe receive = new Queue.ReceivePublishSubscribe();
+            var thread = new Thread(() => receive.CreateListenerExchange(exchange));
             thread.Start();
-            var id = thread.ManagedThreadId;
-            threads.Add(threadNumber, thread);
-            
+            threads[threadNumber] = receive;
         }
 
         public void Unlisten(string exchange, string threadNumber)
         {
-            Thread thread = threads[threadNumber];
-            thread.Abort();
+            Queue.ReceivePublishSubscribe receive = threads[threadNumber];
+            receive.listen = false;
+            threads.Remove(threadNumber);
         }
 
         public ActionResult Fetch(bool durable)

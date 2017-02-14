@@ -94,10 +94,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/10/2017 15:00:23</publishTime>
     </File>
     <File Include="bin/Queue.dll">
-      <publishTime>02/07/2017 11:11:20</publishTime>
+      <publishTime>02/07/2017 15:14:29</publishTime>
     </File>
     <File Include="bin/Rabbit.dll">
-      <publishTime>02/07/2017 11:11:26</publishTime>
+      <publishTime>02/07/2017 15:14:33</publishTime>
     </File>
     <File Include="bin/RabbitMQ.Client.dll">
       <publishTime>01/10/2017 15:11:13</publishTime>
@@ -238,7 +238,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/03/2017 14:05:43</publishTime>
     </File>
     <File Include="Scripts/views/rabbit.js">
-      <publishTime>02/07/2017 10:25:15</publishTime>
+      <publishTime>02/07/2017 15:03:28</publishTime>
     </File>
     <File Include="Scripts/_references.js">
       <publishTime>02/02/2017 14:08:29</publishTime>
@@ -286,7 +286,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/10/2017 14:59:57</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>02/07/2017 09:55:27</publishTime>
+      <publishTime>02/07/2017 14:23:55</publishTime>
     </File>
     <File Include="Views/Manage/AddPhoneNumber.cshtml">
       <publishTime>01/10/2017 15:00:16</publishTime>
@@ -307,7 +307,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/10/2017 15:00:16</publishTime>
     </File>
     <File Include="Views/PublishSubscribe/Index.cshtml">
-      <publishTime>02/02/2017 11:49:36</publishTime>
+      <publishTime>02/07/2017 14:24:22</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>01/10/2017 15:00:16</publishTime>
@@ -316,7 +316,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/10/2017 15:00:16</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/02/2017 11:53:24</publishTime>
+      <publishTime>02/07/2017 14:21:51</publishTime>
     </File>
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>01/10/2017 15:00:16</publishTime>

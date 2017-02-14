@@ -51,15 +51,20 @@ namespace Rabbit.Controllers
             threads.Remove(threadNumber);
         }
 
-        public ActionResult Fetch(bool durable)
+        public ActionResult Fetch(string threadNumber)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    string message = string.Empty;
+                    if (threadNumber != null && threads.ContainsKey(threadNumber))
+                    {
+                        Queue.ReceivePublishSubscribe receive = threads[threadNumber];
+                        message = receive.message;
+                        receive.message = string.Empty;
+                    }
                     
-                    string message = Queue.Receive.message;
-                    Queue.Receive.message = string.Empty;
                     return Json(new { Success = true, data = message }, JsonRequestBehavior.AllowGet);
                 }
                 catch (Exception e)
@@ -71,24 +76,6 @@ namespace Rabbit.Controllers
 
             return View();
         }
-
-        public ActionResult FetchOneMessage(bool simulateError, string queue, bool simulateRejection, bool durable)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    string message = Queue.Receive.GetOneMessage(durable, queue, simulateError, simulateRejection);
-                    return Json(new { Success = true, data = message }, JsonRequestBehavior.AllowGet);
-                }
-                catch (Exception e)
-                {
-                    return Json(new { Success = false, Message = e.Message });
-                }
-
-            }
-
-            return View();
-        }
+        
     }
 }

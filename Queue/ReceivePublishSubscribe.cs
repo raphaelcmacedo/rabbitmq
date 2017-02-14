@@ -21,6 +21,9 @@ namespace Queue
             {
                 channel.ExchangeDeclare(exchange: exchange, type: "fanout", durable: true);
                 var queueName = channel.QueueDeclare().QueueName;
+                channel.QueueBind(queue: queueName,
+                              exchange: exchange,
+                              routingKey: "");
                 var consumer = new EventingBasicConsumer(channel);
                 consumer.Received += (model, ea) =>
                 {

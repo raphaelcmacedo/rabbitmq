@@ -84,3 +84,5 @@ D:\Desenvolvimento\Rabbit\Rabbit\bin\RabbitMQ.Client.xml
 D:\Desenvolvimento\Rabbit\Rabbit\obj\Release\Rabbit.csprojResolveAssemblyReference.cache
 D:\Desenvolvimento\Rabbit\Rabbit\obj\Release\Rabbit.dll
 D:\Desenvolvimento\Rabbit\Rabbit\obj\Release\Rabbit.pdb
+D:\Desenvolvimento\Rabbit\Rabbit\bin\SalesForce.dll
+D:\Desenvolvimento\Rabbit\Rabbit\bin\SalesForce.pdb

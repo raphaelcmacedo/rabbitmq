@@ -65,35 +65,50 @@ namespace SalesForce
 
             return queryResult;
         }
+
+        public SalesForceSVC.QueryResult FindAllRabbitMQ()
+        {
+            SalesForceSVC.QueryResult queryResult = null;
+
+            ConfigureHeaders();
+
+            SalesForceSVC.QueryOptions queryOptions = new SalesForceSVC.QueryOptions();
+            string queryString = "SELECT Name FROM Opportunity where StageName = 'RabbitMQ' ";
+            serviceClient.query(sessionHeader, queryOptions, mruHeader, versionHeader, queryString, out queryResult);
+            
+            return queryResult;
+        }
+
         public SalesForceSVC.SaveResult[] CreateOpportunity(SalesForceSVC.Opportunity opp = null)
         {
 
             SalesForceSVC.SaveResult[] saveResult = null;
-            try
-            {
-                ConfigureHeaders();
+            ConfigureHeaders();
 
-                if (opp == null)
-                {
-                    opp = this.FillOpportunityObj();
-                }
+            if (opp == null)
+            {
+                opp = this.FillOpportunityObj();
+            }
                 
-                SalesForceSVC.sObject[] objs = new List<SalesForceSVC.sObject> { opp }.ToArray();
+            SalesForceSVC.sObject[] objs = new List<SalesForceSVC.sObject> { opp }.ToArray();
 
-                SalesForceSVC.LimitInfo[] infoHeader = getInfoHeader();
+            SalesForceSVC.LimitInfo[] infoHeader = getInfoHeader();
 
-                serviceClient.create(sessionHeader, ruleHeader, mruHeader, truncateHeader, trackingHeader,
-                    streamingHeader, allOrNoneHeader, duplicateHeader, localeOption, debugHeader, versionHeader,
-                        emailHeader, objs, out infoHeader, out saveResult);
-
-
-            }
-            catch (Exception e)
+            serviceClient.create(sessionHeader, ruleHeader, mruHeader, truncateHeader, trackingHeader,
+                streamingHeader, allOrNoneHeader, duplicateHeader, localeOption, debugHeader, versionHeader,
+                    emailHeader, objs, out infoHeader, out saveResult);
+            if (!saveResult[0].success)
             {
-                Console.WriteLine(e.Message + "\n" + e.StackTrace);
+                string message = "";
+                foreach (SalesForceSVC.Error error in saveResult[0].errors)
+                {
+                    message += error.message + "\r\n";
+                }
+                throw new Exception(message);
             }
 
-
+            
+            
             return saveResult;
         }
         public SalesForceSVC.SaveResult[] UpdateOpportunity()
@@ -112,6 +127,7 @@ namespace SalesForce
                 serviceClient.create(sessionHeader, ruleHeader, mruHeader, truncateHeader, trackingHeader,
                     streamingHeader, allOrNoneHeader, duplicateHeader, localeOption, debugHeader, versionHeader,
                         emailHeader, objs, out infoHeader, out saveResult);
+                
             }
             catch (Exception e)
             {

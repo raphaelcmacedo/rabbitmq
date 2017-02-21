@@ -23,9 +23,11 @@ namespace SalesForce
 
             opportunity.Name = node["ns1:SalesOrderNo"].InnerText;
             opportunity.CreatedDate = DateTime.Now;
+            opportunity.CloseDate = DateTime.Now.AddDays(10);
+            opportunity.CloseDateSpecified = true;
             opportunity.WC_Region__c = node["ns1:SalesOrg"].InnerText;
             opportunity.WC_End_User__c = node["ns1:EndUser"].InnerText;
-            opportunity.Description = "RabbitMQ";
+            opportunity.StageName = "RabbitMQ";
 
             return opportunity;
         }

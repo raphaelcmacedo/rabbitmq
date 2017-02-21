@@ -107,7 +107,7 @@ namespace Queue
                     }
                 }
                 // acknowledge receipt of the message
-                /*if (simulateRejection)
+                if (simulateRejection)
                 {
                     channel.BasicReject(result.DeliveryTag, false);
                     throw new Exception("The message " + message + " has been rejected.");
@@ -115,7 +115,7 @@ namespace Queue
                 else
                 {
                     channel.BasicAck(result.DeliveryTag, false);
-                }*/
+                }
                 
             }
 

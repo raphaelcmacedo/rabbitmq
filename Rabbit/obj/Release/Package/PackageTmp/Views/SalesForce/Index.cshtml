@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/views/salesForce.js")" type="text/javascript"></script>
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            
+        </div><!--.col -->
+        <div class="col-md-8">
+            <h3>
+                Settings
+            </h3>
+            
+            <label for="durable">Durable:</label>
+            <input type="checkbox" name="durable" id="durable" checked>
+            <br />
+            
+            <label for="text">Queue Name:</label>
+            <input type="text" name="queueName" id="queueName" class="form-control" placeholder="(Optional)">
+            
+            <hr>
+    
+
+            <h3>
+                Integration
+            </h3>
+            
+            <br>
+            
+            <button type="button" id="btnIntegrate" class="btn btn-success">Send 1 Message</button>
+            <button type="button" id="btnFindSalesForce" class="btn btn-success">List Sales Force</button>
+            
+            <br>    
+
+            <textarea id="opportunities" name="opportunities" class="form-control" rows="10"></textarea>
+
+            
+            <hr>
+        </div><!--.col -->
+    </div><!--./row -->
+</div><!--./container -->

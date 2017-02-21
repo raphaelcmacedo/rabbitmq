@@ -17,5 +17,12 @@ namespace SalesForce
 
             return opportunity;
         }
+
+        public SalesForceSVC.sObject[] FindAllSalesForce()
+        {
+            OpportunityService service = new OpportunityService();
+            SalesForceSVC.QueryResult result = service.FindAllRabbitMQ();
+            return result.records;
+        }
     }
 }

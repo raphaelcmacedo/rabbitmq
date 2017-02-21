@@ -1,0 +1,6 @@
+D:\Desenvolvimento\Rabbit\SalesForce\obj\Debug\SalesForce.csprojResolveAssemblyReference.cache
+D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\SalesForce.dll.config
+D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\SalesForce.dll
+D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\SalesForce.pdb
+D:\Desenvolvimento\Rabbit\SalesForce\obj\Debug\SalesForce.dll
+D:\Desenvolvimento\Rabbit\SalesForce\obj\Debug\SalesForce.pdb

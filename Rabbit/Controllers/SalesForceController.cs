@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SalesForce;
+using SalesForce.SalesForceSVC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -60,8 +62,10 @@ namespace Rabbit.Controllers
                     string message = Queue.Receive.GetOneMessage(durable, queue, false, false);
 
                     //Manda a msg para o salesforce
+                    OpportunityIntegration opportunityIntegration = new OpportunityIntegration();
+                    Opportunity opportunity = opportunityIntegration.CreateOpportunity(message);
 
-                    return Json(new { Success = true, data = message }, JsonRequestBehavior.AllowGet);
+                    return Json(new { Success = true, data = opportunity.Name }, JsonRequestBehavior.AllowGet);
                 }
                 catch (Exception e)
                 {

@@ -14,14 +14,14 @@
             data: { queue: queue, durable:durable },
             success: function (object) {
                 if (object.Success) {
-                    var message = object.data;
+                    var quoteName = "The opportunity " + object.data + " has been integrated successfuly.";
                     var queue = $("#queue").val();
 
                     if (queue.length > 0) {
                         queue += "\r\n";
                     }
 
-                    queue += message;
+                    queue += quoteName;
                     $("#queue").val(queue);
                 } else {
                     alert(object.Message);

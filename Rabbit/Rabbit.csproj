@@ -196,6 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\PublishSubscribeController.cs" />
+    <Compile Include="Controllers\SalesForceController.cs" />
     <Compile Include="Controllers\RabbitController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -225,6 +226,7 @@
     <None Include="Properties\PublishProfiles\Rabbit.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\views\publishSubscribe.js" />
+    <Content Include="Scripts\views\salesForce.js" />
     <Content Include="Scripts\views\rabbit.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -264,6 +266,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\PublishSubscribe\Index.cshtml" />
+    <Content Include="Views\SalesForce\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

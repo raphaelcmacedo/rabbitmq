@@ -94,10 +94,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/10/2017 15:00:23</publishTime>
     </File>
     <File Include="bin/Queue.dll">
-      <publishTime>02/07/2017 15:14:29</publishTime>
+      <publishTime>02/14/2017 11:51:19</publishTime>
     </File>
     <File Include="bin/Rabbit.dll">
-      <publishTime>02/07/2017 15:14:33</publishTime>
+      <publishTime>02/14/2017 11:51:24</publishTime>
     </File>
     <File Include="bin/RabbitMQ.Client.dll">
       <publishTime>01/10/2017 15:11:13</publishTime>
@@ -235,7 +235,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/10/2017 15:00:13</publishTime>
     </File>
     <File Include="Scripts/views/publishSubscribe.js">
-      <publishTime>02/03/2017 14:05:43</publishTime>
+      <publishTime>02/14/2017 11:25:59</publishTime>
     </File>
     <File Include="Scripts/views/rabbit.js">
       <publishTime>02/07/2017 15:03:28</publishTime>

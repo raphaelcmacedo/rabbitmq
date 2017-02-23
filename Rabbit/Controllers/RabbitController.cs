@@ -69,7 +69,7 @@ namespace Rabbit.Controllers
             {
                 try
                 {
-                    string message = Queue.Receive.GetOneMessage(durable, queue, simulateError, simulateRejection);
+                    string message = Queue.Receive.GetOneMessage(durable, queue, "dev", simulateError, simulateRejection);
                     return Json(new { Success = true, data = message }, JsonRequestBehavior.AllowGet);
                 }
                 catch (Exception e)

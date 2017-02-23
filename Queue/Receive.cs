@@ -80,12 +80,12 @@ namespace Queue
             }
         }
 
-        public static string GetOneMessage(bool durable, string queue = "ha.prion", bool simulateError = false, bool simulateRejection = false)
+        public static string GetOneMessage(bool durable, string queue = "ha.prion", string virtualHost = "dev", bool simulateError = false, bool simulateRejection = false)
         {
             queue = Util.HandleQueueName(queue, durable);
 
             string message = string.Empty;
-            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "dev" };
+            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = virtualHost };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {

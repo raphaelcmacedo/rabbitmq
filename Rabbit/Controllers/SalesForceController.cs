@@ -24,11 +24,11 @@ namespace Rabbit.Controllers
                 {
                     if (string.IsNullOrEmpty(queue))
                     {
-                        queue = "ha.salesorder.queue";
+                        queue = "ha.bwsalesopportunity.queue";
                     }
 
                     //Busca a msg no Rabbit
-                    string message = Queue.Receive.GetOneMessage(durable, queue, false, false);
+                    string message = Queue.Receive.GetOneMessage(durable, queue, "qa", false, false);
 
                     //Manda a msg para o salesforce
                     OpportunityIntegration opportunityIntegration = new OpportunityIntegration();

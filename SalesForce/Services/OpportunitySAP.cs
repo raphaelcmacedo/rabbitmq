@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace SalesForce
+namespace SalesForce.Services
 {
     public class OpportunitySAP
     {
@@ -29,7 +29,7 @@ namespace SalesForce
             //SalesOrder fields
             opportunity.Name = node["ns0:SalesOrderNo"].InnerText;
             opportunity.WC_Region__c = node["ns0:SalesOrg"].InnerText;
-
+            
             //Sold To
             XmlNode soldToNode = node["ns0:SoldTo"];
             //opportunity.WC_Sold_To_Customer_Number__c = soldToNode["ns0:WestconID"].InnerText; Não tive permissão para setar

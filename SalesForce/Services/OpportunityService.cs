@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
 
-namespace SalesForce
+namespace SalesForce.Services
 {
     public class OpportunityService
     {

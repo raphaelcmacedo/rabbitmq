@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesForce
+namespace SalesForce.Services
 {
     public class OpportunityIntegration
     {

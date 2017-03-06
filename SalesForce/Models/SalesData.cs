@@ -20,5 +20,7 @@ namespace SalesForce.Models
 
         [ForeignKey("SoldToId")]
         public virtual Company SoldTo { get; set; }
+
+        public ICollection<LineItem> LineItems;
     }
 }

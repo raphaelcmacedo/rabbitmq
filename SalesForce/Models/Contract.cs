@@ -18,8 +18,8 @@ namespace SalesForce.Models
         public String ManufacturerQuoteNo { get; set; }
         public String ModelNo { get; set; }
         public String NSP { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
 
     }

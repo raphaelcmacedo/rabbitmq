@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SalesForce.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,8 @@ namespace SalesForce.Services
         public SalesForceSVC.Opportunity CreateOpportunity(string message)
         {
             OpportunitySAP sap = new OpportunitySAP();
-            SalesForceSVC.Opportunity opportunity = sap.ConvertXML(message);
+            SalesData salesData = sap.ReadXML(message);
+            SalesForceSVC.Opportunity opportunity = sap.ConvertOpportunity(salesData);
             OpportunityService service = new OpportunityService();
             service.CreateOpportunity(opportunity);
 

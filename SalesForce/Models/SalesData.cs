@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace SalesForce.Models
 {
+    [Table("SalesData", Schema = "sap")]
     public class SalesData
     {
         [Key]
         public Int64 SalesDataId { get; set; }
         public Int64? SoldToId { get; set; }
+        public String SalesForceId { get; set; }
         public String SalesOrderNo { get; set; }
         public String SalesOrg { get; set; }
         public String SourceSystem { get; set; }

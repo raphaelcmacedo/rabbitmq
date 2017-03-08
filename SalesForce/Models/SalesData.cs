@@ -14,11 +14,11 @@ namespace SalesForce.Models
         [Key]
         public Int64 SalesDataId { get; set; }
         public Int64? SoldToId { get; set; }
-        public String SalesForceId { get; set; }
         public String SalesOrderNo { get; set; }
         public String SalesOrg { get; set; }
         public String SourceSystem { get; set; }
         public String ExtractionRuleType { get; set; }
+        public String Message { get; set; }
 
         [ForeignKey("SoldToId")]
         public virtual Company SoldTo { get; set; }

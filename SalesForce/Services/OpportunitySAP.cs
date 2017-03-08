@@ -19,10 +19,10 @@ namespace SalesForce.Services
             XmlNodeList nodeList = xml.GetElementsByTagName("ns0:Header");
             XmlNode node = nodeList[0];
 
-            salesData.SalesOrderNo = node["ns0:SalesOrderNo"].InnerText;
-            salesData.SalesOrg = node["ns0:SalesOrg"].InnerText;
-            salesData.SourceSystem = node["ns0:SourceSystem"].InnerText;
-            salesData.ExtractionRuleType = node["ns0:ExtractionRuleType"].InnerText;
+            salesData.SalesOrderNo = Util.GetValue(node, "ns0:SalesOrderNo");
+            salesData.SalesOrg = Util.GetValue(node, "ns0:SalesOrg");
+            salesData.SourceSystem = Util.GetValue(node, "ns0:SourceSystem");
+            salesData.ExtractionRuleType = Util.GetValue(node, "ns0:ExtractionRuleType");
 
             //Sold To
             XmlNode soldToNode = node["ns0:SoldTo"];
@@ -33,6 +33,10 @@ namespace SalesForce.Services
             nodeList = xml.GetElementsByTagName("ns0:LineItem");
             salesData.LineItems = this.ReadLineItems(nodeList);
 
+            //Message
+            string message = Util.Base64Encode(text);
+            salesData.Message = message;
+
             return salesData;
         }
 
@@ -42,36 +46,36 @@ namespace SalesForce.Services
             foreach (XmlNode node in nodeList)
             {
                 LineItem item = new LineItem();
-                item.LineNumber = node["ns0:LineNo"].InnerText;
-                item.SKU = node["ns0:SKUNo"].InnerText;
-                item.SKUDescription = node["ns0:SKUDescription"].InnerText;
-                item.ProductType = node["ns0:ProductType"].InnerText;
-                item.SalesDistrict = node["ns0:SalesDistrict"].InnerText;
-                item.SalesPractice = node["ns0:SalesPractice"].InnerText;
-                item.CreatedBy = node["ns0:CreatedBy"].InnerText;
-                item.AccountManagerId = node["ns0:AccountManagerID"].InnerText;
-                item.AccountManagerName = node["ns0:AccountManagerName"].InnerText;
+                item.LineNumber = Util.GetValue(node, "ns0:LineNo");
+                item.SKU = Util.GetValue(node, "ns0:SKUNo");
+                item.SKUDescription = Util.GetValue(node, "ns0:SKUDescription");
+                item.ProductType = Util.GetValue(node, "ns0:ProductType");
+                item.SalesDistrict = Util.GetValue(node, "ns0:SalesDistrict");
+                item.SalesPractice = Util.GetValue(node, "ns0:SalesPractice");
+                item.CreatedBy = Util.GetValue(node, "ns0:CreatedBy");
+                item.AccountManagerId = Util.GetValue(node, "ns0:AccountManagerID");
+                item.AccountManagerName = Util.GetValue(node, "ns0:AccountManagerName");
                 item.SalesOrderQty = Util.ToInt(node["ns0:SalesOrderQty"].InnerText);
-                item.SalesUnit = node["ns0:SalesUnit"].InnerText;
+                item.SalesUnit = Util.GetValue(node, "ns0:SalesUnit");
                 item.BillingCost = Util.ToDecimal(node["ns0:BillingCost"].InnerText);
                 item.BillingValue = Util.ToDecimal(node["ns0:BillingValue"].InnerText);
-                item.DocumentCurrency = node["ns0:DocumentCurrency"].InnerText;
-                item.ContractNo = node["ns0:ContractNo"].InnerText;
+                item.DocumentCurrency = Util.GetValue(node, "ns0:DocumentCurrency");
+                item.ContractNo = Util.GetValue(node, "ns0:ContractNo");
                 item.StartDate = Util.ToDate(node["ns0:StartDate"].InnerText);
                 item.EndDate = Util.ToDate(node["ns0:EndDate"].InnerText);
-                item.ManufacturerQuoteNo = node["ns0:ManufacturerQuoteNo"].InnerText;
-                item.ModelNo = node["ns0:ModelNo"].InnerText;
-                item.NSP = node["ns0:NSP"].InnerText;
-                item.IsEarliestInvoicedItem = node["ns0:IsEarliestInvoicedItem"].InnerText;
+                item.ManufacturerQuoteNo = Util.GetValue(node, "ns0:ManufacturerQuoteNo");
+                item.ModelNo = Util.GetValue(node, "ns0:ModelNo");
+                item.NSP = Util.GetValue(node, "ns0:NSP");
+                item.IsEarliestInvoicedItem = Util.GetValue(node, "ns0:IsEarliestInvoicedItem");
                 item.EarliestBillingPostDate = Util.ToDate(node["ns0:EarliestBillingPostDate"].InnerText);
-                item.ManufacturerID = node["ns0:ManufacturerID"].InnerText;
-                item.ManufacturerName = node["ns0:ManufacturerName"].InnerText;
-                item.ManufacturerAccreditationLevelForSoldTo = node["ns0:ManufacturerAccreditationLevelForSoldTo"].InnerText;
+                item.ManufacturerID = Util.GetValue(node, "ns0:ManufacturerID");
+                item.ManufacturerName = Util.GetValue(node, "ns0:ManufacturerName");
+                item.ManufacturerAccreditationLevelForSoldTo = Util.GetValue(node, "ns0:ManufacturerAccreditationLevelForSoldTo");
                 //item.Discount = Util.ToDecimal(node["ns0:DealID"]["ns0:Discount"].InnerText);
-                item.PromoID = node["ns0:PromoID"].InnerText;
-                item.Promo2ID = node["ns0:Promo2ID"].InnerText;
-                item.AccreditationID = node["ns0:AccreditationID"].InnerText;
-                item.LineItemSerialNo = node["ns0:LineItemSerialNo"].InnerText;
+                item.PromoID = Util.GetValue(node, "ns0:PromoID");
+                item.Promo2ID = Util.GetValue(node, "ns0:Promo2ID");
+                item.AccreditationID = Util.GetValue(node, "ns0:AccreditationID");
+                item.LineItemSerialNo = Util.GetValue(node, "ns0:LineItemSerialNo");
 
                 //Ship To
                 XmlNode shipToNode = node["ns0:ShipTo"];
@@ -87,12 +91,12 @@ namespace SalesForce.Services
                 XmlNode contractNode = node["ns0:Contract"];
                 Contract contract = new Contract();
                 item.Contract = contract;
-                contract.ContractNo = contractNode["ns0:ContractNo"].InnerText;
-                contract.SalesOrderNo = contractNode["ns0:SalesOrderNo"].InnerText;
-                contract.ManufacturerInvoiceNo = contractNode["ns0:ManufacturerInvoiceNo"].InnerText;
-                contract.ManufacturerQuoteNo = contractNode["ns0:ManufacturerQuoteNo"].InnerText;
-                contract.ModelNo = contractNode["ns0:ModelNo"].InnerText;
-                contract.NSP = contractNode["ns0:NSP"].InnerText;
+                contract.ContractNo = Util.GetValue(contractNode, "ns0:ContractNo");
+                contract.SalesOrderNo = Util.GetValue(contractNode, "ns0:SalesOrderNo");
+                contract.ManufacturerInvoiceNo = Util.GetValue(contractNode, "ns0:ManufacturerInvoiceNo");
+                contract.ManufacturerQuoteNo = Util.GetValue(contractNode, "ns0:ManufacturerQuoteNo");
+                contract.ModelNo = Util.GetValue(contractNode, "ns0:ModelNo");
+                contract.NSP = Util.GetValue(contractNode, "ns0:NSP");
                 contract.StartDate = Util.ToDate(contractNode["ns0:StartDate"].InnerText);
                 contract.EndDate = Util.ToDate(contractNode["ns0:EndDate"].InnerText);
 
@@ -109,33 +113,33 @@ namespace SalesForce.Services
             company.Address = address;
 
             //Company Info
-            company.WestconId = companyNode["ns0:WestconID"].InnerText;
-            company.Name = companyNode["ns0:Name"].InnerText;
-            company.CountryPrefix = companyNode["ns0:CountryPrefix"].InnerText;
-            company.WorkPhone = companyNode["ns0:WorkPhone"].InnerText;
-            company.FaxNumber = companyNode["ns0:FaxNumber"].InnerText;
+            company.WestconId = Util.GetValue(companyNode, "ns0:WestconID");
+            company.Name = Util.GetValue(companyNode, "ns0:Name");
+            company.CountryPrefix = Util.GetValue(companyNode, "ns0:CountryPrefix");
+            company.WorkPhone = Util.GetValue(companyNode, "ns0:WorkPhone");
+            company.FaxNumber = Util.GetValue(companyNode, "ns0:FaxNumber");
 
             //Address Info
             XmlNode addressNode = companyNode["ns0:Address"];
-            address.Addr1 = addressNode["ns0:Addr1"].InnerText;
-            address.Addr2 = addressNode["ns0:Addr2"].InnerText;
-            address.Addr3 = addressNode["ns0:Addr3"].InnerText;
-            address.Addr4 = addressNode["ns0:Addr4"].InnerText;
-            address.City = addressNode["ns0:City"].InnerText;
-            address.State = addressNode["ns0:State"].InnerText;
-            address.PostalCode = addressNode["ns0:PostalCode"].InnerText;
-            address.Country = addressNode["ns0:Country"].InnerText;
+            address.Addr1 = Util.GetValue(addressNode, "ns0:Addr1");
+            address.Addr2 = Util.GetValue(addressNode, "ns0:Addr2");
+            address.Addr3 = Util.GetValue(addressNode, "ns0:Addr3");
+            address.Addr4 = Util.GetValue(addressNode, "ns0:Addr4");
+            address.City = Util.GetValue(addressNode, "ns0:City");
+            address.State = Util.GetValue(addressNode, "ns0:State");
+            address.PostalCode = Util.GetValue(addressNode, "ns0:PostalCode");
+            address.Country = Util.GetValue(addressNode, "ns0:Country");
 
             if (contactNode != null)
             {
                 Contact contact = new Contact();
                 company.Contact = contact;
-                contact.WestconId = contactNode["ns0:WestconID"].InnerText;
-                contact.WorkPhone = contactNode["ns0:WorkPhone"].InnerText;
-                contact.FaxNumber = contactNode["ns0:FaxNumber"].InnerText;
-                contact.EmailAddress = contactNode["ns0:EmailAddress"].InnerText;
-                contact.Extension = contactNode["ns0:Extension"].InnerText;
-                contact.MobilePhone = contactNode["ns0:MobilePhone"].InnerText;
+                contact.WestconId = Util.GetValue(contactNode, "ns0:WestconID");
+                contact.WorkPhone = Util.GetValue(contactNode, "ns0:WorkPhone");
+                contact.FaxNumber = Util.GetValue(contactNode, "ns0:FaxNumber");
+                contact.EmailAddress = Util.GetValue(contactNode, "ns0:EmailAddress");
+                contact.Extension = Util.GetValue(contactNode, "ns0:Extension");
+                contact.MobilePhone = Util.GetValue(contactNode, "ns0:MobilePhone");
             }
 
             return company;

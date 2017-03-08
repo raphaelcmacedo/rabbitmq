@@ -18,7 +18,7 @@ namespace SalesForce.Services
             SalesForceSVC.Opportunity opportunity = sap.ConvertOpportunity(salesData);
             OpportunityService service = new OpportunityService();
             SalesForceSVC.SaveResult[] result = service.CreateOpportunity(opportunity);
-            salesData.SalesForceId = result[0].id;
+            
 
             //Grava Sales Data
             using (SalesDataRepository repository = new SalesDataRepository())

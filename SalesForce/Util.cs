@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace SalesForce
 {
@@ -11,6 +12,23 @@ namespace SalesForce
     {
 
         private static CultureInfo cultureInfo = new CultureInfo("en-US");
+
+        public static string Base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
+        }
+
+        public static string GetValue(XmlNode outterNode, string field)
+        {
+            XmlNode node = outterNode[field];
+            if (node != null)
+            {
+                return node.InnerText;
+            }
+
+            return null;
+        }
 
         public static int ToInt(string value)
         {
@@ -60,5 +78,6 @@ namespace SalesForce
                 return 0;
             }
         }
+
     }
 }

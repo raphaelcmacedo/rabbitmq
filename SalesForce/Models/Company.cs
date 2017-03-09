@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace SalesForce.Models
 {
+    [Table("Company", Schema = "sap")]
     public class Company
     {
         [Key]

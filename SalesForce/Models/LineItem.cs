@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace SalesForce.Models
 {
+    [Table("LineItem", Schema = "sap")]
     public class LineItem
     {
         [Key]
@@ -32,13 +33,13 @@ namespace SalesForce.Models
         public decimal BillingValue { get; set; }
         public String DocumentCurrency { get; set; }
         public String ContractNo { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
         public String ManufacturerQuoteNo { get; set; }
         public String ModelNo { get; set; }
         public String NSP { get; set; }
         public String IsEarliestInvoicedItem { get; set; }
-        public DateTime EarliestBillingPostDate { get; set; }
+        public DateTime? EarliestBillingPostDate { get; set; }
         public String ManufacturerID { get; set; }
         public String ManufacturerName { get; set; }
         public String ManufacturerAccreditationLevelForSoldTo { get; set; }

@@ -1,5 +1,8 @@
-﻿using System;
+﻿using SalesForce.Models;
+using SalesForce.Repositories;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +14,18 @@ namespace SalesForce.Services
         public SalesForceSVC.Opportunity CreateOpportunity(string message)
         {
             OpportunitySAP sap = new OpportunitySAP();
-            SalesForceSVC.Opportunity opportunity = sap.ConvertXML(message);
+            SalesData salesData = sap.ReadXML(message);
+            SalesForceSVC.Opportunity opportunity = sap.ConvertOpportunity(salesData);
             OpportunityService service = new OpportunityService();
-            service.CreateOpportunity(opportunity);
+            SalesForceSVC.SaveResult[] result = service.CreateOpportunity(opportunity);
+            
+
+            //Grava Sales Data
+            using (SalesDataRepository repository = new SalesDataRepository())
+            {
+                repository.Add(salesData);
+                
+            }
 
             return opportunity;
         }

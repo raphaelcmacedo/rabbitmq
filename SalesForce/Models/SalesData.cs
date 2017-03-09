@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace SalesForce.Models
 {
+    [Table("SalesData", Schema = "sap")]
     public class SalesData
     {
         [Key]
@@ -17,6 +18,7 @@ namespace SalesForce.Models
         public String SalesOrg { get; set; }
         public String SourceSystem { get; set; }
         public String ExtractionRuleType { get; set; }
+        public String Message { get; set; }
 
         [ForeignKey("SoldToId")]
         public virtual Company SoldTo { get; set; }

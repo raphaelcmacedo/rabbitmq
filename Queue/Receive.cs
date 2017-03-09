@@ -106,6 +106,7 @@ namespace Queue
                         throw new Exception("Simulated error. The ack has not been sent.");
                     }
                 }
+                
                 // acknowledge receipt of the message
                 if (simulateRejection)
                 {

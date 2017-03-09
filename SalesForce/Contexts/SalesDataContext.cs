@@ -1,4 +1,4 @@
-﻿using SalesForce.Models;
+﻿using Main.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesForce.Contexts
+namespace Main.Contexts
 {
     public class SalesDataContext:PrionContext
     {

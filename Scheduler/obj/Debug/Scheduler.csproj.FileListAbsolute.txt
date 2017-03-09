@@ -1,0 +1,6 @@
+D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\Scheduler.exe.config
+D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\Scheduler.exe
+D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\Scheduler.pdb
+D:\Desenvolvimento\Rabbit\Scheduler\obj\Debug\Scheduler.csprojResolveAssemblyReference.cache
+D:\Desenvolvimento\Rabbit\Scheduler\obj\Debug\Scheduler.exe
+D:\Desenvolvimento\Rabbit\Scheduler\obj\Debug\Scheduler.pdb

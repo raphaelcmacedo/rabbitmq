@@ -1,6 +1,5 @@
-﻿using SalesForce;
-using SalesForce.SalesForceSVC;
-using SalesForce.Services;
+﻿using SalesForce.SalesForceSVC;
+using Main.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;

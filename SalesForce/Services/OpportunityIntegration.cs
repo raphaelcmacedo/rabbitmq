@@ -1,5 +1,6 @@
-﻿using SalesForce.Models;
-using SalesForce.Repositories;
+﻿using Main.Models;
+using Main.Repositories;
+using Main.SalesForceIntegration;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -7,17 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesForce.Services
+namespace Main.Services
 {
     public class OpportunityIntegration
     {
-        public SalesForceSVC.Opportunity CreateOpportunity(string message)
+        public SalesForce.SalesForceSVC.Opportunity CreateOpportunity(string message)
         {
             OpportunitySAP sap = new OpportunitySAP();
             SalesData salesData = sap.ReadXML(message);
-            SalesForceSVC.Opportunity opportunity = sap.ConvertOpportunity(salesData);
-            OpportunityService service = new OpportunityService();
-            SalesForceSVC.SaveResult[] result = service.CreateOpportunity(opportunity);
+            SalesForce.SalesForceSVC.Opportunity opportunity = sap.ConvertOpportunity(salesData);
+            SalesForceService service = new SalesForceService();
+            SalesForce.SalesForceSVC.SaveResult[] result = service.CreateOpportunity(opportunity);
             
 
             //Grava Sales Data
@@ -30,10 +31,10 @@ namespace SalesForce.Services
             return opportunity;
         }
 
-        public SalesForceSVC.sObject[] FindAllSalesForce()
+        public SalesForce.SalesForceSVC.sObject[] FindAllSalesForce()
         {
-            OpportunityService service = new OpportunityService();
-            SalesForceSVC.QueryResult result = service.FindAllRabbitMQ();
+            SalesForceService service = new SalesForceService();
+            SalesForce.SalesForceSVC.QueryResult result = service.FindAllRabbitMQ();
             return result.records;
         }
     }

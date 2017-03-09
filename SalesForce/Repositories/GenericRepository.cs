@@ -1,4 +1,4 @@
-﻿using SalesForce.Contexts;
+﻿using Main.Contexts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesForce.Repositories
+namespace Main.Repositories
 {
     public class GenericRepository<TEntity> : IDisposable where TEntity : class
     {

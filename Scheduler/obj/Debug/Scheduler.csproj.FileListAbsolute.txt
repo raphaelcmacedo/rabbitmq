@@ -26,3 +26,5 @@ D:\Desenvolvimento\rabbitmq\Scheduler\bin\Debug\EntityFramework.xml
 D:\Desenvolvimento\rabbitmq\Scheduler\obj\Debug\Scheduler.csprojResolveAssemblyReference.cache
 D:\Desenvolvimento\rabbitmq\Scheduler\obj\Debug\Scheduler.exe
 D:\Desenvolvimento\rabbitmq\Scheduler\obj\Debug\Scheduler.pdb
+D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\EntityFramework.SqlServer.dll
+D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\EntityFramework.SqlServer.xml

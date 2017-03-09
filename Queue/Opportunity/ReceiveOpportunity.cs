@@ -19,6 +19,7 @@ namespace Queue.Opportunity
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
+
                 channel.QueueDeclare(queue: queue,
                                         durable: true,
                                         exclusive: false,

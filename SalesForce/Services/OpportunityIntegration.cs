@@ -5,9 +5,11 @@ using SalesForce.Services;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Main.Services
 {
@@ -18,6 +20,8 @@ namespace Main.Services
             //Read xml
             OpportunitySAP sap = new OpportunitySAP();
             SalesData salesData = sap.ReadXML(message);
+            AttachmentToFile attachmentService = new AttachmentToFile();
+
             //Save Sales Data
             using (SalesDataRepository repository = new SalesDataRepository())
             {
@@ -25,18 +29,21 @@ namespace Main.Services
 
             }
             //Create sales data spreadsheet
-
+            string sheetBase64 = attachmentService.CreateExcel(salesData);
 
             //Convert sales data to opportunity
             Opportunity opportunity = OpportunityConvertion.SalesDataToOpportunity(salesData);
+            opportunity.RelatedAttachment_base64 = sheetBase64;
 
+            String xml = string.Empty;
+            XmlSerializer serializer = new XmlSerializer(typeof(Opportunity));
+            using (var writer = new StringWriter())
+            {
+                serializer.Serialize(writer, opportunity);
+                xml = writer.ToString();
+            }
 
-
-
-
-
-
-            return "";
+            return xml;
         }
 
         public void CreateSalesForceOpportunity(string messsage)

@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.Office.Interop.Excel;
 using System.Drawing;
 using System.IO;
-using SalesForce.Models;
+using Main.Models;
 
 namespace Main.Services
 {
     public class AttachmentToFile
     {
-        public byte[] CreateExcel(SalesData salesData)
+        public string CreateExcel(SalesData salesData)
         {
             //INICIANDO O EXCEL
             Application excel = new Application();
@@ -44,10 +44,10 @@ namespace Main.Services
             File.Delete(tempPath);
 
             //RETORNO DA FUNÇÃO
-            return byteFile;
+            return Convert.ToBase64String(byteFile);
         }
 
-        public void CreateExcelHeader(Worksheet ws)
+        private void CreateExcelHeader(Worksheet ws)
         {
             Int32 cellIndex = 1;
 
@@ -64,7 +64,7 @@ namespace Main.Services
             ws.Cells[1, cellIndex] = "Sold to";
             ws.Cells[2, cellIndex++] = "Company Westcon ID";
             ws.Cells[2, cellIndex++] = "Company Name";
-            //SALES DATA SOLD TO AddressS
+            //SALES DATA SOLD TO Address
             ws.Cells[2, cellIndex++] = "Address 1";
             ws.Cells[2, cellIndex++] = "Address 2";
             ws.Cells[2, cellIndex++] = "Address 3";
@@ -78,7 +78,7 @@ namespace Main.Services
             ws.Cells[2, cellIndex++] = "Company Work Phone";
             ws.Cells[2, cellIndex++] = "Company Fax Number";  
             //SALES DATA SOLD TO CONTACT         
-            ws.Cells[2, cellIndex++] = "Contact Email Addresss";
+            ws.Cells[2, cellIndex++] = "Contact Email Address";
             ws.Cells[2, cellIndex++] = "Contact Extension";
             ws.Cells[2, cellIndex++] = "Contact Mobile";          
 
@@ -174,7 +174,7 @@ namespace Main.Services
 
         }
 
-        public void PopulateExcel(Worksheet ws, SalesData salesData)
+        private void PopulateExcel(Worksheet ws, SalesData salesData)
         {
             int cellIndex = 1;
 
@@ -191,18 +191,18 @@ namespace Main.Services
                 //Sold to info
                 ws.Cells[line, cellIndex++] = salesData.SoldTo.WestconId;
                 ws.Cells[line, cellIndex++] = salesData.SoldTo.Name;
-                ws.Cells[line, cellIndex++] = salesData.SoldTo.Addresss.Addr1;
-                ws.Cells[line, cellIndex++] = salesData.SoldTo.Addresss.Addr2;
-                ws.Cells[line, cellIndex++] = salesData.SoldTo.Addresss.Addr3;
-                ws.Cells[line, cellIndex++] = salesData.SoldTo.Addresss.Addr4;
-                ws.Cells[line, cellIndex++] = salesData.SoldTo.Addresss.City;
-                ws.Cells[line, cellIndex++] = salesData.SoldTo.Addresss.State;
-                ws.Cells[line, cellIndex++] = salesData.SoldTo.Addresss.PostalCode;
-                ws.Cells[line, cellIndex++] = salesData.SoldTo.Addresss.Country;
+                ws.Cells[line, cellIndex++] = salesData.SoldTo.Address.Addr1;
+                ws.Cells[line, cellIndex++] = salesData.SoldTo.Address.Addr2;
+                ws.Cells[line, cellIndex++] = salesData.SoldTo.Address.Addr3;
+                ws.Cells[line, cellIndex++] = salesData.SoldTo.Address.Addr4;
+                ws.Cells[line, cellIndex++] = salesData.SoldTo.Address.City;
+                ws.Cells[line, cellIndex++] = salesData.SoldTo.Address.State;
+                ws.Cells[line, cellIndex++] = salesData.SoldTo.Address.PostalCode;
+                ws.Cells[line, cellIndex++] = salesData.SoldTo.Address.Country;
                 ws.Cells[line, cellIndex++] = salesData.SoldTo.CountryPrefix;
                 ws.Cells[line, cellIndex++] = salesData.SoldTo.WorkPhone;
                 ws.Cells[line, cellIndex++] = salesData.SoldTo.FaxNumber;
-                ws.Cells[line, cellIndex++] = salesData.SoldTo.Contact.EmailAddresss;
+                ws.Cells[line, cellIndex++] = salesData.SoldTo.Contact.EmailAddress;
                 ws.Cells[line, cellIndex++] = salesData.SoldTo.Contact.Extension;
                 ws.Cells[line, cellIndex++] = salesData.SoldTo.Contact.MobilePhone;
 
@@ -220,14 +220,14 @@ namespace Main.Services
                 //Ship to
                 ws.Cells[line, cellIndex++] = item.ShipTo.WestconId;
                 ws.Cells[line, cellIndex++] = item.ShipTo.Name;
-                ws.Cells[line, cellIndex++] = item.ShipTo.Addresss.Addr1;
-                ws.Cells[line, cellIndex++] = item.ShipTo.Addresss.Addr2;
-                ws.Cells[line, cellIndex++] = item.ShipTo.Addresss.Addr3;
-                ws.Cells[line, cellIndex++] = item.ShipTo.Addresss.Addr4 ;
-                ws.Cells[line, cellIndex++] = item.ShipTo.Addresss.City;
-                ws.Cells[line, cellIndex++] = item.ShipTo.Addresss.State;
-                ws.Cells[line, cellIndex++] = item.ShipTo.Addresss.PostalCode;
-                ws.Cells[line, cellIndex++] = item.ShipTo.Addresss.Country;
+                ws.Cells[line, cellIndex++] = item.ShipTo.Address.Addr1;
+                ws.Cells[line, cellIndex++] = item.ShipTo.Address.Addr2;
+                ws.Cells[line, cellIndex++] = item.ShipTo.Address.Addr3;
+                ws.Cells[line, cellIndex++] = item.ShipTo.Address.Addr4 ;
+                ws.Cells[line, cellIndex++] = item.ShipTo.Address.City;
+                ws.Cells[line, cellIndex++] = item.ShipTo.Address.State;
+                ws.Cells[line, cellIndex++] = item.ShipTo.Address.PostalCode;
+                ws.Cells[line, cellIndex++] = item.ShipTo.Address.Country;
                 ws.Cells[line, cellIndex++] = item.ShipTo.CountryPrefix;
                 ws.Cells[line, cellIndex++] = item.ShipTo.WorkPhone;
                 ws.Cells[line, cellIndex++] = item.ShipTo.FaxNumber;
@@ -235,14 +235,14 @@ namespace Main.Services
                 //End User
                 ws.Cells[line, cellIndex++] = item.EndUser.WestconId;
                 ws.Cells[line, cellIndex++] = item.EndUser.Name;
-                ws.Cells[line, cellIndex++] = item.EndUser.Addresss.Addr1;
-                ws.Cells[line, cellIndex++] = item.EndUser.Addresss.Addr2;
-                ws.Cells[line, cellIndex++] = item.EndUser.Addresss.Addr3;
-                ws.Cells[line, cellIndex++] = item.EndUser.Addresss.Addr4;
-                ws.Cells[line, cellIndex++] = item.EndUser.Addresss.City;
-                ws.Cells[line, cellIndex++] = item.EndUser.Addresss.State;
-                ws.Cells[line, cellIndex++] = item.EndUser.Addresss.PostalCode;
-                ws.Cells[line, cellIndex++] = item.EndUser.Addresss.Country;
+                ws.Cells[line, cellIndex++] = item.EndUser.Address.Addr1;
+                ws.Cells[line, cellIndex++] = item.EndUser.Address.Addr2;
+                ws.Cells[line, cellIndex++] = item.EndUser.Address.Addr3;
+                ws.Cells[line, cellIndex++] = item.EndUser.Address.Addr4;
+                ws.Cells[line, cellIndex++] = item.EndUser.Address.City;
+                ws.Cells[line, cellIndex++] = item.EndUser.Address.State;
+                ws.Cells[line, cellIndex++] = item.EndUser.Address.PostalCode;
+                ws.Cells[line, cellIndex++] = item.EndUser.Address.Country;
                 ws.Cells[line, cellIndex++] = item.EndUser.CountryPrefix;
                 ws.Cells[line, cellIndex++] = item.EndUser.WorkPhone;
                 ws.Cells[line, cellIndex++] = item.EndUser.FaxNumber;

@@ -10,7 +10,7 @@ namespace SalesForce.Repositories
 {
     public class LineItemRepository : GenericRepository<LineItem>
     {
-        public LineItemRepository() : base(new SAPContext())
+        public LineItemRepository() : base(new SalesDataContext())
         {
 
         }

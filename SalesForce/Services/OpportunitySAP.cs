@@ -35,7 +35,7 @@ namespace SalesForce.Services
 
             //Message
             string message = Util.Base64Encode(text);
-            salesData.Message = message;
+            //salesData.Message = message;
 
             return salesData;
         }

@@ -10,7 +10,7 @@ namespace SalesForce.Repositories
 {
     public class AddressRepository : GenericRepository<Address>
     {
-        public AddressRepository() : base(new SAPContext())
+        public AddressRepository() : base(new SalesDataContext())
         {
 
         }

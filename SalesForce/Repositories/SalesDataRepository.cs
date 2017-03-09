@@ -10,7 +10,7 @@ namespace SalesForce.Repositories
 {
     public class SalesDataRepository : GenericRepository<SalesData>
     {
-        public SalesDataRepository() : base(new SAPContext())
+        public SalesDataRepository() : base(new SalesDataContext())
         {
 
         }

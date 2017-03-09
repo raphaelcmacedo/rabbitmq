@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Queue", "Queue\Queue.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesForce", "SalesForce\SalesForce.csproj", "{DE1ED791-424D-44EC-B312-032902601CC6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integration", "Integration\Integration.csproj", "{45CEBB65-F767-422E-B93B-CD8578A66F79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{DE1ED791-424D-44EC-B312-032902601CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE1ED791-424D-44EC-B312-032902601CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE1ED791-424D-44EC-B312-032902601CC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45CEBB65-F767-422E-B93B-CD8578A66F79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45CEBB65-F767-422E-B93B-CD8578A66F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45CEBB65-F767-422E-B93B-CD8578A66F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45CEBB65-F767-422E-B93B-CD8578A66F79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -38,11 +38,11 @@ namespace Queue.Opportunity
 
         public static void SendToExchange(string message, string exchange)
         {
-            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "dev" };
+            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "qa" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                channel.ExchangeDeclare(exchange: exchange, type: "fanout", durable: true);
+                channel.ExchangeDeclare(exchange: exchange, type: "topic", durable: true);
 
                 var body = Encoding.UTF8.GetBytes(message);
 

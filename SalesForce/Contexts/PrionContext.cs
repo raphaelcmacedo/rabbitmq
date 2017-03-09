@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesForce.Contexts
+namespace Main.Contexts
 {
     public class PrionContext : DbContext
     {

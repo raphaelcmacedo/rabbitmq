@@ -1,4 +1,4 @@
-﻿using SalesForce.Models;
+﻿using Main.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace SalesForce.Services
+namespace Main.Services
 {
     public class OpportunitySAP
     {
@@ -145,9 +145,9 @@ namespace SalesForce.Services
             return company;
         }
 
-        public SalesForceSVC.Opportunity ConvertOpportunity(SalesData salesData)
+        public SalesForce.SalesForceSVC.Opportunity ConvertOpportunity(SalesData salesData)
         {
-            SalesForceSVC.Opportunity opportunity = new SalesForceSVC.Opportunity();
+            SalesForce.SalesForceSVC.Opportunity opportunity = new SalesForce.SalesForceSVC.Opportunity();
 
             //Required fields
             opportunity.CreatedDate = DateTime.Now;

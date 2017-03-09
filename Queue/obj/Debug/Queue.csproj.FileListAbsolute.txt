@@ -5,3 +5,7 @@ D:\Desenvolvimento\Rabbit\Queue\bin\Debug\RabbitMQ.Client.xml
 D:\Desenvolvimento\Rabbit\Queue\obj\Debug\Queue.csprojResolveAssemblyReference.cache
 D:\Desenvolvimento\Rabbit\Queue\obj\Debug\Queue.dll
 D:\Desenvolvimento\Rabbit\Queue\obj\Debug\Queue.pdb
+D:\Desenvolvimento\Rabbit\Queue\bin\Debug\SalesForce.dll
+D:\Desenvolvimento\Rabbit\Queue\bin\Debug\EntityFramework.dll
+D:\Desenvolvimento\Rabbit\Queue\bin\Debug\SalesForce.pdb
+D:\Desenvolvimento\Rabbit\Queue\bin\Debug\EntityFramework.xml

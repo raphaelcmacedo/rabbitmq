@@ -1,5 +1,7 @@
-﻿using SalesForce.Models;
-using SalesForce.Repositories;
+﻿using Main.Models;
+using Main.Repositories;
+using Main.SalesForceIntegration;
+using SalesForce.Services;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -7,33 +9,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesForce.Services
+namespace Main.Services
 {
     public class OpportunityIntegration
     {
-        public SalesForceSVC.Opportunity CreateOpportunity(string message)
+        public string CreateOpportunity(string message)
         {
+            //Read xml
             OpportunitySAP sap = new OpportunitySAP();
             SalesData salesData = sap.ReadXML(message);
-            SalesForceSVC.Opportunity opportunity = sap.ConvertOpportunity(salesData);
-            OpportunityService service = new OpportunityService();
-            SalesForceSVC.SaveResult[] result = service.CreateOpportunity(opportunity);
-            
-
-            //Grava Sales Data
+            //Save Sales Data
             using (SalesDataRepository repository = new SalesDataRepository())
             {
                 repository.Add(salesData);
-                
-            }
 
-            return opportunity;
+            }
+            //Create sales data spreadsheet
+
+
+            //Convert sales data to opportunity
+            Opportunity opportunity = OpportunityConvertion.SalesDataToOpportunity(salesData);
+
+
+
+
+
+
+
+            return "";
         }
 
-        public SalesForceSVC.sObject[] FindAllSalesForce()
+        public void CreateSalesForceOpportunity(string messsage)
         {
-            OpportunityService service = new OpportunityService();
-            SalesForceSVC.QueryResult result = service.FindAllRabbitMQ();
+            /*SalesForce.SalesForceSVC.Opportunity opportunity = sap.ConvertOpportunity(salesData);
+            SalesForceService service = new SalesForceService();
+            SalesForce.SalesForceSVC.SaveResult[] result = service.CreateOpportunity(opportunity);*/
+
+        }
+
+        public SalesForce.SalesForceSVC.sObject[] FindAllSalesForce()
+        {
+            SalesForceService service = new SalesForceService();
+            SalesForce.SalesForceSVC.QueryResult result = service.FindAllRabbitMQ();
             return result.records;
         }
     }

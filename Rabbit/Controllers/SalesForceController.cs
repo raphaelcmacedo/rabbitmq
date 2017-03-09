@@ -1,6 +1,5 @@
-﻿using SalesForce;
-using SalesForce.SalesForceSVC;
-using SalesForce.Services;
+﻿using SalesForce.SalesForceSVC;
+using Main.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +18,7 @@ namespace Rabbit.Controllers
 
         public ActionResult IntegrateOneMessage(string queue, bool durable)
         {
-            if (ModelState.IsValid)
+            /*if (ModelState.IsValid)
             {
                 try
                 {
@@ -42,7 +41,7 @@ namespace Rabbit.Controllers
                     return Json(new { Success = false, Message = e.Message });
                 }
 
-            }
+            }*/
 
             return View();
         }

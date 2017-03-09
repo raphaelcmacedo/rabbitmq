@@ -8,7 +8,7 @@ using System.Drawing;
 using System.IO;
 using SalesForce.Models;
 
-namespace SalesForce.Services
+namespace Main.Services
 {
     public class AttachmentToFile
     {
@@ -283,10 +283,10 @@ namespace SalesForce.Services
             }
         }
 
-        public SalesForceSVC.Attachment AttachFile(byte[] byteFile)
+        public SalesForce.SalesForceSVC.Attachment AttachFile(byte[] byteFile)
         {
 
-            SalesForceSVC.Attachment att = new SalesForceSVC.Attachment();
+            SalesForce.SalesForceSVC.Attachment att = new SalesForce.SalesForceSVC.Attachment();
 
             att.Body = byteFile;
             att.Name = "Attachment Excel File";

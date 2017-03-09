@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SalesForce.Models
+namespace Main.Models
 {
     [Table("Contact", Schema = "sap")]
     public class Contact

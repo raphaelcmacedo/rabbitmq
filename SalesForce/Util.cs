@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace Main
 {
@@ -77,6 +79,19 @@ namespace Main
             {
                 return 0;
             }
+        }
+
+        public static string ToXml(object obj, Type type)
+        {
+            String xml = string.Empty;
+            XmlSerializer serializer = new XmlSerializer(type);
+            using (var writer = new StringWriter())
+            {
+                serializer.Serialize(writer, obj);
+                xml = writer.ToString();
+            }
+
+            return xml;
         }
 
     }

@@ -35,18 +35,13 @@ namespace Main.Services
             opportunity.RelatedAttachment_base64 = sheetBase64;
 
             //Save Opportunity
-            /*using (OpportunityRepository repository = new OpportunityRepository())
+            using (OpportunityRepository repository = new OpportunityRepository())
             {
                 repository.Add(opportunity);
-            }*/
-
-            String xml = string.Empty;
-            XmlSerializer serializer = new XmlSerializer(typeof(Opportunity));
-            using (var writer = new StringWriter())
-            {
-                serializer.Serialize(writer, opportunity);
-                xml = writer.ToString();
             }
+
+            //Create xml message
+            string xml = Util.ToXml(opportunity, typeof(Opportunity));
 
             return xml;
         }

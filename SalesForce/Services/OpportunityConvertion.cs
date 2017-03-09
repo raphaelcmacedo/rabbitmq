@@ -18,14 +18,13 @@ namespace SalesForce.Services
                 opportunity.AccountID = salesData.SoldTo.WestconId;
             }
 
-            /* Hardcoded 
-            opportunity.CloseDate = 
-            opportunity.StageName = 
-            opportunity.Type = 
-            opportunity.WCType = 
-            opportunity.GeneratedBy = 
-            */
-
+            /* Hardcoded */
+            //opportunity.CloseDate = 
+            opportunity.StageName = "Qualification";
+            opportunity.Type = "NA - Sales Opportunity";
+            opportunity.WCType = "Renewals";
+            opportunity.GeneratedBy = "Renewals";
+            
             decimal totalBillingValue = 0;
             decimal totalBillingCost = 0;
             foreach (LineItem lineItem in salesData.LineItems)

@@ -59,8 +59,8 @@ namespace Main.Services
             ws.Cells[2, cellIndex++] = "Sales Data Extraction Rule Type";
 
             //SALES DATA SOLD TO COMPANY
-            ws.Range[ws.Cells[cellIndex], ws.Cells[cellIndex + 14]].Merge();
-            ws.Range[ws.Cells[cellIndex], ws.Cells[cellIndex + 14]].Interior = ColorTranslator.ToOle(Color.LightBlue);
+            ws.Range[ws.Cells[1, cellIndex], ws.Cells[1, cellIndex + 14]].Merge();
+            ws.Range[ws.Cells[1, cellIndex], ws.Cells[1, cellIndex + 14]].Interior.Color = ColorTranslator.ToOle(Color.LightBlue);
             ws.Cells[1, cellIndex] = "Sold to";
             ws.Cells[2, cellIndex++] = "Company Westcon ID";
             ws.Cells[2, cellIndex++] = "Company Name";
@@ -94,8 +94,8 @@ namespace Main.Services
             ws.Cells[2, cellIndex++] = "Line Item Acount Manager Name";
             
             //SALES DATA LINE ITEM SHIP TO COMPANY
-            ws.Range[ws.Cells[cellIndex], ws.Cells[cellIndex + 12]].Merge();
-            ws.Range[ws.Cells[cellIndex], ws.Cells[cellIndex + 12]].Interior = ColorTranslator.ToOle(Color.LightYellow);
+            ws.Range[ws.Cells[1,cellIndex], ws.Cells[1,cellIndex + 12]].Merge();
+            ws.Range[ws.Cells[1,cellIndex], ws.Cells[1,cellIndex + 12]].Interior.Color = ColorTranslator.ToOle(Color.LightYellow);
             ws.Cells[1, cellIndex] = "Ship To";
             ws.Cells[2, cellIndex++] = "Company Westcon ID";
             ws.Cells[2, cellIndex++] = "Company Name";
@@ -116,8 +116,8 @@ namespace Main.Services
 
 
             //SALES DATA END USER COMPANY
-            ws.Cells.Range[ws.Cells[cellIndex], ws.Cells[cellIndex + 12]].Merge();
-            ws.Range[ws.Cells[cellIndex], ws.Cells[cellIndex + 12]].Interior = ColorTranslator.ToOle(Color.LightGray);
+            ws.Cells.Range[ws.Cells[1,cellIndex], ws.Cells[1,cellIndex + 12]].Merge();
+            ws.Range[ws.Cells[1,cellIndex], ws.Cells[1,cellIndex + 12]].Interior.Color = ColorTranslator.ToOle(Color.LightGray);
             ws.Cells[1, cellIndex] = "End User";
             ws.Cells[2, cellIndex++] = "Company Westcon ID";
             ws.Cells[2, cellIndex++] = "Contact Name";
@@ -159,8 +159,8 @@ namespace Main.Services
             ws.Cells[2, cellIndex++] = "Line Item Serial No";
 
             //SALES ORDER CONTRACT NUMBER
-            ws.Cells.Range[ws.Cells[cellIndex], ws.Cells[cellIndex + 8]].Merge();
-            ws.Range[ws.Cells[cellIndex], ws.Cells[cellIndex + 8]].Interior = ColorTranslator.ToOle(Color.LightGreen);
+            ws.Cells.Range[ws.Cells[1,cellIndex], ws.Cells[1,cellIndex + 8]].Merge();
+            ws.Range[ws.Cells[1,cellIndex], ws.Cells[1,cellIndex + 8]].Interior.Color = ColorTranslator.ToOle(Color.LightGreen);
             ws.Cells[1, cellIndex] = "Contract";
             ws.Cells[2, cellIndex++] = "Contract No";
             ws.Cells[2, cellIndex++] = "Contract Sales Order";
@@ -177,10 +177,11 @@ namespace Main.Services
         private void PopulateExcel(Worksheet ws, SalesData salesData)
         {
             int cellIndex = 1;
+            Int32 line = 3;
 
-            for (Int32 line = 2, len = salesData.LineItems.Count; line < len; line++)
+            for (Int32 i = 0, len = salesData.LineItems.Count; i < len; i++)
             {
-                LineItem item = salesData.LineItems.ToList()[line];
+                LineItem item = salesData.LineItems.ToList()[i];
                 
                 //POPULANDO O EXCEL
                 ws.Cells[line, cellIndex++] = salesData.SalesOrderNo;
@@ -280,6 +281,7 @@ namespace Main.Services
                 ws.Cells[line, cellIndex++] = item.Contract.NSP;
                 ws.Cells[line, cellIndex++] = item.Contract.StartDate;
                 ws.Cells[line, cellIndex++] = item.Contract.EndDate;
+                line++;
             }
         }
 

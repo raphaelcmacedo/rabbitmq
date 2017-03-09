@@ -10,6 +10,15 @@ namespace Scheduler
     {
         static void Main(string[] args)
         {
+            switch (args[0])
+            {
+                case "ReceiveOpp":
+                    Queue.Opportunity.ReceiveOpportunity service = new Queue.Opportunity.ReceiveOpportunity();
+                    service.CreateSalesDataListener();
+                    break;
+                case "SendOpp":
+                    break;
+            }
         }
     }
 }

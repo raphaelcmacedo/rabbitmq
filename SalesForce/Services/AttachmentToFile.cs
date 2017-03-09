@@ -14,37 +14,46 @@ namespace Main.Services
     {
         public string CreateExcel(SalesData salesData)
         {
+
             //INICIANDO O EXCEL
             Application excel = new Application();
 
             //ABRINDO O EXCEL
-            excel.Visible = true;
+            excel.Visible = false;
+            try
+            {
 
-            Workbook wb = excel.Workbooks.Add(Type.Missing);
 
-            Worksheet ws = (Worksheet)wb.Worksheets[1];
+                Workbook wb = excel.Workbooks.Add(Type.Missing);
 
-            //FUNÇÃO QUE CRIA O CABEÇALHO DO DOCUMENTO DO EXCEL
-            CreateExcelHeader(ws);
+                Worksheet ws = (Worksheet)wb.Worksheets[1];
 
-            //PREENCHENDO O EXCEL COM OS DADOS RECEBIDOS
-            PopulateExcel(ws,salesData);
+                //FUNÇÃO QUE CRIA O CABEÇALHO DO DOCUMENTO DO EXCEL
+                CreateExcelHeader(ws);
 
-            //ESTILIZANDO O TAMANHO DA FONTE USADA
-            ws.Cells.Font.Size = 14;
+                //PREENCHENDO O EXCEL COM OS DADOS RECEBIDOS
+                PopulateExcel(ws, salesData);
 
-            string tempPath = AppDomain.CurrentDomain.BaseDirectory + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond + "_temp";
+                //ESTILIZANDO O TAMANHO DA FONTE USADA
+                ws.Cells.Font.Size = 14;
 
-            wb.SaveAs(tempPath, wb.FileFormat);
-            tempPath = wb.FullName;            
-            wb.Close();
-            excel.Quit();
+                string tempPath = AppDomain.CurrentDomain.BaseDirectory + DateTime.Now.Hour + DateTime.Now.Minute + DateTime.Now.Second + DateTime.Now.Millisecond + "_temp";
 
-            byte[] byteFile = File.ReadAllBytes(tempPath);
-            File.Delete(tempPath);
+                wb.SaveAs(tempPath, wb.FileFormat);
+                tempPath = wb.FullName;
+                wb.Close();
+                excel.Quit();
 
-            //RETORNO DA FUNÇÃO
-            return Convert.ToBase64String(byteFile);
+                byte[] byteFile = File.ReadAllBytes(tempPath);
+                File.Delete(tempPath);
+
+                //RETORNO DA FUNÇÃO
+                return Convert.ToBase64String(byteFile);
+            }
+            catch
+            {
+                excel.Quit();
+            }
         }
 
         private void CreateExcelHeader(Worksheet ws)
@@ -76,11 +85,11 @@ namespace Main.Services
             //SALES DATA SOLD TO COMPANY
             ws.Cells[2, cellIndex++] = "Company Country Prefix";
             ws.Cells[2, cellIndex++] = "Company Work Phone";
-            ws.Cells[2, cellIndex++] = "Company Fax Number";  
+            ws.Cells[2, cellIndex++] = "Company Fax Number";
             //SALES DATA SOLD TO CONTACT         
             ws.Cells[2, cellIndex++] = "Contact Email Address";
             ws.Cells[2, cellIndex++] = "Contact Extension";
-            ws.Cells[2, cellIndex++] = "Contact Mobile";          
+            ws.Cells[2, cellIndex++] = "Contact Mobile";
 
             //SALES DATA LINE ITEM
             ws.Cells[2, cellIndex++] = "Line Item Line Number";
@@ -92,10 +101,10 @@ namespace Main.Services
             ws.Cells[2, cellIndex++] = "Line Item Created By";
             ws.Cells[2, cellIndex++] = "Line Item Acount Manager ID";
             ws.Cells[2, cellIndex++] = "Line Item Acount Manager Name";
-            
+
             //SALES DATA LINE ITEM SHIP TO COMPANY
-            ws.Range[ws.Cells[1,cellIndex], ws.Cells[1,cellIndex + 12]].Merge();
-            ws.Range[ws.Cells[1,cellIndex], ws.Cells[1,cellIndex + 12]].Interior.Color = ColorTranslator.ToOle(Color.LightYellow);
+            ws.Range[ws.Cells[1, cellIndex], ws.Cells[1, cellIndex + 12]].Merge();
+            ws.Range[ws.Cells[1, cellIndex], ws.Cells[1, cellIndex + 12]].Interior.Color = ColorTranslator.ToOle(Color.LightYellow);
             ws.Cells[1, cellIndex] = "Ship To";
             ws.Cells[2, cellIndex++] = "Company Westcon ID";
             ws.Cells[2, cellIndex++] = "Company Name";
@@ -111,13 +120,13 @@ namespace Main.Services
             //SALES DATA LINE ITEM SHIP TO COMPANY
             ws.Cells[2, cellIndex++] = "Company Country Prefix";
             ws.Cells[2, cellIndex++] = "Company Work Phone";
-            ws.Cells[2, cellIndex++] = "Company Fax Number";         
-           
+            ws.Cells[2, cellIndex++] = "Company Fax Number";
+
 
 
             //SALES DATA END USER COMPANY
-            ws.Cells.Range[ws.Cells[1,cellIndex], ws.Cells[1,cellIndex + 12]].Merge();
-            ws.Range[ws.Cells[1,cellIndex], ws.Cells[1,cellIndex + 12]].Interior.Color = ColorTranslator.ToOle(Color.LightGray);
+            ws.Cells.Range[ws.Cells[1, cellIndex], ws.Cells[1, cellIndex + 12]].Merge();
+            ws.Range[ws.Cells[1, cellIndex], ws.Cells[1, cellIndex + 12]].Interior.Color = ColorTranslator.ToOle(Color.LightGray);
             ws.Cells[1, cellIndex] = "End User";
             ws.Cells[2, cellIndex++] = "Company Westcon ID";
             ws.Cells[2, cellIndex++] = "Contact Name";
@@ -132,8 +141,8 @@ namespace Main.Services
             //SALES DATA END USER CONTACT
             ws.Cells[2, cellIndex++] = "Company Country Prefix";
             ws.Cells[2, cellIndex++] = "Company Work Phone";
-            ws.Cells[2, cellIndex++] = "Company Fax Number";         
-         
+            ws.Cells[2, cellIndex++] = "Company Fax Number";
+
 
             //SALES DATA LINE ITEM ORDER
             ws.Cells[2, cellIndex++] = "Line Item Sales Order Quantity";
@@ -159,8 +168,8 @@ namespace Main.Services
             ws.Cells[2, cellIndex++] = "Line Item Serial No";
 
             //SALES ORDER CONTRACT NUMBER
-            ws.Cells.Range[ws.Cells[1,cellIndex], ws.Cells[1,cellIndex + 8]].Merge();
-            ws.Range[ws.Cells[1,cellIndex], ws.Cells[1,cellIndex + 8]].Interior.Color = ColorTranslator.ToOle(Color.LightGreen);
+            ws.Cells.Range[ws.Cells[1, cellIndex], ws.Cells[1, cellIndex + 8]].Merge();
+            ws.Range[ws.Cells[1, cellIndex], ws.Cells[1, cellIndex + 8]].Interior.Color = ColorTranslator.ToOle(Color.LightGreen);
             ws.Cells[1, cellIndex] = "Contract";
             ws.Cells[2, cellIndex++] = "Contract No";
             ws.Cells[2, cellIndex++] = "Contract Sales Order";
@@ -170,7 +179,7 @@ namespace Main.Services
             ws.Cells[2, cellIndex++] = "Contract Model No";
             ws.Cells[2, cellIndex++] = "Contract NSP";
             ws.Cells[2, cellIndex++] = "Contract Start Date";
-            ws.Cells[2, cellIndex++] = "Contract End Date";           
+            ws.Cells[2, cellIndex++] = "Contract End Date";
 
         }
 
@@ -182,7 +191,7 @@ namespace Main.Services
             for (Int32 i = 0, len = salesData.LineItems.Count; i < len; i++)
             {
                 LineItem item = salesData.LineItems.ToList()[i];
-                
+
                 //POPULANDO O EXCEL
                 ws.Cells[line, cellIndex++] = salesData.SalesOrderNo;
                 ws.Cells[line, cellIndex++] = salesData.SalesOrg;
@@ -213,7 +222,7 @@ namespace Main.Services
                 ws.Cells[line, cellIndex++] = item.SKUDescription;
                 ws.Cells[line, cellIndex++] = item.ProductType;
                 ws.Cells[line, cellIndex++] = item.SalesDistrict;
-                ws.Cells[line, cellIndex++] = item.SalesPractice; 
+                ws.Cells[line, cellIndex++] = item.SalesPractice;
                 ws.Cells[line, cellIndex++] = item.CreatedBy;
                 ws.Cells[line, cellIndex++] = item.AccountManagerId;
                 ws.Cells[line, cellIndex++] = item.AccountManagerName;
@@ -224,7 +233,7 @@ namespace Main.Services
                 ws.Cells[line, cellIndex++] = item.ShipTo.Address.Addr1;
                 ws.Cells[line, cellIndex++] = item.ShipTo.Address.Addr2;
                 ws.Cells[line, cellIndex++] = item.ShipTo.Address.Addr3;
-                ws.Cells[line, cellIndex++] = item.ShipTo.Address.Addr4 ;
+                ws.Cells[line, cellIndex++] = item.ShipTo.Address.Addr4;
                 ws.Cells[line, cellIndex++] = item.ShipTo.Address.City;
                 ws.Cells[line, cellIndex++] = item.ShipTo.Address.State;
                 ws.Cells[line, cellIndex++] = item.ShipTo.Address.PostalCode;
@@ -293,12 +302,12 @@ namespace Main.Services
             att.Body = byteFile;
             att.Name = "Attachment Excel File";
             att.IsPrivate = false;
-                       
-            
+
+
             return att;
 
         }
-       
+
     }
 
 }

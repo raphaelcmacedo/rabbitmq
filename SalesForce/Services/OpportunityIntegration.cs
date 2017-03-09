@@ -29,13 +29,7 @@ namespace Main.Services
 
             //Convert sales data to opportunity
             Opportunity opportunity = OpportunityConvertion.SalesDataToOpportunity(salesData);
-
-
-
-
-
-
-
+            
             return "";
         }
 

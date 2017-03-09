@@ -12,11 +12,11 @@ namespace Scheduler
         {
             switch (args[0])
             {
-                case "ReceiveOpp":
+                case "SalesData":
                     Queue.Opportunity.ReceiveOpportunity service = new Queue.Opportunity.ReceiveOpportunity();
                     service.CreateSalesDataListener();
                     break;
-                case "SendOpp":
+                case "Opportunity":
                     break;
             }
         }

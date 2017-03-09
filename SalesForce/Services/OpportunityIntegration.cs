@@ -26,7 +26,6 @@ namespace Main.Services
             using (SalesDataRepository repository = new SalesDataRepository())
             {
                 repository.Add(salesData);
-
             }
             //Create sales data spreadsheet
             string sheetBase64 = attachmentService.CreateExcel(salesData);
@@ -34,6 +33,12 @@ namespace Main.Services
             //Convert sales data to opportunity
             Opportunity opportunity = OpportunityConvertion.SalesDataToOpportunity(salesData);
             opportunity.RelatedAttachment_base64 = sheetBase64;
+
+            //Save Opportunity
+            /*using (OpportunityRepository repository = new OpportunityRepository())
+            {
+                repository.Add(opportunity);
+            }*/
 
             String xml = string.Empty;
             XmlSerializer serializer = new XmlSerializer(typeof(Opportunity));

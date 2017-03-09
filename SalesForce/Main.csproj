@@ -70,6 +70,7 @@
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Repositories\AddressRepository.cs" />
+    <Compile Include="Repositories\OpportunityRepository.cs" />
     <Compile Include="Repositories\SalesDataRepository.cs" />
     <Compile Include="Repositories\LineItemRepository.cs" />
     <Compile Include="Repositories\ContractRepository.cs" />

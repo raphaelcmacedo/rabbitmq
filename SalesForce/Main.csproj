@@ -77,6 +77,7 @@
     <Compile Include="Repositories\CompanyRepository.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Services\AttachmentToFile.cs" />
+    <Compile Include="Services\OpportunityConvertion.cs" />
     <Compile Include="Services\OpportunityIntegration.cs" />
     <Compile Include="Services\OpportunitySAP.cs" />
     <Compile Include="SalesForceIntegration\SalesForceIService.cs" />

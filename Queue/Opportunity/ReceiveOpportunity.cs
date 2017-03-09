@@ -13,7 +13,7 @@ namespace Queue.Opportunity
         public void CreateSalesDataListener()
         {
             listen = true;
-            string queue = "ha.bwsalesopportunity.queue";
+            string queue = "ha.bwopportunity.queue";
             var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "qa" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
@@ -34,6 +34,8 @@ namespace Queue.Opportunity
                     Main.Services.OpportunityIntegration integration = new Main.Services.OpportunityIntegration();
                     string opportunityMessage = integration.CreateOpportunity(salesDataMessage);
                     //Send opportunity message to rabbitmq
+                    SendOpportunity send = new SendOpportunity();
+                    send.Send(opportunityMessage);
 
                 };
                 channel.BasicConsume(queue: queue,

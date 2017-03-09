@@ -18,7 +18,7 @@ namespace Rabbit.Controllers
 
         public ActionResult IntegrateOneMessage(string queue, bool durable)
         {
-            if (ModelState.IsValid)
+            /*if (ModelState.IsValid)
             {
                 try
                 {
@@ -41,7 +41,7 @@ namespace Rabbit.Controllers
                     return Json(new { Success = false, Message = e.Message });
                 }
 
-            }
+            }*/
 
             return View();
         }

@@ -7,3 +7,4 @@ D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\EntityFramework.dll
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\EntityFramework.SqlServer.dll
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\EntityFramework.xml
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\EntityFramework.SqlServer.xml
+D:\Desenvolvimento\Rabbit\SalesForce\obj\Debug\Main.csprojResolveAssemblyReference.cache

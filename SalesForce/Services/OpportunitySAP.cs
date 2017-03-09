@@ -145,7 +145,7 @@ namespace Main.Services
             return company;
         }
 
-        public SalesForce.SalesForceSVC.Opportunity ConvertOpportunity(SalesData salesData)
+        public SalesForce.SalesForceSVC.Opportunity ConvertOpportunity(Opportunity opp)
         {
             SalesForce.SalesForceSVC.Opportunity opportunity = new SalesForce.SalesForceSVC.Opportunity();
 
@@ -154,12 +154,20 @@ namespace Main.Services
             opportunity.CloseDate = DateTime.Now.AddDays(10);
             opportunity.CloseDateSpecified = true;
 
-            //SalesOrder fields
-            opportunity.Name = salesData.SalesOrderNo;
-            opportunity.WC_Region__c = salesData.SalesOrg;
-
-            //Identify RabbitMQ
-            opportunity.StageName = "RabbitMQ";
+            //Opportunity fields
+            opportunity.Name = opp.Name;
+            opportunity.Owner = opp.OwnerID;
+            opportunity.Account = opp.AccountID;
+            opportunity.WC_Westcon_Opportunity_Type__c = opp.WCType;
+            opportunity.WC_Account_Manager_Name__c = opp.MainAccountManagerID;
+            opportunity.StageName = "Qualification";
+            opportunity.CurrencyIsoCode = opp.CurrencyCode;
+            //opportunity.Amount = 0;
+            opportunity.WC_Forecast_Revenue__c = (double)opp.TotalBillingValue;
+            opportunity.WC_Gross_Margin_Amount__c = (double)(opp.TotalBillingValue - opp.TotalBillingCost);
+            opportunity.WC_Gross_Margin_Amount__cSpecified = true;
+            opportunity.WC_Gross_Margin_Percent__c = (double)((opp.TotalBillingValue - opp.TotalBillingCost) * 100 / opp.TotalBillingValue);
+            opportunity.Type = opp.Type;
 
             return opportunity;
 

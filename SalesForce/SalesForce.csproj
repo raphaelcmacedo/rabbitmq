@@ -60,8 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contexts\PrionContext.cs" />
-    <Compile Include="Contexts\SAPContext.cs" />
+    <Compile Include="Contexts\OpportunityContext.cs" />
+    <Compile Include="Contexts\SalesDataContext.cs" />
     <Compile Include="Models\LineItem.cs" />
+    <Compile Include="Models\Opportunity.cs" />
     <Compile Include="Models\SalesData.cs" />
     <Compile Include="Models\Contract.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -89,6 +91,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Util.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

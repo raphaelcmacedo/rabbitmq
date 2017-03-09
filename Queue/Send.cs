@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RabbitMQ.Client;
+using Queue;
 
 namespace Queue
 {
@@ -10,6 +11,10 @@ namespace Queue
     {
         public static void Main(string message, string queue, bool durable)
         {
+
+            Queue.Opportunity.ReceiveOpportunity RO = new Opportunity.ReceiveOpportunity();
+            RO.CreateSalesDataListener();
+
             var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "dev"};
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())

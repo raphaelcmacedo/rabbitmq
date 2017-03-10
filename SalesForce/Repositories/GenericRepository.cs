@@ -31,7 +31,7 @@ namespace Main.Repositories
             DbContext.SaveChanges();
         }
 
-        public TEntity Find(int id)
+        public TEntity Find(long id)
         {
             return DbContext.Set<TEntity>().Find(id);
         }

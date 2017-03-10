@@ -71,9 +71,11 @@ namespace Main.Services
                 SalesForce.SalesForceSVC.Attachment attachment = fileService.Base64ToSalesForceAttachment(opportunity.RelatedAttachment_base64, parentId);
                 service.SaveAttachment(attachment);
 
-                opportunity.SalesForceID = parentId;
                 using (OpportunityRepository rep = new OpportunityRepository())
                 {
+                    Opportunity updatedOpp = rep.Find(opportunity.OpportunityId);
+                    updatedOpp.SalesForceID = parentId;
+
                     rep.Update(opportunity);
                 }
             }

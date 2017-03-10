@@ -26,3 +26,9 @@ D:\Desenvolvimento\Rabbit\Queue\bin\Debug\NPOI.OpenXmlFormats.dll
 D:\Desenvolvimento\Rabbit\Queue\bin\Debug\NPOI.OpenXml4Net.dll
 D:\Desenvolvimento\Rabbit\Queue\bin\Debug\ICSharpCode.SharpZipLib.dll
 D:\Desenvolvimento\Rabbit\Queue\bin\Debug\NPOI.xml
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\NPOI.dll
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\NPOI.OOXML.dll
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\NPOI.OpenXml4Net.dll
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\NPOI.xml

@@ -24,3 +24,9 @@ D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\NPOI.OOXML.dll
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\NPOI.OpenXml4Net.dll
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\NPOI.OpenXmlFormats.dll
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\NPOI.xml
+D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\NPOI.dll
+D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\NPOI.OOXML.dll
+D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\NPOI.OpenXml4Net.dll
+D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\NPOI.xml

@@ -180,3 +180,9 @@ D:\Desenvolvimento\Rabbit\Rabbit\bin\NPOI.OpenXmlFormats.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\NPOI.OpenXml4Net.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\ICSharpCode.SharpZipLib.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\NPOI.xml
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\NPOI.OOXML.dll
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\NPOI.dll
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\NPOI.OpenXmlFormats.dll
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\NPOI.OpenXml4Net.dll
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\ICSharpCode.SharpZipLib.dll
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\NPOI.xml

@@ -34,6 +34,8 @@ namespace Queue.Opportunity
                     Main.Services.OpportunityIntegration integration = new Main.Services.OpportunityIntegration();
                     string opportunityMessage = integration.CreateOpportunity(salesDataMessage);
                     //Send opportunity message to rabbitmq
+                    SendOpportunity send = new SendOpportunity();
+                    send.Send(opportunityMessage);
 
                 };
                 channel.BasicConsume(queue: queue,

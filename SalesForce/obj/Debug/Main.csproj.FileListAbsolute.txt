@@ -8,3 +8,13 @@ D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\EntityFramework.SqlServer.dll
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\EntityFramework.xml
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\EntityFramework.SqlServer.xml
 D:\Desenvolvimento\Rabbit\SalesForce\obj\Debug\Main.csprojResolveAssemblyReference.cache
+D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\SalesForce.dll.config
+D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\SalesForce.dll
+D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\SalesForce.pdb
+D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\EntityFramework.dll
+D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\EntityFramework.SqlServer.dll
+D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\EntityFramework.xml
+D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\EntityFramework.SqlServer.xml
+D:\Desenvolvimento\rabbitmq\SalesForce\obj\Debug\Main.csprojResolveAssemblyReference.cache
+D:\Desenvolvimento\rabbitmq\SalesForce\obj\Debug\SalesForce.dll
+D:\Desenvolvimento\rabbitmq\SalesForce\obj\Debug\SalesForce.pdb

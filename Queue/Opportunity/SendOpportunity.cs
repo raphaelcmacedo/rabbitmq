@@ -8,21 +8,19 @@ namespace Queue.Opportunity
 {
     public class SendOpportunity
     {
-        public static void Main(string message, string queue, bool durable)
+        public void Send(string message)
         {
-            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "dev"};
+            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "qa"};
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-                queue = Util.HandleQueueName(queue, durable);
+                string queue = "ha.bwopportunity.queue";
                 var properties = channel.CreateBasicProperties();
-                if (durable)
-                {
-                    properties.Persistent = true;
-                }
+                properties.Persistent = true;
+                
 
                 channel.QueueDeclare(queue: queue,
-                                     durable: durable,                                    
+                                     durable: true,                                    
                                      exclusive: false,
                                      autoDelete: false,
                                      arguments: null);
@@ -33,6 +31,9 @@ namespace Queue.Opportunity
                                      routingKey: queue,
                                      basicProperties: null,
                                      body: body);
+
+
+                SendToExchange(message, queue);
             }
         }
 

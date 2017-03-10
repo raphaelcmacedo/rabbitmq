@@ -44,10 +44,14 @@ namespace SalesForce.Services
         {
             Dictionary<string, int> accountManagerIDs = new Dictionary<string, int>();
             Dictionary<string, int> salesPractices = new Dictionary<string, int>();
+            Dictionary<string, DateTime?> minCloseDate = new Dictionary<string, DateTime?>();
+            Dictionary<string, DateTime?> minEarliestBillingDate = new Dictionary<string, DateTime?>();
+
             foreach (LineItem lineItem in salesData.LineItems)
             {
                 string accountManager = lineItem.AccountManagerId;
                 string salesPractice = lineItem.SalesPractice;
+                string sku = lineItem.SKU;
 
                 int totalAccountManager = 0;
                 int totalSalesPractice = 0;
@@ -68,6 +72,15 @@ namespace SalesForce.Services
                 totalSalesPractice++;
                 salesPractices[salesPractice] = totalSalesPractice;
 
+                if (lineItem.EndDate != null)
+                {
+                    minCloseDate.Add(sku, lineItem.EndDate);
+                }
+                if (lineItem.EarliestBillingPostDate != null)
+                {
+                    minEarliestBillingDate.Add(sku, lineItem.EarliestBillingPostDate);
+                }
+
             }
             //Account Manager
             int maxAccountManagers = accountManagerIDs.Values.Max();
@@ -78,6 +91,20 @@ namespace SalesForce.Services
             int maxSalesPractice = salesPractices.Values.Max();
             string ownerID = salesPractices.FirstOrDefault(x => x.Value == maxSalesPractice).Key;
             opportunity.OwnerID = ownerID;
+
+            DateTime oppCloseDate;
+
+            if (minCloseDate.Values.Count > 0)
+            {
+                oppCloseDate = minCloseDate.Values.Min() ?? DateTime.Now;
+                oppCloseDate = oppCloseDate.AddMonths(1);
+                opportunity.CloseDate = oppCloseDate;
+            }else if(minEarliestBillingDate.Values.Count > 0)
+            {
+                oppCloseDate = minEarliestBillingDate.Values.Min() ?? DateTime.Now;
+                oppCloseDate = oppCloseDate.AddMonths(13);
+                opportunity.CloseDate = oppCloseDate;
+            }
         }
     }
 }

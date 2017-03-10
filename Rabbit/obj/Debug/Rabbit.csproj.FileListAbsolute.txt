@@ -127,7 +127,6 @@ D:\Desenvolvimento\rabbitmq\Rabbit\bin\Microsoft.Web.Infrastructure.dll
 D:\Desenvolvimento\rabbitmq\Rabbit\bin\Newtonsoft.Json.dll
 D:\Desenvolvimento\rabbitmq\Rabbit\bin\Owin.dll
 D:\Desenvolvimento\rabbitmq\Rabbit\bin\Queue.dll
-D:\Desenvolvimento\rabbitmq\Rabbit\bin\SalesForce.dll
 D:\Desenvolvimento\rabbitmq\Rabbit\bin\System.Web.Helpers.dll
 D:\Desenvolvimento\rabbitmq\Rabbit\bin\System.Web.Mvc.dll
 D:\Desenvolvimento\rabbitmq\Rabbit\bin\System.Web.Optimization.dll
@@ -138,7 +137,6 @@ D:\Desenvolvimento\rabbitmq\Rabbit\bin\System.Web.WebPages.Razor.dll
 D:\Desenvolvimento\rabbitmq\Rabbit\bin\WebGrease.dll
 D:\Desenvolvimento\rabbitmq\Rabbit\bin\RabbitMQ.Client.dll
 D:\Desenvolvimento\rabbitmq\Rabbit\bin\Queue.pdb
-D:\Desenvolvimento\rabbitmq\Rabbit\bin\SalesForce.pdb
 D:\Desenvolvimento\rabbitmq\Rabbit\bin\Microsoft.AI.DependencyCollector.xml
 D:\Desenvolvimento\rabbitmq\Rabbit\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\Desenvolvimento\rabbitmq\Rabbit\bin\Microsoft.AI.Web.xml
@@ -180,3 +178,11 @@ D:\Desenvolvimento\Rabbit\Rabbit\bin\ICSharpCode.SharpZipLib.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\NPOI.xml
 D:\Desenvolvimento\Rabbit\Rabbit\bin\Main.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\Main.pdb
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\Main.dll
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\NPOI.OOXML.dll
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\NPOI.dll
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\NPOI.OpenXmlFormats.dll
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\NPOI.OpenXml4Net.dll
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\ICSharpCode.SharpZipLib.dll
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\Main.pdb
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\NPOI.xml

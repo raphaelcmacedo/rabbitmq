@@ -44,13 +44,13 @@ namespace Main.Services
             //Create xml message
             string xml = Util.ToXml(opportunity, typeof(Opportunity));
 
+            
             return xml;
         }
 
         public void CreateSalesForceOpportunity(string messsage)
         {
-
-            Console.WriteLine("public void CreateSalesForceOpportunity(string messsage)");
+            
             Opportunity opportunity;
             OpportunitySAP conversor = new OpportunitySAP();
             XmlSerializer serializer = new XmlSerializer(typeof(Opportunity));
@@ -60,16 +60,25 @@ namespace Main.Services
                 opportunity = (Opportunity)serializer.Deserialize(reader);
             }            
 
-            SalesForceSVC.Opportunity opp = conversor.ConvertOpportunity(opportunity);
+            
+            SalesForceSVC.Opportunity OpportunitySalesForce = conversor.ConvertOpportunity(opportunity);
             SalesForceService service = new SalesForceService();
             AttachmentToFile fileService = new AttachmentToFile();
-            SalesForceSVC.SaveResult[] result = service.CreateOpportunity(opp);
+            SalesForceSVC.SaveResult[] result = service.CreateOpportunity(OpportunitySalesForce);
 
-            if (result != null && result.Length > 1)
+            if (result != null && result.Length > 0)
             {
                 string parentId = result[0].id;
                 SalesForceSVC.Attachment attachment = fileService.Base64ToSalesForceAttachment(opportunity.RelatedAttachment_base64, parentId);
                 service.SaveAttachment(attachment);
+
+                using (OpportunityRepository repository = new OpportunityRepository())
+                {
+                    opportunity = repository.DbContext.Set<Opportunity>().Find((int) opportunity.OpportunityId);
+                    opportunity.SalesForceID = parentId;
+                    repository.Update(opportunity);
+                }
+
             }
 
         }

@@ -115,6 +115,7 @@ namespace Queue
                 }
                 else
                 {
+                    Console.WriteLine("antes de: channel.BasicAck(result.DeliveryTag, false);");
                     channel.BasicAck(result.DeliveryTag, false);
                 }
                 

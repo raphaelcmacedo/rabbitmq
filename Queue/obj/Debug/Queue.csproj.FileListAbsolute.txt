@@ -10,9 +10,7 @@ D:\Desenvolvimento\Rabbit\Queue\bin\Debug\EntityFramework.xml
 D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\Queue.dll
 D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\Queue.pdb
 D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\RabbitMQ.Client.dll
-D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\SalesForce.dll
 D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\EntityFramework.dll
-D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\SalesForce.pdb
 D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\RabbitMQ.Client.xml
 D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\EntityFramework.xml
 D:\Desenvolvimento\rabbitmq\Queue\obj\Debug\Queue.csprojResolveAssemblyReference.cache
@@ -26,3 +24,11 @@ D:\Desenvolvimento\Rabbit\Queue\bin\Debug\ICSharpCode.SharpZipLib.dll
 D:\Desenvolvimento\Rabbit\Queue\bin\Debug\NPOI.xml
 D:\Desenvolvimento\Rabbit\Queue\bin\Debug\Main.dll
 D:\Desenvolvimento\Rabbit\Queue\bin\Debug\Main.pdb
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\Main.dll
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\NPOI.dll
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\NPOI.OOXML.dll
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\NPOI.OpenXml4Net.dll
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\Main.pdb
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\NPOI.xml

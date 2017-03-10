@@ -12,7 +12,7 @@ namespace Main.Repositories
 {
     public class GenericRepository<TEntity> : IDisposable where TEntity : class
     {
-        protected PrionContext DbContext;
+        public PrionContext DbContext;
 
         public GenericRepository(PrionContext _DbContext)
         {

@@ -14,7 +14,7 @@ namespace Main.Models
     {
         [Key]
         [Column("OppID")]
-        public Int64 OpportunityId { get; set; }
+        public int OpportunityId { get; set; }
 
         [Column ("SalesDataHeaderID")]
         public Int64 SalesDataId { get; set; }

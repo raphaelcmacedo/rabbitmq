@@ -199,12 +199,13 @@ namespace Main.Services
                 this.CreateCell(row, null, cellIndex++, salesData.SalesOrg);
                 this.CreateCell(row, null, cellIndex++, salesData.SourceSystem);
                 this.CreateCell(row, null, cellIndex++, salesData.ExtractionRuleType);
-                
+
                 //Sold to info
                 if (salesData.SoldTo != null)
                 {
                     this.CreateCell(row, null, cellIndex++, salesData.SoldTo.WestconId);
                     this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Name);
+
                     if (salesData.SoldTo.Address != null)
                     {
                         this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Address.Addr1);
@@ -216,15 +217,29 @@ namespace Main.Services
                         this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Address.PostalCode);
                         this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Address.Country);
                     }
+                    else
+                    {
+                        cellIndex += 8;
+                    }
+
                     this.CreateCell(row, null, cellIndex++, salesData.SoldTo.CountryPrefix);
                     this.CreateCell(row, null, cellIndex++, salesData.SoldTo.WorkPhone);
                     this.CreateCell(row, null, cellIndex++, salesData.SoldTo.FaxNumber);
+
                     if (salesData.SoldTo.Contact != null)
                     {
                         this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.EmailAddress);
                         this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.Extension);
                         this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.MobilePhone);
                     }
+                    else
+                    {
+                        cellIndex += 3;
+                    }
+                }
+                else
+                {
+                    cellIndex += 16;
                 }
 
                 //Line Item Data
@@ -253,11 +268,18 @@ namespace Main.Services
                         this.CreateCell(row, null, cellIndex++, item.ShipTo.Address.State);
                         this.CreateCell(row, null, cellIndex++, item.ShipTo.Address.PostalCode);
                         this.CreateCell(row, null, cellIndex++, item.ShipTo.Address.Country);
+                    }else
+                    {
+                        cellIndex += 8;
                     }
                     this.CreateCell(row, null, cellIndex++, item.ShipTo.CountryPrefix);
                     this.CreateCell(row, null, cellIndex++, item.ShipTo.WorkPhone);
                     this.CreateCell(row, null, cellIndex++, item.ShipTo.FaxNumber);
-                    
+
+                }
+                else
+                {
+                    cellIndex += 13;
                 }
 
                 //End User
@@ -275,11 +297,18 @@ namespace Main.Services
                         this.CreateCell(row, null, cellIndex++, item.EndUser.Address.State);
                         this.CreateCell(row, null, cellIndex++, item.EndUser.Address.PostalCode);
                         this.CreateCell(row, null, cellIndex++, item.EndUser.Address.Country);
+                    }else
+                    {
+                        cellIndex += 8;
                     }
                     this.CreateCell(row, null, cellIndex++, item.EndUser.CountryPrefix);
                     this.CreateCell(row, null, cellIndex++, item.EndUser.WorkPhone);
                     this.CreateCell(row, null, cellIndex++, item.EndUser.FaxNumber);
 
+                }
+                else
+                {
+                    cellIndex += 13;
                 }
 
                 this.CreateCell(row, null, cellIndex++, item.SalesOrderQty);
@@ -294,6 +323,7 @@ namespace Main.Services
                 this.CreateCell(row, null, cellIndex++, item.ModelNo);
                 this.CreateCell(row, null, cellIndex++, item.NSP);
                 this.CreateCell(row, null, cellIndex++, item.IsEarliestInvoicedItem);
+                this.CreateCell(row, null, cellIndex++, item.EarliestBillingPostDate);
                 this.CreateCell(row, null, cellIndex++, item.ManufacturerID);
                 this.CreateCell(row, null, cellIndex++, item.ManufacturerName);
                 this.CreateCell(row, null, cellIndex++, item.ManufacturerAccreditationLevelForSoldTo);
@@ -316,6 +346,7 @@ namespace Main.Services
                     this.CreateCell(row, null, cellIndex++, item.Contract.StartDate);
                     this.CreateCell(row, null, cellIndex++, item.Contract.EndDate);
                 }
+               
                 line++;
                 cellIndex = 0;
             }

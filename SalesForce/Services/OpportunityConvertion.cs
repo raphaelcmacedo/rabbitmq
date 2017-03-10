@@ -99,12 +99,12 @@ namespace SalesForce.Services
 
             if (minCloseDate.Values.Count > 0)
             {
-                oppCloseDate = minCloseDate.Values.Min() ?? DateTime.Now;
+                oppCloseDate = minCloseDate.Values.Min() ?? (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
                 oppCloseDate = oppCloseDate.AddMonths(1);
                 opportunity.CloseDate = oppCloseDate;
             }else if(minEarliestBillingDate.Values.Count > 0)
             {
-                oppCloseDate = minEarliestBillingDate.Values.Min() ?? DateTime.Now;
+                oppCloseDate = minEarliestBillingDate.Values.Min() ?? (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
                 oppCloseDate = oppCloseDate.AddMonths(13);
                 //if the year is lower than 2000, uses the min value of sql server
                 opportunity.CloseDate = (oppCloseDate.Year < 2000) ? (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue : oppCloseDate;

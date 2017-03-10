@@ -156,6 +156,36 @@ namespace Main.SalesForceIntegration
                      
             return saveResult;
         }
+
+        public SalesForce.SalesForceSVC.SaveResult[] SaveAttachment(SalesForce.SalesForceSVC.Attachment attachment)
+        {
+
+            SalesForce.SalesForceSVC.SaveResult[] saveResult = null;
+            ConfigureHeaders();           
+
+            SalesForce.SalesForceSVC.sObject[] objs = new List<SalesForce.SalesForceSVC.sObject> { attachment }.ToArray();
+
+            SalesForce.SalesForceSVC.LimitInfo[] infoHeader = getInfoHeader();
+
+            serviceClient.create(sessionHeader, ruleHeader, mruHeader, truncateHeader, trackingHeader,
+                streamingHeader, allOrNoneHeader, duplicateHeader, localeOption, debugHeader, versionHeader,
+                    emailHeader, objs, out infoHeader, out saveResult);
+            if (!saveResult[0].success)
+            {
+                string message = "";
+                foreach (SalesForce.SalesForceSVC.Error error in saveResult[0].errors)
+                {
+                    message += error.message + "\r\n";
+                }
+                throw new Exception(message);
+            }
+
+
+
+            return saveResult;
+        }
+
+
         public SalesForce.SalesForceSVC.SaveResult[] UpdateOpportunity()
         {
             SalesForce.SalesForceSVC.SaveResult[] saveResult = null;

@@ -62,7 +62,15 @@ namespace Main.Services
 
             SalesForce.SalesForceSVC.Opportunity opp = conversor.ConvertOpportunity(opportunity);
             SalesForceService service = new SalesForceService();
+            AttachmentToFile fileService = new AttachmentToFile();
             SalesForce.SalesForceSVC.SaveResult[] result = service.CreateOpportunity(opp);
+
+            if (result != null && result.Length > 1)
+            {
+                string parentId = result[0].id;
+                SalesForce.SalesForceSVC.Attachment attachment = fileService.Base64ToSalesForceAttachment(opportunity.RelatedAttachment_base64, parentId);
+                service.SaveAttachment(attachment);
+            }
 
         }
 

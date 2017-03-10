@@ -9,6 +9,7 @@ using System.IO;
 using Main.Models;
 using NPOI.XSSF.UserModel;
 using NPOI.SS.UserModel;
+using NPOI.SS.Util;
 
 namespace Main.Services
 {
@@ -46,12 +47,33 @@ namespace Main.Services
             
             //Style
             var style = workbook.CreateCellStyle();
-            style.FillForegroundColor = (short)IndexedColors.BlueGrey.Index;
+            
             style.FillPattern = FillPattern.SolidForeground;
+            var font = workbook.CreateFont();
+            font.Boldweight = (short)FontBoldWeight.Bold;
+            style.SetFont(font);
 
             //Merge cells
-            NPOI.SS.Util.CellRangeAddress mergeSoldTo = new NPOI.SS.Util.CellRangeAddress(4, 20, 0, 0);
+            NPOI.SS.Util.CellRangeAddress mergeSoldTo = new NPOI.SS.Util.CellRangeAddress(0, 0, 4, 20);
             sheet.AddMergedRegion(mergeSoldTo);
+
+            NPOI.SS.Util.CellRangeAddress mergeShipTo = new NPOI.SS.Util.CellRangeAddress(0, 0, 30, 42);
+            sheet.AddMergedRegion(mergeShipTo);
+
+            NPOI.SS.Util.CellRangeAddress mergeEndUser = new NPOI.SS.Util.CellRangeAddress(0, 0, 43, 55);
+            sheet.AddMergedRegion(mergeEndUser);
+
+            style.FillForegroundColor = (short)IndexedColors.BlueGrey.Index;
+            ICell cellSoldTo = this.CreateCell(row, style, 4, "Sold To");
+            CellUtil.SetAlignment(cellSoldTo, workbook, 2);
+
+            style.FillForegroundColor = (short)IndexedColors.Grey25Percent.Index;
+            ICell cellShipTo = this.CreateCell(row, style, 30, "Ship To");
+            CellUtil.SetAlignment(cellShipTo, workbook, 2);
+
+            style.FillForegroundColor = (short)IndexedColors.Plum.Index;
+            ICell cellEndUser = this.CreateCell(row, style, 43, "End User");
+            CellUtil.SetAlignment(cellEndUser, workbook, 2);
         }
 
         private void CreateExcelHeader(XSSFWorkbook workbook, ISheet sheet)
@@ -86,7 +108,6 @@ namespace Main.Services
                 "Company Fax Number",
                 "Contact Email Address",
                 "Contact Extension",
-                "Contact Mobile",
                 "Contact Mobile",
                 "Line Item Line Number",
                 "Line Item  SKU",
@@ -306,7 +327,7 @@ namespace Main.Services
             SalesForce.SalesForceSVC.Attachment att = new SalesForce.SalesForceSVC.Attachment();
 
             att.Body = byteFile;
-            att.Name = "Attachment Excel File";
+            att.Name = "SalesData.xlsx";
             att.IsPrivate = false;
             att.ParentId = parentId;
 
@@ -314,11 +335,12 @@ namespace Main.Services
 
         }
 
-        private void CreateCell(IRow row, ICellStyle cellStyle, int index, string text)
+        private ICell CreateCell(IRow row, ICellStyle cellStyle, int index, string text)
         {
             ICell cell = row.CreateCell(index);
             cell.SetCellValue(text);
             cell.CellStyle = cellStyle;
+            return cell;
         }
 
         private void CreateCell(IRow row, ICellStyle cellStyle, int index, decimal value)

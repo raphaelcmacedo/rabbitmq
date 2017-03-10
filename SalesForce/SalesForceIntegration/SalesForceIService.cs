@@ -66,6 +66,51 @@ namespace Main.SalesForceIntegration
             return queryResult;
         }
 
+        public SalesForce.SalesForceSVC.QueryResult FindUserByName(string name)
+        {
+            SalesForce.SalesForceSVC.QueryResult queryResult = null;
+
+            try
+            {
+                ConfigureHeaders();
+
+                SalesForce.SalesForceSVC.QueryOptions queryOptions = new SalesForce.SalesForceSVC.QueryOptions();
+                string queryString = "SELECT OwnerID FROM User where WC_External_Username__c = '" + name + "'";
+                serviceClient.query(sessionHeader, queryOptions, mruHeader, versionHeader, queryString, out queryResult);
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return queryResult;
+        }
+
+        public SalesForce.SalesForceSVC.QueryResult FindAccountByExternalId(string externalId)
+        {
+            SalesForce.SalesForceSVC.QueryResult queryResult = null;
+
+            try
+            {
+                ConfigureHeaders();
+
+                SalesForce.SalesForceSVC.QueryOptions queryOptions = new SalesForce.SalesForceSVC.QueryOptions();
+                string queryString = "SELECT AccountID FROM Account where WC_SAP_Cust_ID__c = '" + externalId + "'";
+                serviceClient.query(sessionHeader, queryOptions, mruHeader, versionHeader, queryString, out queryResult);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            return queryResult;
+        }
+
         public SalesForce.SalesForceSVC.QueryResult FindAllRabbitMQ()
         {
             SalesForce.SalesForceSVC.QueryResult queryResult = null;

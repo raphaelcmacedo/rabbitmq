@@ -48,9 +48,18 @@ namespace Main.Services
 
         public void CreateSalesForceOpportunity(string messsage)
         {
-            /*SalesForce.SalesForceSVC.Opportunity opportunity = sap.ConvertOpportunity(salesData);
+            Opportunity opportunity;
+            OpportunitySAP conversor = new OpportunitySAP();
+            XmlSerializer serializer = new XmlSerializer(typeof(Opportunity));
+
+            using (TextReader reader = new StringReader(messsage))
+            {
+                opportunity = (Opportunity)serializer.Deserialize(reader);
+            }            
+
+            SalesForce.SalesForceSVC.Opportunity opp = conversor.ConvertOpportunity(opportunity);
             SalesForceService service = new SalesForceService();
-            SalesForce.SalesForceSVC.SaveResult[] result = service.CreateOpportunity(opportunity);*/
+            SalesForce.SalesForceSVC.SaveResult[] result = service.CreateOpportunity(opp);
 
         }
 

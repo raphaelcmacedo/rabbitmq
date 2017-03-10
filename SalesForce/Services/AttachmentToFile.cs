@@ -109,7 +109,6 @@ namespace Main.Services
                 "Contact Email Address",
                 "Contact Extension",
                 "Contact Mobile",
-                "Contact Mobile",
                 "Line Item Line Number",
                 "Line Item  SKU",
                 "Line Item SKU Description",
@@ -328,7 +327,7 @@ namespace Main.Services
             SalesForce.SalesForceSVC.Attachment att = new SalesForce.SalesForceSVC.Attachment();
 
             att.Body = byteFile;
-            att.Name = "Attachment Excel File";
+            att.Name = "SalesData.xlsx";
             att.IsPrivate = false;
             att.ParentId = parentId;
 

@@ -158,24 +158,28 @@ namespace Main.Services
             //Opportunity fields
             opportunity.Name = opp.Name;
 
-            result = service.FindUserByName(opp.OwnerName);
-            opportunity.Owner = (result.records.Length > 0) ? (SalesForce.SalesForceSVC.User)result.records[0] : null; 
+            result = service.FindUserByName(opp.OwnerID);
+            opportunity.Owner = (result.records != null && result.records.Length > 0) ? (SalesForce.SalesForceSVC.User)result.records[0] : null; 
 
             result = service.FindAccountByExternalId(opp.AccountID);
-            opportunity.Account = (result.records.Length > 0) ? (SalesForce.SalesForceSVC.Account)result.records[0] : null;
+            opportunity.Account = (result.records != null && result.records.Length > 0) ? (SalesForce.SalesForceSVC.Account)result.records[0] : null;
 
             opportunity.WC_Westcon_Opportunity_Type__c = opp.WCType;
 
-            result = service.FindUserByName(opp.OwnerName);
-            opportunity.WC_Account_Manager_Name__r = (result.records.Length > 0) ? (SalesForce.SalesForceSVC.User)result.records[0] : null;
+            result = service.FindUserByName(opp.MainAccountManagerID);
+            opportunity.WC_Account_Manager_Name__r = (result.records != null && result.records.Length > 0) ? (SalesForce.SalesForceSVC.User)result.records[0] : null;
 
-            opportunity.StageName = "Qualification";
+            opportunity.StageName = opp.StageName;
             opportunity.CurrencyIsoCode = opp.CurrencyCode;
             //opportunity.Amount = 0;
             opportunity.WC_Forecast_Revenue__c = (double)opp.TotalBillingValue;
             opportunity.WC_Gross_Margin_Amount__c = (double)(opp.TotalBillingValue - opp.TotalBillingCost);
             opportunity.WC_Gross_Margin_Amount__cSpecified = true;
-            opportunity.WC_Gross_Margin_Percent__c = (double)((opp.TotalBillingValue - opp.TotalBillingCost) * 100 / opp.TotalBillingValue);
+            if (opp.TotalBillingValue > 0)
+            {
+                opportunity.WC_Gross_Margin_Percent__c = (double)((opp.TotalBillingValue - opp.TotalBillingCost) * 100 / opp.TotalBillingValue);
+            }
+            
             opportunity.Type = opp.Type;
 
             return opportunity;

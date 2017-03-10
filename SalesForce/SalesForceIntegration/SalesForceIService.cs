@@ -73,9 +73,8 @@ namespace Main.SalesForceIntegration
             try
             {
                 ConfigureHeaders();
-
                 SalesForce.SalesForceSVC.QueryOptions queryOptions = new SalesForce.SalesForceSVC.QueryOptions();
-                string queryString = "SELECT OwnerID FROM User where WC_External_Username__c = '" + name + "'";
+                string queryString = "SELECT ID FROM User where WC_External_Username__c = '" + name + "'";
                 serviceClient.query(sessionHeader, queryOptions, mruHeader, versionHeader, queryString, out queryResult);
 
 
@@ -98,7 +97,7 @@ namespace Main.SalesForceIntegration
                 ConfigureHeaders();
 
                 SalesForce.SalesForceSVC.QueryOptions queryOptions = new SalesForce.SalesForceSVC.QueryOptions();
-                string queryString = "SELECT AccountID FROM Account where WC_SAP_Cust_ID__c = '" + externalId + "'";
+                string queryString = "SELECT ID FROM Account where WC_SAP_Cust_ID__c = '" + externalId + "'";
                 serviceClient.query(sessionHeader, queryOptions, mruHeader, versionHeader, queryString, out queryResult);
 
             }

@@ -159,15 +159,15 @@ namespace Main.Services
             opportunity.Name = opp.Name;
 
             result = service.FindUserByName(opp.OwnerID);
-            opportunity.Owner = (result.records != null && result.records.Length > 0) ? (SalesForceSVC.User)result.records[0] : null;
+            opportunity.Owner = (result != null && result.records != null && result.records.Length > 0) ? (SalesForceSVC.User)result.records[0] : null;
 
             result = service.FindAccountByExternalId(opp.AccountID);
-            opportunity.Account = (result.records != null && result.records.Length > 0) ? (SalesForceSVC.Account)result.records[0] : null;
+            opportunity.Account = (result != null && result.records != null && result.records.Length > 0) ? (SalesForceSVC.Account)result.records[0] : null;
 
             opportunity.WC_Westcon_Opportunity_Type__c = opp.WCType;
 
             result = service.FindUserByName(opp.MainAccountManagerID);
-            opportunity.WC_Account_Manager_Name__r = (result.records != null && result.records.Length > 0) ? (SalesForceSVC.User)result.records[0] : null;
+            opportunity.WC_Account_Manager_Name__r = (result != null && result.records != null && result.records.Length > 0) ? (SalesForceSVC.User)result.records[0] : null;
 
             opportunity.StageName = opp.StageName;
             opportunity.CurrencyIsoCode = opp.CurrencyCode;

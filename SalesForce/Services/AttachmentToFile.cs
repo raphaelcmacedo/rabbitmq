@@ -22,8 +22,6 @@ namespace Main.Services
             excel.Visible = false;
             try
             {
-
-
                 Workbook wb = excel.Workbooks.Add(Type.Missing);
 
                 Worksheet ws = (Worksheet)wb.Worksheets[1];
@@ -42,7 +40,7 @@ namespace Main.Services
                 wb.SaveAs(tempPath, wb.FileFormat);
                 tempPath = wb.FullName;
                 wb.Close();
-                excel.Quit();
+                
 
                 byte[] byteFile = File.ReadAllBytes(tempPath);
                 File.Delete(tempPath);
@@ -50,7 +48,7 @@ namespace Main.Services
                 //RETORNO DA FUNÇÃO
                 return Convert.ToBase64String(byteFile);
             }
-            catch
+            finally
             {
                 excel.Quit();
             }

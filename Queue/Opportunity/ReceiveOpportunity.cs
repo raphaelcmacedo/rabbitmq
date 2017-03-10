@@ -57,11 +57,14 @@ namespace Queue.Opportunity
                 send.Send(opportunityMessage);
                 //Send ack to queue
                 //channel.BasicAck(ea.DeliveryTag, false);
+                
             }
             catch (Exception e)
             {
-                channel.BasicReject(ea.DeliveryTag, false);
-                FreshDesk.GenerateTicket(salesDataMessage, e.Message);
+                //Send ack
+                //channel.BasicReject(ea.DeliveryTag, false);
+                //Create ticket
+                Email.SendEmail(salesDataMessage, e.Message);
             }
           
 
@@ -84,15 +87,7 @@ namespace Queue.Opportunity
                 var consumer = new EventingBasicConsumer(channel);
                 consumer.Received += (model, ea) =>
                 {
-                    var body = ea.Body;
-                    //Get opportunity message
-                    string message = Encoding.UTF8.GetString(body);
-                    //Send opportunity to sales force
-                    Main.Services.OpportunityIntegration integration = new Main.Services.OpportunityIntegration();
-                    integration.CreateSalesForceOpportunity(message);
-                    
-                    //Send ack to queue
-                    //channel.BasicAck(ea.DeliveryTag, false);
+                    HandleOpportunity(channel, model, ea);
                 };
                 channel.BasicConsume(queue: queue,
                                         noAck: false,
@@ -101,6 +96,30 @@ namespace Queue.Opportunity
                 while (listen)
                 { }
 
+            }
+        }
+
+        private void HandleOpportunity(IModel channel, object model, BasicDeliverEventArgs ea)
+        {
+            string message = "";
+            try
+            {
+                var body = ea.Body;
+                //Get opportunity message
+                message = Encoding.UTF8.GetString(body);
+                //Send opportunity to sales force
+                Main.Services.OpportunityIntegration integration = new Main.Services.OpportunityIntegration();
+                integration.CreateSalesForceOpportunity(message);
+
+                //Send ack to queue
+                //channel.BasicAck(ea.DeliveryTag, false);
+            }
+            catch (Exception e)
+            {
+                //Send ack
+                //channel.BasicReject(ea.DeliveryTag, false);
+                //Create ticket
+                Email.SendEmail(message, e.Message);
             }
         }
 

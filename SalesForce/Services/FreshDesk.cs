@@ -25,9 +25,9 @@ namespace Main.Services
             // Dados do ticket
             string email = "andre.vellinha@westcon.com";
             string title = "Rabbit MQ Exception";
-            string description = "Message: " + message + "\n";
-            description += " Exception: " + exception + "\n";
-
+            //string description = "Message: " + message + ".";
+            //description += " --- Exception: " + exception;
+            string description = "";
             //string json = "{\"status\": 2, \"priority\": 2, \"email\":\"{0}\",\"subject\":\"{1}\",\"description\":\"{2}\"}";
             //json = string.Format(json, email, title, description);
             string json = "{\"status\": 2, \"priority\": 2, \"source\": 1, \"email\":\"" + email + "\",\"subject\":\"" + title + "\",\"description\":\"" + description + "\"}";

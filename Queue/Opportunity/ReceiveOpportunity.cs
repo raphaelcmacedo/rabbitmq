@@ -13,7 +13,7 @@ namespace Queue.Opportunity
         public void CreateSalesDataListener()
         {
             listen = true;
-            string queue = "sappi.bwopportunity.topic";
+            string queue = "ha.bwsalesopportunity.queue";
             var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "qa" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())

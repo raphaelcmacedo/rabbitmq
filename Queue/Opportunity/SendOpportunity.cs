@@ -28,17 +28,12 @@ namespace Queue.Opportunity
                                      arguments: null);
 
                 var body = Encoding.UTF8.GetBytes(message);
-
-
-
-
+                
                 channel.BasicPublish(exchange: "",
                                      routingKey: queue,
                                      basicProperties: null,
                                      body: body);
-
-
-                SendToExchange(message, queue);
+                
             }
         }
 

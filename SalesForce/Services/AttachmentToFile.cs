@@ -30,15 +30,7 @@ namespace Main.Services
                 workbook.Write(stream);
                 byteFile = stream.ToArray();
             }
-
-            //Retirar////////////////////////
             
-            string file = "D:\\teste.xlsx";
-            using (var fileData = new FileStream(file, FileMode.Create))
-            {
-                workbook.Write(fileData);
-            }
-
             return System.Convert.ToBase64String(byteFile);
         }
 

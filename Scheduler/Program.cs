@@ -14,9 +14,11 @@ namespace Scheduler
             switch (args[0])
             {
                 case "SalesData":
+                    Console.WriteLine("SalesData");
                     service.CreateSalesDataListener();
                     break;
                 case "Opportunity":
+                    Console.WriteLine("Opportunity");
                     service.CreateOpportunityListener();
                     break;
             }

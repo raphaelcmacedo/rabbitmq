@@ -44,13 +44,13 @@ namespace Main.Services
             //Create xml message
             string xml = Util.ToXml(opportunity, typeof(Opportunity));
 
+            
             return xml;
         }
 
         public void CreateSalesForceOpportunity(string messsage)
         {
-
-            Console.WriteLine("public void CreateSalesForceOpportunity(string messsage)");
+            
             Opportunity opportunity;
             OpportunitySAP conversor = new OpportunitySAP();
             XmlSerializer serializer = new XmlSerializer(typeof(Opportunity));

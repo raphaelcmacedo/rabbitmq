@@ -35,7 +35,7 @@ namespace Main.Services
 
             //Message
             string message = Util.Base64Encode(text);
-            //salesData.Message = message;
+            salesData.Message = message;
 
             return salesData;
         }
@@ -148,6 +148,7 @@ namespace Main.Services
         public SalesForce.SalesForceSVC.Opportunity ConvertOpportunity(Opportunity opp)
         {
             SalesForce.SalesForceSVC.Opportunity opportunity = new SalesForce.SalesForceSVC.Opportunity();
+            AttachmentToFile fileSergvice = new AttachmentToFile();
             SalesForce.SalesForceSVC.QueryResult result;
             SalesForceIntegration.SalesForceService service = new SalesForceIntegration.SalesForceService();
             //Required fields
@@ -176,7 +177,7 @@ namespace Main.Services
             opportunity.WC_Gross_Margin_Amount__c = (double)(opp.TotalBillingValue - opp.TotalBillingCost);
             opportunity.WC_Gross_Margin_Amount__cSpecified = true;
             opportunity.WC_Gross_Margin_Percent__c = (double)((opp.TotalBillingValue - opp.TotalBillingCost) * 100 / opp.TotalBillingValue);
-            opportunity.Type = opp.Type;
+            opportunity.Type = opp.Type;          
 
             return opportunity;
 

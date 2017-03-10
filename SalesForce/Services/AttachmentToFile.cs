@@ -292,15 +292,15 @@ namespace Main.Services
             }
         }
 
-        public SalesForce.SalesForceSVC.Attachment AttachFile(byte[] byteFile)
+        public SalesForce.SalesForceSVC.Attachment Base64ToSalesForceAttachment(string base64File,string parentId)
         {
-
+            byte[] byteFile = Convert.FromBase64String(base64File);
             SalesForce.SalesForceSVC.Attachment att = new SalesForce.SalesForceSVC.Attachment();
 
             att.Body = byteFile;
             att.Name = "Attachment Excel File";
             att.IsPrivate = false;
-
+            att.ParentId = parentId;
 
             return att;
 

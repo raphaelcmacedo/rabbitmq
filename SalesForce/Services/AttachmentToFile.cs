@@ -19,6 +19,7 @@ namespace Main.Services
 
             var workbook = new XSSFWorkbook();
             var sheet = workbook.CreateSheet("Sales Data " + salesData.SalesOrderNo);
+            this.CreateExcelHeaderTop(workbook, sheet);
             this.CreateExcelHeader(workbook, sheet);
             this.PopulateExcel(sheet, salesData);
 
@@ -39,20 +40,31 @@ namespace Main.Services
             return System.Convert.ToBase64String(byteFile);
         }
 
+        private void CreateExcelHeaderTop(XSSFWorkbook workbook, ISheet sheet)
+        {
+            var row = sheet.CreateRow(0);
+            
+            //Style
+            var style = workbook.CreateCellStyle();
+            style.FillForegroundColor = (short)IndexedColors.BlueGrey.Index;
+            style.FillPattern = FillPattern.SolidForeground;
+
+            //Merge cells
+            NPOI.SS.Util.CellRangeAddress mergeSoldTo = new NPOI.SS.Util.CellRangeAddress(4, 20, 0, 0);
+            sheet.AddMergedRegion(mergeSoldTo);
+        }
+
         private void CreateExcelHeader(XSSFWorkbook workbook, ISheet sheet)
         {
             Int32 cellIndex = 0;
 
-            var row1 = sheet.CreateRow(0);
-            var row2 = sheet.CreateRow(1);
+            var row = sheet.CreateRow(1);
 
             //Style
             var style = workbook.CreateCellStyle();
             style.FillForegroundColor = (short)IndexedColors.LightBlue.Index;
             style.FillPattern = FillPattern.SolidForeground;
-
             
-
             string[] headers = new string[]
             {
                 "Sales Data Order No",
@@ -146,7 +158,7 @@ namespace Main.Services
             foreach (string header in headers)
             {
                 sheet.SetColumnWidth(cellIndex, 6000);
-                this.CreateCell(row2, style, cellIndex++,header);
+                this.CreateCell(row, style, cellIndex++,header);
             }
             
 
@@ -288,15 +300,15 @@ namespace Main.Services
             }
         }
 
-        public SalesForce.SalesForceSVC.Attachment AttachFile(byte[] byteFile)
+        public SalesForce.SalesForceSVC.Attachment Base64ToSalesForceAttachment(string base64File, string parentId)
         {
-
+            byte[] byteFile = Convert.FromBase64String(base64File);
             SalesForce.SalesForceSVC.Attachment att = new SalesForce.SalesForceSVC.Attachment();
 
             att.Body = byteFile;
             att.Name = "Attachment Excel File";
             att.IsPrivate = false;
-
+            att.ParentId = parentId;
 
             return att;
 

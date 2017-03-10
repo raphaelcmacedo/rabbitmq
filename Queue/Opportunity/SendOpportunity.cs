@@ -10,15 +10,17 @@ namespace Queue.Opportunity
     {
         public void Send(string message)
         {
+
             var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "qa"};
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
+            
                 string queue = "ha.bwopportunity.queue";
+
                 var properties = channel.CreateBasicProperties();
                 properties.Persistent = true;
                 
-
                 channel.QueueDeclare(queue: queue,
                                      durable: true,                                    
                                      exclusive: false,
@@ -26,6 +28,9 @@ namespace Queue.Opportunity
                                      arguments: null);
 
                 var body = Encoding.UTF8.GetBytes(message);
+
+
+
 
                 channel.BasicPublish(exchange: "",
                                      routingKey: queue,
@@ -39,11 +44,17 @@ namespace Queue.Opportunity
 
         public static void SendToExchange(string message, string exchange)
         {
+
+
+
             var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "qa" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
+
+
                 channel.ExchangeDeclare(exchange: exchange, type: "topic", durable: true);
+
 
                 var body = Encoding.UTF8.GetBytes(message);
 

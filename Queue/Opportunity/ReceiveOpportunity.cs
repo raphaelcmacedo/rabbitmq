@@ -19,6 +19,7 @@ namespace Queue.Opportunity
             using (var channel = connection.CreateModel())
             {
 
+
                 channel.QueueDeclare(queue: queue,
                                         durable: true,
                                         exclusive: false,
@@ -36,7 +37,6 @@ namespace Queue.Opportunity
                     //Send opportunity message to rabbitmq
                     SendOpportunity send = new SendOpportunity();
                     send.Send(opportunityMessage);
-
                     //Send ack to queue
                     //channel.BasicAck(ea.DeliveryTag, false);
                 };
@@ -45,7 +45,7 @@ namespace Queue.Opportunity
                                         consumer: consumer);
 
                 while (listen)
-                { }
+                {}
                 
             }
         }

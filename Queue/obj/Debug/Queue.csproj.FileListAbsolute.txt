@@ -20,3 +20,9 @@ D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\EntityFramework.xml
 D:\Desenvolvimento\rabbitmq\Queue\obj\Debug\Queue.csprojResolveAssemblyReference.cache
 D:\Desenvolvimento\rabbitmq\Queue\obj\Debug\Queue.dll
 D:\Desenvolvimento\rabbitmq\Queue\obj\Debug\Queue.pdb
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\NPOI.dll
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\NPOI.OOXML.dll
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\NPOI.OpenXml4Net.dll
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\Desenvolvimento\rabbitmq\Queue\bin\Debug\NPOI.xml

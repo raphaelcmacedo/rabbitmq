@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Main.Models
 {
@@ -14,6 +15,13 @@ namespace Main.Models
         [Key]
         [Column("OppID")]
         public Int64 OpportunityId { get; set; }
+
+        [Column ("SalesDataHeaderID")]
+        public Int64 SalesDataId { get; set; }
+        
+        [ForeignKey("SalesDataId")]
+        [XmlIgnore]
+        public virtual SalesData SalesData { get; set; }
 
         public String Name { get; set; }
         public String AccountID { get; set; }
@@ -32,6 +40,7 @@ namespace Main.Models
         public String GeneratedBy { get; set; }
         [NotMapped]
         public String RelatedAttachment_base64 { get; set; }
+        public string SalesForceID { get; set; }
 
     }
 }

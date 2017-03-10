@@ -34,8 +34,11 @@ namespace SalesForce.Services
             }
             opportunity.TotalBillingValue = totalBillingValue;
             opportunity.TotalBillingCost = totalBillingCost;
+            opportunity.SalesDataId = salesData.SalesDataId;
 
             SetCountingFields(salesData, opportunity);
+
+            opportunity.SalesData = salesData;
 
             return opportunity;
         }

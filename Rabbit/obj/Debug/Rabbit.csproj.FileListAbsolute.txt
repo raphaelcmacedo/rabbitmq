@@ -174,3 +174,9 @@ D:\Desenvolvimento\rabbitmq\Rabbit\bin\RabbitMQ.Client.xml
 D:\Desenvolvimento\rabbitmq\Rabbit\obj\Debug\Rabbit.csprojResolveAssemblyReference.cache
 D:\Desenvolvimento\rabbitmq\Rabbit\obj\Debug\Rabbit.dll
 D:\Desenvolvimento\rabbitmq\Rabbit\obj\Debug\Rabbit.pdb
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\NPOI.OOXML.dll
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\NPOI.dll
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\NPOI.OpenXmlFormats.dll
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\NPOI.OpenXml4Net.dll
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\ICSharpCode.SharpZipLib.dll
+D:\Desenvolvimento\rabbitmq\Rabbit\bin\NPOI.xml

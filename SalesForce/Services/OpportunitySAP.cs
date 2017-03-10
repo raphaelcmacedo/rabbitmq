@@ -181,7 +181,7 @@ namespace Main.Services
             }
             
             opportunity.Type = opp.Type;
-
+            
             return opportunity;
 
         }

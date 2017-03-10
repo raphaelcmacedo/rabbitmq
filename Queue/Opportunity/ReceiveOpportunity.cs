@@ -84,13 +84,14 @@ namespace Queue.Opportunity
                 var consumer = new EventingBasicConsumer(channel);
                 consumer.Received += (model, ea) =>
                 {
+
+            
                     var body = ea.Body;
                     //Get opportunity message
                     string message = Encoding.UTF8.GetString(body);
                     //Send opportunity to sales force
                     Main.Services.OpportunityIntegration integration = new Main.Services.OpportunityIntegration();
                     integration.CreateSalesForceOpportunity(message);
-                    
                     //Send ack to queue
                     //channel.BasicAck(ea.DeliveryTag, false);
                 };

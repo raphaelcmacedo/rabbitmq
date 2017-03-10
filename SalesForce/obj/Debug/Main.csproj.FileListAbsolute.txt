@@ -18,3 +18,9 @@ D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\EntityFramework.SqlServer.xml
 D:\Desenvolvimento\rabbitmq\SalesForce\obj\Debug\Main.csprojResolveAssemblyReference.cache
 D:\Desenvolvimento\rabbitmq\SalesForce\obj\Debug\SalesForce.dll
 D:\Desenvolvimento\rabbitmq\SalesForce\obj\Debug\SalesForce.pdb
+D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\NPOI.dll
+D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\NPOI.OOXML.dll
+D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\NPOI.OpenXml4Net.dll
+D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\NPOI.xml

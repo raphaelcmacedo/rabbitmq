@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SalesForce.Properties {
+namespace Main.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

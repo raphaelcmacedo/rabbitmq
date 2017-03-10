@@ -1,4 +1,5 @@
-﻿using RabbitMQ.Client;
+﻿using Main.Services;
+using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
 using System.Text;
@@ -28,17 +29,7 @@ namespace Queue.Opportunity
                 var consumer = new EventingBasicConsumer(channel);
                 consumer.Received += (model, ea) =>
                 {
-                    var body = ea.Body;
-                    //Get sales data message (sap message)
-                    string salesDataMessage = Encoding.UTF8.GetString(body);
-                    //Save sales data on DB and get opportunity message
-                    Main.Services.OpportunityIntegration integration = new Main.Services.OpportunityIntegration();
-                    string opportunityMessage = integration.CreateOpportunity(salesDataMessage);
-                    //Send opportunity message to rabbitmq
-                    SendOpportunity send = new SendOpportunity();
-                    send.Send(opportunityMessage);
-                    //Send ack to queue
-                    //channel.BasicAck(ea.DeliveryTag, false);
+                    HandleSalesData(channel, model, ea);
                 };
                 channel.BasicConsume(queue: queue,
                                         noAck: false,
@@ -48,6 +39,32 @@ namespace Queue.Opportunity
                 {}
                 
             }
+        }
+
+        private void HandleSalesData(IModel channel, object model, BasicDeliverEventArgs ea)
+        {
+            string salesDataMessage = "";
+            try
+            {
+                var body = ea.Body;
+                //Get sales data message (sap message)
+                salesDataMessage = Encoding.UTF8.GetString(body);
+                //Save sales data on DB and get opportunity message
+                Main.Services.OpportunityIntegration integration = new Main.Services.OpportunityIntegration();
+                string opportunityMessage = integration.CreateOpportunity(salesDataMessage);
+                //Send opportunity message to rabbitmq
+                SendOpportunity send = new SendOpportunity();
+                send.Send(opportunityMessage);
+                //Send ack to queue
+                //channel.BasicAck(ea.DeliveryTag, false);
+            }
+            catch (Exception e)
+            {
+                channel.BasicReject(ea.DeliveryTag, false);
+                FreshDesk.GenerateTicket(salesDataMessage, e.Message);
+            }
+          
+
         }
 
         public void CreateOpportunityListener()

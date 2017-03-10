@@ -12,22 +12,22 @@ namespace Main.SalesForceIntegration
         private String login = "andre.vellinha@westcon.com", senha = "1234WestconuYoID1asym58ULuQUXNxF2NwJ";
 
 
-        private SalesForce.SalesForceSVC.SoapClient loginClient = new SalesForce.SalesForceSVC.SoapClient();
-        private SalesForce.SalesForceSVC.SoapClient serviceClient;
-        private SalesForce.SalesForceSVC.SessionHeader sessionHeader = new SalesForce.SalesForceSVC.SessionHeader();
-        private SalesForce.SalesForceSVC.LoginScopeHeader loginHeader = new SalesForce.SalesForceSVC.LoginScopeHeader();
-        private SalesForce.SalesForceSVC.AssignmentRuleHeader ruleHeader = new SalesForce.SalesForceSVC.AssignmentRuleHeader();
-        private SalesForce.SalesForceSVC.MruHeader mruHeader = new SalesForce.SalesForceSVC.MruHeader();
-        private SalesForce.SalesForceSVC.AllowFieldTruncationHeader truncateHeader = new SalesForce.SalesForceSVC.AllowFieldTruncationHeader();
-        private SalesForce.SalesForceSVC.DisableFeedTrackingHeader trackingHeader = new SalesForce.SalesForceSVC.DisableFeedTrackingHeader();
-        private SalesForce.SalesForceSVC.StreamingEnabledHeader streamingHeader = new SalesForce.SalesForceSVC.StreamingEnabledHeader();
-        private SalesForce.SalesForceSVC.AllOrNoneHeader allOrNoneHeader = new SalesForce.SalesForceSVC.AllOrNoneHeader();
-        private SalesForce.SalesForceSVC.DuplicateRuleHeader duplicateHeader = new SalesForce.SalesForceSVC.DuplicateRuleHeader();
-        private SalesForce.SalesForceSVC.LocaleOptions localeOption = new SalesForce.SalesForceSVC.LocaleOptions();
-        private SalesForce.SalesForceSVC.DebuggingHeader debugHeader = new SalesForce.SalesForceSVC.DebuggingHeader();
-        private SalesForce.SalesForceSVC.PackageVersion version = new SalesForce.SalesForceSVC.PackageVersion();
-        private SalesForce.SalesForceSVC.PackageVersion[] versionHeader = null;
-        private SalesForce.SalesForceSVC.EmailHeader emailHeader = new SalesForce.SalesForceSVC.EmailHeader();
+        private SalesForceSVC.SoapClient loginClient = new SalesForceSVC.SoapClient();
+        private SalesForceSVC.SoapClient serviceClient;
+        private SalesForceSVC.SessionHeader sessionHeader = new SalesForceSVC.SessionHeader();
+        private SalesForceSVC.LoginScopeHeader loginHeader = new SalesForceSVC.LoginScopeHeader();
+        private SalesForceSVC.AssignmentRuleHeader ruleHeader = new SalesForceSVC.AssignmentRuleHeader();
+        private SalesForceSVC.MruHeader mruHeader = new SalesForceSVC.MruHeader();
+        private SalesForceSVC.AllowFieldTruncationHeader truncateHeader = new SalesForceSVC.AllowFieldTruncationHeader();
+        private SalesForceSVC.DisableFeedTrackingHeader trackingHeader = new SalesForceSVC.DisableFeedTrackingHeader();
+        private SalesForceSVC.StreamingEnabledHeader streamingHeader = new SalesForceSVC.StreamingEnabledHeader();
+        private SalesForceSVC.AllOrNoneHeader allOrNoneHeader = new SalesForceSVC.AllOrNoneHeader();
+        private SalesForceSVC.DuplicateRuleHeader duplicateHeader = new SalesForceSVC.DuplicateRuleHeader();
+        private SalesForceSVC.LocaleOptions localeOption = new SalesForceSVC.LocaleOptions();
+        private SalesForceSVC.DebuggingHeader debugHeader = new SalesForceSVC.DebuggingHeader();
+        private SalesForceSVC.PackageVersion version = new SalesForceSVC.PackageVersion();
+        private SalesForceSVC.PackageVersion[] versionHeader = null;
+        private SalesForceSVC.EmailHeader emailHeader = new SalesForceSVC.EmailHeader();
 
         /*public ActionResult Index()
         {
@@ -43,15 +43,15 @@ namespace Main.SalesForceIntegration
         }*/
 
 
-        public SalesForce.SalesForceSVC.QueryResult FindByName(string name)
+        public SalesForceSVC.QueryResult FindByName(string name)
         {
-            SalesForce.SalesForceSVC.QueryResult queryResult = null;
+            SalesForceSVC.QueryResult queryResult = null;
 
             try
             {
                 ConfigureHeaders();
 
-                SalesForce.SalesForceSVC.QueryOptions queryOptions = new SalesForce.SalesForceSVC.QueryOptions();
+                SalesForceSVC.QueryOptions queryOptions = new SalesForceSVC.QueryOptions();
                 string queryString = "SELECT StageName FROM Opportunity where Name = '" + name + "'";
                 serviceClient.query(sessionHeader, queryOptions, mruHeader, versionHeader, queryString, out queryResult);
 
@@ -66,14 +66,14 @@ namespace Main.SalesForceIntegration
             return queryResult;
         }
 
-        public SalesForce.SalesForceSVC.QueryResult FindUserByName(string name)
+        public SalesForceSVC.QueryResult FindUserByName(string name)
         {
-            SalesForce.SalesForceSVC.QueryResult queryResult = null;
+            SalesForceSVC.QueryResult queryResult = null;
 
             try
             {
                 ConfigureHeaders();
-                SalesForce.SalesForceSVC.QueryOptions queryOptions = new SalesForce.SalesForceSVC.QueryOptions();
+                SalesForceSVC.QueryOptions queryOptions = new SalesForceSVC.QueryOptions();
                 string queryString = "SELECT ID FROM User where WC_External_Username__c = '" + name + "'";
                 serviceClient.query(sessionHeader, queryOptions, mruHeader, versionHeader, queryString, out queryResult);
 
@@ -88,15 +88,15 @@ namespace Main.SalesForceIntegration
             return queryResult;
         }
 
-        public SalesForce.SalesForceSVC.QueryResult FindAccountByExternalId(string externalId)
+        public SalesForceSVC.QueryResult FindAccountByExternalId(string externalId)
         {
-            SalesForce.SalesForceSVC.QueryResult queryResult = null;
+            SalesForceSVC.QueryResult queryResult = null;
 
             try
             {
                 ConfigureHeaders();
 
-                SalesForce.SalesForceSVC.QueryOptions queryOptions = new SalesForce.SalesForceSVC.QueryOptions();
+                SalesForceSVC.QueryOptions queryOptions = new SalesForceSVC.QueryOptions();
                 string queryString = "SELECT ID FROM Account where WC_SAP_Cust_ID__c = '" + externalId + "'";
                 serviceClient.query(sessionHeader, queryOptions, mruHeader, versionHeader, queryString, out queryResult);
 
@@ -110,23 +110,23 @@ namespace Main.SalesForceIntegration
             return queryResult;
         }
 
-        public SalesForce.SalesForceSVC.QueryResult FindAllRabbitMQ()
+        public SalesForceSVC.QueryResult FindAllRabbitMQ()
         {
-            SalesForce.SalesForceSVC.QueryResult queryResult = null;
+            SalesForceSVC.QueryResult queryResult = null;
 
             ConfigureHeaders();
 
-            SalesForce.SalesForceSVC.QueryOptions queryOptions = new SalesForce.SalesForceSVC.QueryOptions();
+            SalesForceSVC.QueryOptions queryOptions = new SalesForceSVC.QueryOptions();
             string queryString = "SELECT Name FROM Opportunity where StageName = 'RabbitMQ' ";
             serviceClient.query(sessionHeader, queryOptions, mruHeader, versionHeader, queryString, out queryResult);
             
             return queryResult;
         }
 
-        public SalesForce.SalesForceSVC.SaveResult[] CreateOpportunity(SalesForce.SalesForceSVC.Opportunity opp = null)
+        public SalesForceSVC.SaveResult[] CreateOpportunity(SalesForceSVC.Opportunity opp = null)
         {
 
-            SalesForce.SalesForceSVC.SaveResult[] saveResult = null;
+            SalesForceSVC.SaveResult[] saveResult = null;
             ConfigureHeaders();
 
             if (opp == null)
@@ -135,9 +135,9 @@ namespace Main.SalesForceIntegration
             }
 
 
-            SalesForce.SalesForceSVC.sObject[] objs = new List<SalesForce.SalesForceSVC.sObject> { opp }.ToArray();
+            SalesForceSVC.sObject[] objs = new List<SalesForceSVC.sObject> { opp }.ToArray();
 
-            SalesForce.SalesForceSVC.LimitInfo[] infoHeader = getInfoHeader();
+            SalesForceSVC.LimitInfo[] infoHeader = getInfoHeader();
 
             serviceClient.create(sessionHeader, ruleHeader, mruHeader, truncateHeader, trackingHeader,
                 streamingHeader, allOrNoneHeader, duplicateHeader, localeOption, debugHeader, versionHeader,
@@ -145,7 +145,7 @@ namespace Main.SalesForceIntegration
             if (!saveResult[0].success)
             {
                 string message = "";
-                foreach (SalesForce.SalesForceSVC.Error error in saveResult[0].errors)
+                foreach (SalesForceSVC.Error error in saveResult[0].errors)
                 {
                     message += error.message + "\r\n";
                 }
@@ -157,15 +157,15 @@ namespace Main.SalesForceIntegration
             return saveResult;
         }
 
-        public SalesForce.SalesForceSVC.SaveResult[] SaveAttachment(SalesForce.SalesForceSVC.Attachment attachment)
+        public SalesForceSVC.SaveResult[] SaveAttachment(SalesForceSVC.Attachment attachment)
         {
 
-            SalesForce.SalesForceSVC.SaveResult[] saveResult = null;
+            SalesForceSVC.SaveResult[] saveResult = null;
             ConfigureHeaders();           
 
-            SalesForce.SalesForceSVC.sObject[] objs = new List<SalesForce.SalesForceSVC.sObject> { attachment }.ToArray();
+            SalesForceSVC.sObject[] objs = new List<SalesForceSVC.sObject> { attachment }.ToArray();
 
-            SalesForce.SalesForceSVC.LimitInfo[] infoHeader = getInfoHeader();
+            SalesForceSVC.LimitInfo[] infoHeader = getInfoHeader();
 
             serviceClient.create(sessionHeader, ruleHeader, mruHeader, truncateHeader, trackingHeader,
                 streamingHeader, allOrNoneHeader, duplicateHeader, localeOption, debugHeader, versionHeader,
@@ -173,7 +173,7 @@ namespace Main.SalesForceIntegration
             if (!saveResult[0].success)
             {
                 string message = "";
-                foreach (SalesForce.SalesForceSVC.Error error in saveResult[0].errors)
+                foreach (SalesForceSVC.Error error in saveResult[0].errors)
                 {
                     message += error.message + "\r\n";
                 }
@@ -186,18 +186,18 @@ namespace Main.SalesForceIntegration
         }
 
 
-        public SalesForce.SalesForceSVC.SaveResult[] UpdateOpportunity()
+        public SalesForceSVC.SaveResult[] UpdateOpportunity()
         {
-            SalesForce.SalesForceSVC.SaveResult[] saveResult = null;
+            SalesForceSVC.SaveResult[] saveResult = null;
 
             try
             {
                 ConfigureHeaders();
 
-                SalesForce.SalesForceSVC.Opportunity opp = this.FillOpportunityObj();
-                SalesForce.SalesForceSVC.sObject[] objs = new List<SalesForce.SalesForceSVC.sObject> { opp }.ToArray();
+                SalesForceSVC.Opportunity opp = this.FillOpportunityObj();
+                SalesForceSVC.sObject[] objs = new List<SalesForceSVC.sObject> { opp }.ToArray();
 
-                SalesForce.SalesForceSVC.LimitInfo[] infoHeader = getInfoHeader();
+                SalesForceSVC.LimitInfo[] infoHeader = getInfoHeader();
 
                 serviceClient.create(sessionHeader, ruleHeader, mruHeader, truncateHeader, trackingHeader,
                     streamingHeader, allOrNoneHeader, duplicateHeader, localeOption, debugHeader, versionHeader,
@@ -214,19 +214,19 @@ namespace Main.SalesForceIntegration
 
 
         }
-        private SalesForce.SalesForceSVC.LimitInfo[] getInfoHeader()
+        private SalesForceSVC.LimitInfo[] getInfoHeader()
         {
-            SalesForce.SalesForceSVC.LimitInfo info = new SalesForce.SalesForceSVC.LimitInfo();
+            SalesForceSVC.LimitInfo info = new SalesForceSVC.LimitInfo();
             info.type = "API REQUESTS";
             info.current = 20;
             info.limit = 250;
-            SalesForce.SalesForceSVC.LimitInfo[] infoHeader = new List<SalesForce.SalesForceSVC.LimitInfo>() { info }.ToArray();
+            SalesForceSVC.LimitInfo[] infoHeader = new List<SalesForceSVC.LimitInfo>() { info }.ToArray();
             return infoHeader;
 
         }
-        public SalesForce.SalesForceSVC.sObject[] RetrieveRecords(SalesForce.SalesForceSVC.SaveResult[] saveResult)
+        public SalesForceSVC.sObject[] RetrieveRecords(SalesForceSVC.SaveResult[] saveResult)
         {
-            SalesForce.SalesForceSVC.sObject[] objs = null;
+            SalesForceSVC.sObject[] objs = null;
 
             String[] ids = new string[saveResult.Length];
 
@@ -237,14 +237,14 @@ namespace Main.SalesForceIntegration
             try
             {
 
-                SalesForce.SalesForceSVC.QueryOptions queryOptions = new SalesForce.SalesForceSVC.QueryOptions();
+                SalesForceSVC.QueryOptions queryOptions = new SalesForceSVC.QueryOptions();
 
                 string fieldList = "AccountId, SyncedQuoteId, Name, Amount, CreatedDate, StageName";
                 string sObjectsType = "Opportunity";
 
-                SalesForce.SalesForceSVC.Opportunity opp = new SalesForce.SalesForceSVC.Opportunity();
+                SalesForceSVC.Opportunity opp = new SalesForceSVC.Opportunity();
                 opp = FillOpportunityObj();
-                objs = new List<SalesForce.SalesForceSVC.sObject> { opp }.ToArray();
+                objs = new List<SalesForceSVC.sObject> { opp }.ToArray();
 
 
                 serviceClient.retrieve(sessionHeader, queryOptions, mruHeader, versionHeader, fieldList, sObjectsType, ids, out objs);
@@ -260,14 +260,14 @@ namespace Main.SalesForceIntegration
         }
         private void ConfigureHeaders()
         {
-            SalesForce.SalesForceSVC.LoginResult lr = loginClient.login(loginHeader, login, senha);
+            SalesForceSVC.LoginResult lr = loginClient.login(loginHeader, login, senha);
             if (lr.passwordExpired)
             {
                 throw new Exception("Password expired");
             }
             EndpointAddress endpoint = new EndpointAddress(lr.serverUrl);
             sessionHeader.sessionId = lr.sessionId;
-            serviceClient = new SalesForce.SalesForceSVC.SoapClient("Soap", endpoint);
+            serviceClient = new SalesForceSVC.SoapClient("Soap", endpoint);
 
             ruleHeader.useDefaultRule = true;
 
@@ -277,7 +277,7 @@ namespace Main.SalesForceIntegration
 
             trackingHeader.disableFeedTracking = false;
 
-            versionHeader = new List<SalesForce.SalesForceSVC.PackageVersion>() { version }.ToArray();
+            versionHeader = new List<SalesForceSVC.PackageVersion>() { version }.ToArray();
 
             allOrNoneHeader.allOrNone = false;
 
@@ -288,7 +288,7 @@ namespace Main.SalesForceIntegration
 
             localeOption.language = "en_US";
 
-            debugHeader.debugLevel = SalesForce.SalesForceSVC.DebugLevel.None;
+            debugHeader.debugLevel = SalesForceSVC.DebugLevel.None;
 
             //https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_header_emailheader.htm
             emailHeader.triggerAutoResponseEmail = false;
@@ -296,9 +296,9 @@ namespace Main.SalesForceIntegration
             emailHeader.triggerUserEmail = false;
 
         }
-        private SalesForce.SalesForceSVC.Opportunity FillOpportunityObj()
+        private SalesForceSVC.Opportunity FillOpportunityObj()
         {
-            SalesForce.SalesForceSVC.Opportunity op = new SalesForce.SalesForceSVC.Opportunity();
+            SalesForceSVC.Opportunity op = new SalesForceSVC.Opportunity();
             op.AccountId = "";
             op.SyncedQuoteId = "";
             op.Name = "Teste Prion";

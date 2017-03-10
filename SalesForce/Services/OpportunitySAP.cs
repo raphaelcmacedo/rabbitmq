@@ -148,7 +148,8 @@ namespace Main.Services
         public SalesForce.SalesForceSVC.Opportunity ConvertOpportunity(Opportunity opp)
         {
             SalesForce.SalesForceSVC.Opportunity opportunity = new SalesForce.SalesForceSVC.Opportunity();
-
+            SalesForce.SalesForceSVC.QueryResult result;
+            SalesForceIntegration.SalesForceService service = new SalesForceIntegration.SalesForceService();
             //Required fields
             opportunity.CreatedDate = DateTime.Now;
             opportunity.CloseDate = DateTime.Now.AddDays(10);
@@ -156,10 +157,18 @@ namespace Main.Services
 
             //Opportunity fields
             opportunity.Name = opp.Name;
-            //opportunity.Owner = opp.OwnerID;
-            //opportunity.Account = opp.AccountID;
+
+            result = service.FindUserByName(opp.OwnerName);
+            opportunity.Owner = (result.records.Length > 0) ? (SalesForce.SalesForceSVC.User)result.records[0] : null; 
+
+            result = service.FindAccountByExternalId(opp.AccountID);
+            opportunity.Account = (result.records.Length > 0) ? (SalesForce.SalesForceSVC.Account)result.records[0] : null;
+
             opportunity.WC_Westcon_Opportunity_Type__c = opp.WCType;
-            opportunity.WC_Account_Manager_Name__c = opp.MainAccountManagerID;
+
+            result = service.FindUserByName(opp.OwnerName);
+            opportunity.WC_Account_Manager_Name__r = (result.records.Length > 0) ? (SalesForce.SalesForceSVC.User)result.records[0] : null;
+
             opportunity.StageName = "Qualification";
             opportunity.CurrencyIsoCode = opp.CurrencyCode;
             //opportunity.Amount = 0;

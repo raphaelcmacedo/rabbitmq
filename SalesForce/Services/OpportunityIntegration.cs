@@ -60,23 +60,22 @@ namespace Main.Services
                 opportunity = (Opportunity)serializer.Deserialize(reader);
             }            
 
-            SalesForce.SalesForceSVC.Opportunity opp = conversor.ConvertOpportunity(opportunity);
+            SalesForce.SalesForceSVC.Opportunity OpportunitySalesForce = conversor.ConvertOpportunity(opportunity);
             SalesForceService service = new SalesForceService();
             AttachmentToFile fileService = new AttachmentToFile();
-            SalesForce.SalesForceSVC.SaveResult[] result = service.CreateOpportunity(opp);
+            SalesForce.SalesForceSVC.SaveResult[] result = service.CreateOpportunity(OpportunitySalesForce);
 
-            if (result != null && result.Length > 1)
+            if (result != null && result.Length > 0)
             {
                 string parentId = result[0].id;
                 SalesForce.SalesForceSVC.Attachment attachment = fileService.Base64ToSalesForceAttachment(opportunity.RelatedAttachment_base64, parentId);
                 service.SaveAttachment(attachment);
 
-                using (OpportunityRepository rep = new OpportunityRepository())
+                using (OpportunityRepository repository = new OpportunityRepository())
                 {
-                    Opportunity updatedOpp = rep.Find(opportunity.OpportunityId);
-                    updatedOpp.SalesForceID = parentId;
-
-                    rep.Update(opportunity);
+                    opportunity = repository.DbContext.Set<Opportunity>().Find((int) opportunity.OpportunityId);
+                    opportunity.SalesForceID = parentId;
+                    repository.Update(opportunity);
                 }
             }
 

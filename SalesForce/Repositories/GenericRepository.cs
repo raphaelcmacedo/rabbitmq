@@ -12,7 +12,7 @@ namespace Main.Repositories
 {
     public class GenericRepository<TEntity> : IDisposable where TEntity : class
     {
-        protected PrionContext DbContext;
+        public PrionContext DbContext;
 
         public GenericRepository(PrionContext _DbContext)
         {
@@ -31,7 +31,7 @@ namespace Main.Repositories
             DbContext.SaveChanges();
         }
 
-        public TEntity Find(long id)
+        public TEntity Find(int id)
         {
             return DbContext.Set<TEntity>().Find(id);
         }

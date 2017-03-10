@@ -156,8 +156,8 @@ namespace Main.Services
 
             //Opportunity fields
             opportunity.Name = opp.Name;
-            opportunity.Owner = opp.OwnerID;
-            opportunity.Account = opp.AccountID;
+            //opportunity.Owner = opp.OwnerID;
+            //opportunity.Account = opp.AccountID;
             opportunity.WC_Westcon_Opportunity_Type__c = opp.WCType;
             opportunity.WC_Account_Manager_Name__c = opp.MainAccountManagerID;
             opportunity.StageName = "Qualification";

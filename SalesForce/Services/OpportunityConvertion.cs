@@ -21,7 +21,7 @@ namespace SalesForce.Services
             /* Hardcoded */
             //opportunity.CloseDate = 
             opportunity.StageName = "Qualification";
-            opportunity.Type = "NA - Sales Opportunity";
+            opportunity.Type = "Sales Opportunity";
             opportunity.WCType = "Renewals";
             opportunity.GeneratedBy = "Renewals";
             
@@ -58,7 +58,7 @@ namespace SalesForce.Services
                     totalAccountManager = accountManagerIDs[accountManager];
                 }
                 totalAccountManager++;
-                accountManagerIDs.Add(accountManager, totalAccountManager);
+                accountManagerIDs[accountManager] = totalAccountManager;
 
                 //Count sales practices
                 if (salesPractices.ContainsKey(salesPractice))
@@ -66,7 +66,7 @@ namespace SalesForce.Services
                     totalSalesPractice = salesPractices[salesPractice];
                 }
                 totalSalesPractice++;
-                salesPractices.Add(salesPractice, totalSalesPractice);
+                salesPractices[salesPractice] = totalSalesPractice;
 
             }
             //Account Manager

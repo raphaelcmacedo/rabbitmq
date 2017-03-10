@@ -145,11 +145,11 @@ namespace Main.Services
             return company;
         }
 
-        public SalesForce.SalesForceSVC.Opportunity ConvertOpportunity(Opportunity opp)
+        public SalesForceSVC.Opportunity ConvertOpportunity(Opportunity opp)
         {
-            SalesForce.SalesForceSVC.Opportunity opportunity = new SalesForce.SalesForceSVC.Opportunity();
+            SalesForceSVC.Opportunity opportunity = new SalesForceSVC.Opportunity();
             AttachmentToFile fileSergvice = new AttachmentToFile();
-            SalesForce.SalesForceSVC.QueryResult result;
+            SalesForceSVC.QueryResult result;
             SalesForceIntegration.SalesForceService service = new SalesForceIntegration.SalesForceService();
             //Required fields
             opportunity.CreatedDate = DateTime.Now;
@@ -160,15 +160,15 @@ namespace Main.Services
             opportunity.Name = opp.Name;
 
             result = service.FindUserByName(opp.OwnerName);
-            opportunity.Owner = (result.records.Length > 0) ? (SalesForce.SalesForceSVC.User)result.records[0] : null; 
+            opportunity.Owner = (result.records.Length > 0) ? (SalesForceSVC.User)result.records[0] : null; 
 
             result = service.FindAccountByExternalId(opp.AccountID);
-            opportunity.Account = (result.records.Length > 0) ? (SalesForce.SalesForceSVC.Account)result.records[0] : null;
+            opportunity.Account = (result.records.Length > 0) ? (SalesForceSVC.Account)result.records[0] : null;
 
             opportunity.WC_Westcon_Opportunity_Type__c = opp.WCType;
 
             result = service.FindUserByName(opp.OwnerName);
-            opportunity.WC_Account_Manager_Name__r = (result.records.Length > 0) ? (SalesForce.SalesForceSVC.User)result.records[0] : null;
+            opportunity.WC_Account_Manager_Name__r = (result.records.Length > 0) ? (SalesForceSVC.User)result.records[0] : null;
 
             opportunity.StageName = "Qualification";
             opportunity.CurrencyIsoCode = opp.CurrencyCode;

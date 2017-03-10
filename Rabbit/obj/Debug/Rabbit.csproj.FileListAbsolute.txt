@@ -41,7 +41,6 @@ D:\Desenvolvimento\Rabbit\Rabbit\bin\Microsoft.Web.Infrastructure.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\Newtonsoft.Json.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\Owin.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\Queue.dll
-D:\Desenvolvimento\Rabbit\Rabbit\bin\SalesForce.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\System.Web.Helpers.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\System.Web.Mvc.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\System.Web.Optimization.dll
@@ -52,7 +51,6 @@ D:\Desenvolvimento\Rabbit\Rabbit\bin\System.Web.WebPages.Razor.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\WebGrease.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\RabbitMQ.Client.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\Queue.pdb
-D:\Desenvolvimento\Rabbit\Rabbit\bin\SalesForce.pdb
 D:\Desenvolvimento\Rabbit\Rabbit\bin\Microsoft.AI.DependencyCollector.xml
 D:\Desenvolvimento\Rabbit\Rabbit\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\Desenvolvimento\Rabbit\Rabbit\bin\Microsoft.AI.Web.xml
@@ -180,3 +178,5 @@ D:\Desenvolvimento\Rabbit\Rabbit\bin\NPOI.OpenXmlFormats.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\NPOI.OpenXml4Net.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\ICSharpCode.SharpZipLib.dll
 D:\Desenvolvimento\Rabbit\Rabbit\bin\NPOI.xml
+D:\Desenvolvimento\Rabbit\Rabbit\bin\Main.dll
+D:\Desenvolvimento\Rabbit\Rabbit\bin\Main.pdb

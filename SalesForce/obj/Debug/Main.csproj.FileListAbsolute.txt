@@ -1,8 +1,3 @@
-D:\Desenvolvimento\Rabbit\SalesForce\obj\Debug\SalesForce.dll
-D:\Desenvolvimento\Rabbit\SalesForce\obj\Debug\SalesForce.pdb
-D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\SalesForce.dll.config
-D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\SalesForce.dll
-D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\SalesForce.pdb
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\EntityFramework.dll
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\EntityFramework.SqlServer.dll
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\EntityFramework.xml
@@ -24,3 +19,8 @@ D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\NPOI.OOXML.dll
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\NPOI.OpenXml4Net.dll
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\NPOI.OpenXmlFormats.dll
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\NPOI.xml
+D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\Main.dll.config
+D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\Main.dll
+D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\Main.pdb
+D:\Desenvolvimento\Rabbit\SalesForce\obj\Debug\Main.dll
+D:\Desenvolvimento\Rabbit\SalesForce\obj\Debug\Main.pdb

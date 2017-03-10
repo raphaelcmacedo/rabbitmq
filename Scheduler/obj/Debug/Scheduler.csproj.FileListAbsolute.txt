@@ -6,11 +6,9 @@ D:\Desenvolvimento\Rabbit\Scheduler\obj\Debug\Scheduler.exe
 D:\Desenvolvimento\Rabbit\Scheduler\obj\Debug\Scheduler.pdb
 D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\Queue.dll
 D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\RabbitMQ.Client.dll
-D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\SalesForce.dll
 D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\EntityFramework.dll
 D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\Queue.pdb
 D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\RabbitMQ.Client.xml
-D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\SalesForce.pdb
 D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\EntityFramework.xml
 D:\Desenvolvimento\rabbitmq\Scheduler\bin\Debug\Scheduler.exe.config
 D:\Desenvolvimento\rabbitmq\Scheduler\bin\Debug\Scheduler.exe
@@ -36,3 +34,5 @@ D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\NPOI.OpenXmlFormats.dll
 D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\NPOI.OpenXml4Net.dll
 D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\ICSharpCode.SharpZipLib.dll
 D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\NPOI.xml
+D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\Main.dll
+D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\Main.pdb

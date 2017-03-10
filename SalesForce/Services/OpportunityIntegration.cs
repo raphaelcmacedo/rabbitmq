@@ -17,6 +17,7 @@ namespace Main.Services
     {
         public string CreateOpportunity(string message)
         {
+
             //Read xml
             OpportunitySAP sap = new OpportunitySAP();
             SalesData salesData = sap.ReadXML(message);
@@ -48,6 +49,8 @@ namespace Main.Services
 
         public void CreateSalesForceOpportunity(string messsage)
         {
+
+            Console.WriteLine("public void CreateSalesForceOpportunity(string messsage)");
             Opportunity opportunity;
             OpportunitySAP conversor = new OpportunitySAP();
             XmlSerializer serializer = new XmlSerializer(typeof(Opportunity));

@@ -30,3 +30,9 @@ D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\EntityFramework.SqlServer.dll
 D:\Desenvolvimento\Rabbit\Scheduler\bin\Debug\EntityFramework.SqlServer.xml
 D:\Desenvolvimento\rabbitmq\Scheduler\bin\Debug\EntityFramework.SqlServer.dll
 D:\Desenvolvimento\rabbitmq\Scheduler\bin\Debug\EntityFramework.SqlServer.xml
+D:\Desenvolvimento\rabbitmq\Scheduler\bin\Debug\NPOI.OOXML.dll
+D:\Desenvolvimento\rabbitmq\Scheduler\bin\Debug\NPOI.dll
+D:\Desenvolvimento\rabbitmq\Scheduler\bin\Debug\NPOI.OpenXmlFormats.dll
+D:\Desenvolvimento\rabbitmq\Scheduler\bin\Debug\NPOI.OpenXml4Net.dll
+D:\Desenvolvimento\rabbitmq\Scheduler\bin\Debug\ICSharpCode.SharpZipLib.dll
+D:\Desenvolvimento\rabbitmq\Scheduler\bin\Debug\NPOI.xml

@@ -85,6 +85,7 @@ namespace Main
         public static string ToXml(object obj, Type type)
         {
             String xml = string.Empty;
+
             XmlSerializer serializer = new XmlSerializer(type);
             using (var writer = new StringWriter())
             {

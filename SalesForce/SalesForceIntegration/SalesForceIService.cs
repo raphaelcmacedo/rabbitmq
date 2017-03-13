@@ -85,7 +85,6 @@ namespace Main.SalesForceIntegration
 
                 throw;
             }
-            //TODO
             return queryResult;
         }
 
@@ -107,7 +106,6 @@ namespace Main.SalesForceIntegration
 
                 throw;
             }
-            //TODO
             return queryResult;
         }
 

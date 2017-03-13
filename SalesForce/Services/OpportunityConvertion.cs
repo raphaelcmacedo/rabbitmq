@@ -21,7 +21,7 @@ namespace SalesForce.Services
             /* Hardcoded */
             //opportunity.CloseDate = 
             opportunity.StageName = "Qualification";
-            opportunity.Type = "Sales Opportunity";
+            opportunity.Type = "Renewal";
             opportunity.WCType = "Renewals";
             opportunity.GeneratedBy = "Renewals";
             

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
+using System.Net;
 
 namespace Main.SalesForceIntegration
 {
@@ -260,6 +261,8 @@ namespace Main.SalesForceIntegration
         }
         private void ConfigureHeaders()
         {
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+
             SalesForceSVC.LoginResult lr = loginClient.login(loginHeader, login, senha);
             if (lr.passwordExpired)
             {

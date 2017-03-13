@@ -180,7 +180,7 @@ namespace Main.Services
                 opportunity.WC_Gross_Margin_Percent__c = (double)((opp.TotalBillingValue - opp.TotalBillingCost) * 100 / opp.TotalBillingValue);
             }
 
-            opportunity.Type = opp.Type;
+            opportunity.Type = "NA - Sales Opportunity";
 
             return opportunity;
 

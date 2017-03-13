@@ -9,7 +9,7 @@ namespace Main.SalesForceIntegration
 {
     public class SalesForceService
     {
-        private String login = "andre.vellinha@westcon.com", senha = "1234WestconuYoID1asym58ULuQUXNxF2NwJ";
+        private String login = "andre.vellinha@westcon.com", senha = "Westcon123X1ffRYYPT62EhET1U0AjFCxio";
 
 
         private SalesForceSVC.SoapClient loginClient = new SalesForceSVC.SoapClient();

@@ -75,7 +75,7 @@ namespace Main.SalesForceIntegration
             {
                 ConfigureHeaders();
                 SalesForceSVC.QueryOptions queryOptions = new SalesForceSVC.QueryOptions();
-                string queryString = "SELECT Id FROM User where WC_External_Username__c = '" + name + "'";
+                string queryString = "SELECT WC_External_Username__c FROM User where WC_External_Username__c = '" + name + "'";
                 serviceClient.query(sessionHeader, queryOptions, mruHeader, versionHeader, queryString, out queryResult);
 
 
@@ -86,7 +86,7 @@ namespace Main.SalesForceIntegration
                 throw;
             }
             //TODO
-            return null;
+            return queryResult;
         }
 
         public SalesForceSVC.QueryResult FindAccountByExternalId(string externalId)
@@ -98,7 +98,7 @@ namespace Main.SalesForceIntegration
                 ConfigureHeaders();
 
                 SalesForceSVC.QueryOptions queryOptions = new SalesForceSVC.QueryOptions();
-                string queryString = "SELECT Id FROM Account where WC_SAP_Cust_ID__c = '" + externalId + "'";
+                string queryString = "SELECT WC_SAP_Cust_ID__c FROM Account where WC_SAP_Cust_ID__c = '" + externalId + "'";
                 serviceClient.query(sessionHeader, queryOptions, mruHeader, versionHeader, queryString, out queryResult);
 
             }
@@ -108,7 +108,7 @@ namespace Main.SalesForceIntegration
                 throw;
             }
             //TODO
-            return null;
+            return queryResult;
         }
 
         public SalesForceSVC.QueryResult FindAllRabbitMQ()

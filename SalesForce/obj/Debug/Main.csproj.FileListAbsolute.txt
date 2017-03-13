@@ -1,8 +1,3 @@
-D:\Desenvolvimento\Rabbit\SalesForce\obj\Debug\SalesForce.dll
-D:\Desenvolvimento\Rabbit\SalesForce\obj\Debug\SalesForce.pdb
-D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\SalesForce.dll.config
-D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\SalesForce.dll
-D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\SalesForce.pdb
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\EntityFramework.dll
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\EntityFramework.SqlServer.dll
 D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\EntityFramework.xml
@@ -30,3 +25,8 @@ D:\Desenvolvimento\rabbitmq\SalesForce\obj\Debug\Main.pdb
 D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\Main.dll.config
 D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\Main.dll
 D:\Desenvolvimento\rabbitmq\SalesForce\bin\Debug\Main.pdb
+D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\Main.dll.config
+D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\Main.dll
+D:\Desenvolvimento\Rabbit\SalesForce\bin\Debug\Main.pdb
+D:\Desenvolvimento\Rabbit\SalesForce\obj\Debug\Main.dll
+D:\Desenvolvimento\Rabbit\SalesForce\obj\Debug\Main.pdb

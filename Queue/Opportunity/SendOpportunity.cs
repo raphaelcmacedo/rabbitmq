@@ -37,24 +37,23 @@ namespace Queue.Opportunity
             }
         }
 
-        public static void SendToExchange(string message, string exchange)
+        public void SendToExchange(string message)
         {
-
-
-
+            string exchange = "renewal.opportunity.topic";
+            var routingKey = "opportunity.global.renewal.rk";
+            
             var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "qa" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-
+                var properties = channel.CreateBasicProperties();
+                properties.Persistent = true;
 
                 channel.ExchangeDeclare(exchange: exchange, type: "topic", durable: true);
-
-
                 var body = Encoding.UTF8.GetBytes(message);
 
                 channel.BasicPublish(exchange: exchange,
-                                     routingKey: "",
+                                     routingKey: routingKey,
                                      basicProperties: null,
                                      body: body);
             }

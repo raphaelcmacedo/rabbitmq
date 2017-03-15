@@ -54,7 +54,7 @@ namespace Queue.Opportunity
                 string opportunityMessage = integration.CreateOpportunity(salesDataMessage);
                 //Send opportunity message to rabbitmq
                 SendOpportunity send = new SendOpportunity();
-                send.Send(opportunityMessage);
+                send.SendToExchange(opportunityMessage);
                 //Send ack to queue
                 //channel.BasicAck(ea.DeliveryTag, false);
                 
@@ -73,7 +73,7 @@ namespace Queue.Opportunity
         public void CreateOpportunityListener()
         {
             listen = true;
-            string queue = "ha.bwopportunity.queue";
+            string queue = "ha.renewalopportunity.queue";
             var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "qa" };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
@@ -112,12 +112,12 @@ namespace Queue.Opportunity
                 integration.CreateSalesForceOpportunity(message);
 
                 //Send ack to queue
-                //channel.BasicAck(ea.DeliveryTag, false);
+                channel.BasicAck(ea.DeliveryTag, false);
             }
             catch (Exception e)
             {
                 //Send ack
-                //channel.BasicReject(ea.DeliveryTag, false);
+                channel.BasicReject(ea.DeliveryTag, false);
                 //Create ticket
                 Email.SendEmail(message, e.Message);
             }

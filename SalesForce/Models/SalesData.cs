@@ -23,6 +23,6 @@ namespace Main.Models
         [ForeignKey("SoldToId")]
         public virtual Company SoldTo { get; set; }
 
-        public ICollection<LineItem> LineItems;
+        public virtual ICollection<LineItem> LineItems { get; set; }
     }
 }

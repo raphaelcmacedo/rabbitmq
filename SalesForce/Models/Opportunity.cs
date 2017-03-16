@@ -26,7 +26,7 @@ namespace Main.Models
         public String Name { get; set; }
         public String AccountID { get; set; }
         public String AccountName { get; set; }
-        public DateTime CloseDate { get; set; }
+        public DateTime? CloseDate { get; set; }
         public String StageName { get; set; }
         public String Type { get; set; }
         public String WCType { get; set; }

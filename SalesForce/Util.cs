@@ -32,8 +32,9 @@ namespace Main
             return null;
         }
 
-        public static int ToInt(string value)
+        public static int ToInt(XmlNode outterNode, string field)
         {
+            string value = GetValue(outterNode, field);
             value = value.Replace(",", "");
             int index = value.IndexOf('.');
             if (index > 0)
@@ -52,8 +53,9 @@ namespace Main
             }
         }
 
-        public static DateTime? ToDate(string value)
+        public static DateTime? ToDate(XmlNode outterNode, string field)
         {
+            string value = GetValue(outterNode, field);
             if (!String.IsNullOrWhiteSpace(value))
             {
                 return DateTime.Parse(value, cultureInfo);
@@ -64,8 +66,9 @@ namespace Main
             }
         }
 
-        public static decimal ToDecimal(string value)
+        public static decimal ToDecimal(XmlNode outterNode, string field)
         {
+            string value = GetValue(outterNode, field);
             //Limpa a string
             value = value.Replace("USD", "").Trim();
             value = value.Replace("%", "").Trim();

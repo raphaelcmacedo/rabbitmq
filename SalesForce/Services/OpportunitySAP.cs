@@ -55,19 +55,19 @@ namespace Main.Services
                 item.CreatedBy = Util.GetValue(node, "ns0:CreatedBy");
                 item.AccountManagerId = Util.GetValue(node, "ns0:AccountManagerID");
                 item.AccountManagerName = Util.GetValue(node, "ns0:AccountManagerName");
-                item.SalesOrderQty = Util.ToInt(node["ns0:SalesOrderQty"].InnerText);
+                item.SalesOrderQty = Util.ToInt(node, "ns0:SalesOrderQty");
                 item.SalesUnit = Util.GetValue(node, "ns0:SalesUnit");
-                item.BillingCost = Util.ToDecimal(node["ns0:BillingCost"].InnerText);
-                item.BillingValue = Util.ToDecimal(node["ns0:BillingValue"].InnerText);
+                item.BillingCost = Util.ToDecimal(node, "ns0:BillingCost");
+                item.BillingValue = Util.ToDecimal(node, "ns0:BillingValue");
                 item.DocumentCurrency = Util.GetValue(node, "ns0:DocumentCurrency");
                 item.ContractNo = Util.GetValue(node, "ns0:ContractNo");
-                item.StartDate = Util.ToDate(node["ns0:StartDate"].InnerText);
-                item.EndDate = Util.ToDate(node["ns0:EndDate"].InnerText);
+                item.StartDate = Util.ToDate(node, "ns0:StartDate");
+                item.EndDate = Util.ToDate(node, "ns0:EndDate");
                 item.ManufacturerQuoteNo = Util.GetValue(node, "ns0:ManufacturerQuoteNo");
                 item.ModelNo = Util.GetValue(node, "ns0:ModelNo");
                 item.NSP = Util.GetValue(node, "ns0:NSP");
                 item.IsEarliestInvoicedItem = Util.GetValue(node, "ns0:IsEarliestInvoicedItem");
-                item.EarliestBillingPostDate = Util.ToDate(node["ns0:EarliestBillingPostDate"].InnerText);
+                item.EarliestBillingPostDate = Util.ToDate(node, "ns0:EarliestBillingPostDate");
                 item.ManufacturerID = Util.GetValue(node, "ns0:ManufacturerID");
                 item.ManufacturerName = Util.GetValue(node, "ns0:ManufacturerName");
                 item.ManufacturerAccreditationLevelForSoldTo = Util.GetValue(node, "ns0:ManufacturerAccreditationLevelForSoldTo");
@@ -89,16 +89,20 @@ namespace Main.Services
 
                 //Contract
                 XmlNode contractNode = node["ns0:Contract"];
-                Contract contract = new Contract();
-                item.Contract = contract;
-                contract.ContractNo = Util.GetValue(contractNode, "ns0:ContractNo");
-                contract.SalesOrderNo = Util.GetValue(contractNode, "ns0:SalesOrderNo");
-                contract.ManufacturerInvoiceNo = Util.GetValue(contractNode, "ns0:ManufacturerInvoiceNo");
-                contract.ManufacturerQuoteNo = Util.GetValue(contractNode, "ns0:ManufacturerQuoteNo");
-                contract.ModelNo = Util.GetValue(contractNode, "ns0:ModelNo");
-                contract.NSP = Util.GetValue(contractNode, "ns0:NSP");
-                contract.StartDate = Util.ToDate(contractNode["ns0:StartDate"].InnerText);
-                contract.EndDate = Util.ToDate(contractNode["ns0:EndDate"].InnerText);
+                if (contractNode != null)
+                {
+                    Contract contract = new Contract();
+                    item.Contract = contract;
+                    contract.ContractNo = Util.GetValue(contractNode, "ns0:ContractNo");
+                    contract.SalesOrderNo = Util.GetValue(contractNode, "ns0:SalesOrderNo");
+                    contract.ManufacturerInvoiceNo = Util.GetValue(contractNode, "ns0:ManufacturerInvoiceNo");
+                    contract.ManufacturerQuoteNo = Util.GetValue(contractNode, "ns0:ManufacturerQuoteNo");
+                    contract.ModelNo = Util.GetValue(contractNode, "ns0:ModelNo");
+                    contract.NSP = Util.GetValue(contractNode, "ns0:NSP");
+                    contract.StartDate = Util.ToDate(contractNode, "ns0:StartDate");
+                    contract.EndDate = Util.ToDate(contractNode, "ns0:EndDate");
+                }
+                
 
                 items.Add(item);
             }

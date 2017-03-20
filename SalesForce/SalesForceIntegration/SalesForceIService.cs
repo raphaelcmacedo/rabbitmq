@@ -128,6 +128,10 @@ namespace Main.SalesForceIntegration
             SalesForceSVC.SaveResult[] saveResult = null;
             ConfigureHeaders();
 
+            //Set timeout
+            serviceClient.InnerChannel.OperationTimeout = new TimeSpan(0, 1, 0);
+
+
             if (opp == null)
             {
                 opp = this.FillOpportunityObj();
@@ -135,7 +139,7 @@ namespace Main.SalesForceIntegration
 
 
             SalesForceSVC.sObject[] objs = new List<SalesForceSVC.sObject> { opp }.ToArray();
-
+            opp.Account.Cou
             SalesForceSVC.LimitInfo[] infoHeader = getInfoHeader();
 
             serviceClient.create(sessionHeader, ruleHeader, mruHeader, truncateHeader, trackingHeader,

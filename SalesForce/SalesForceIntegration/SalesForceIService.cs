@@ -92,20 +92,12 @@ namespace Main.SalesForceIntegration
         {
             SalesForceSVC.QueryResult queryResult = null;
 
-            try
-            {
-                ConfigureHeaders();
+            ConfigureHeaders();
 
-                SalesForceSVC.QueryOptions queryOptions = new SalesForceSVC.QueryOptions();
-                string queryString = "SELECT WC_SAP_Cust_ID__c FROM Account where WC_SAP_Cust_ID__c = '" + externalId + "'";
-                serviceClient.query(sessionHeader, queryOptions, mruHeader, versionHeader, queryString, out queryResult);
-
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            SalesForceSVC.QueryOptions queryOptions = new SalesForceSVC.QueryOptions();
+            string queryString = "SELECT WC_SAP_Cust_ID__c FROM Account where WC_SAP_Cust_ID__c = '" + externalId + "'";
+            serviceClient.query(sessionHeader, queryOptions, mruHeader, versionHeader, queryString, out queryResult);
+            
             return queryResult;
         }
 
@@ -130,14 +122,7 @@ namespace Main.SalesForceIntegration
 
             //Set timeout
             serviceClient.InnerChannel.OperationTimeout = new TimeSpan(0, 1, 0);
-
-
-            if (opp == null)
-            {
-                opp = this.FillOpportunityObj();
-            }
-
-
+            
             SalesForceSVC.sObject[] objs = new List<SalesForceSVC.sObject> { opp }.ToArray();
             SalesForceSVC.LimitInfo[] infoHeader = getInfoHeader();
 
@@ -188,34 +173,7 @@ namespace Main.SalesForceIntegration
         }
 
 
-        public SalesForceSVC.SaveResult[] UpdateOpportunity()
-        {
-            SalesForceSVC.SaveResult[] saveResult = null;
-
-            try
-            {
-                ConfigureHeaders();
-
-                SalesForceSVC.Opportunity opp = this.FillOpportunityObj();
-                SalesForceSVC.sObject[] objs = new List<SalesForceSVC.sObject> { opp }.ToArray();
-
-                SalesForceSVC.LimitInfo[] infoHeader = getInfoHeader();
-
-                serviceClient.create(sessionHeader, ruleHeader, mruHeader, truncateHeader, trackingHeader,
-                    streamingHeader, allOrNoneHeader, duplicateHeader, localeOption, debugHeader, versionHeader,
-                        emailHeader, objs, out infoHeader, out saveResult);
-                
-            }
-            catch (Exception e)
-            {
-
-                Console.WriteLine(e.Message + "\n" + e.StackTrace);
-            }
-
-            return saveResult;
-
-
-        }
+        
         private SalesForceSVC.LimitInfo[] getInfoHeader()
         {
             SalesForceSVC.LimitInfo info = new SalesForceSVC.LimitInfo();
@@ -226,40 +184,7 @@ namespace Main.SalesForceIntegration
             return infoHeader;
 
         }
-        public SalesForceSVC.sObject[] RetrieveRecords(SalesForceSVC.SaveResult[] saveResult)
-        {
-            SalesForceSVC.sObject[] objs = null;
-
-            String[] ids = new string[saveResult.Length];
-
-            for (int i = 0; i < saveResult.Length; i++)
-            {
-                ids[i] = saveResult[i].id;
-            }
-            try
-            {
-
-                SalesForceSVC.QueryOptions queryOptions = new SalesForceSVC.QueryOptions();
-
-                string fieldList = "AccountId, SyncedQuoteId, Name, Amount, CreatedDate, StageName";
-                string sObjectsType = "Opportunity";
-
-                SalesForceSVC.Opportunity opp = new SalesForceSVC.Opportunity();
-                opp = FillOpportunityObj();
-                objs = new List<SalesForceSVC.sObject> { opp }.ToArray();
-
-
-                serviceClient.retrieve(sessionHeader, queryOptions, mruHeader, versionHeader, fieldList, sObjectsType, ids, out objs);
-
-                return objs;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message + "\n" + e.StackTrace);
-            }
-
-            return objs;
-        }
+        
         private void ConfigureHeaders()
         {
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
@@ -300,22 +225,6 @@ namespace Main.SalesForceIntegration
             emailHeader.triggerUserEmail = false;
 
         }
-        private SalesForceSVC.Opportunity FillOpportunityObj()
-        {
-            SalesForceSVC.Opportunity op = new SalesForceSVC.Opportunity();
-            op.AccountId = "";
-            op.SyncedQuoteId = "";
-            op.Name = "Teste Prion";
-            op.StageName = "Testing";
-            op.CreatedDate = DateTime.Now;
-            op.CloseDate = DateTime.Today.AddDays(30);
-            op.CloseDateSpecified = true;
-
-            op.Amount = 10;
-            op.AmountSpecified = true;
-
-            return op;
-
-        }
+        
     }
 }

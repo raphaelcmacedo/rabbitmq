@@ -166,8 +166,15 @@ namespace Main.Services
             opportunity.Owner = (result != null && result.records != null && result.records.Length > 0) ? (SalesForceSVC.User)result.records[0] : null;
 
             result = service.FindAccountByExternalId(opp.AccountID);
-            opportunity.Account = (result != null && result.records != null && result.records.Length > 0) ? (SalesForceSVC.Account)result.records[0] : null;
-
+            if (result != null && result.records != null && result.records.Length > 0)
+            {
+                opportunity.Account = (SalesForceSVC.Account)result.records[0];
+            }
+            else
+            {
+                throw new Exception("The account with ID " + opp.AccountID + " has not be found in SalesForce, so the Opportunity " + opp.Name + " has not been created");
+            }
+            
             opportunity.WC_Westcon_Opportunity_Type__c = opp.WCType;
 
             result = service.FindUserByName(opp.MainAccountManagerID);

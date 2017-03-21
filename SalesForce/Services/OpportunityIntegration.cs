@@ -23,11 +23,6 @@ namespace Main.Services
             SalesData salesData = sap.ReadXML(message);
             AttachmentToFile attachmentService = new AttachmentToFile();
 
-            //Save Sales Data
-            using (SalesDataRepository repository = new SalesDataRepository())
-            {
-                repository.Add(salesData);
-            }
             //Create sales data spreadsheet
             string sheetBase64 = attachmentService.CreateExcel(salesData);
 
@@ -35,15 +30,13 @@ namespace Main.Services
             Opportunity opportunity = OpportunityConvertion.SalesDataToOpportunity(salesData);
             opportunity.RelatedAttachment_base64 = sheetBase64;
 
-            //Save Opportunity
             using (OpportunityRepository repository = new OpportunityRepository())
             {
-                repository.Add(opportunity);
+                repository.SaveMessageEntries(salesData, opportunity);
             }
 
             //Create xml message
             string xml = Util.ToXml(opportunity, typeof(Opportunity));
-
             
             return xml;
         }

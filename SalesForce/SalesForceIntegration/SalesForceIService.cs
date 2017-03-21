@@ -139,7 +139,6 @@ namespace Main.SalesForceIntegration
 
 
             SalesForceSVC.sObject[] objs = new List<SalesForceSVC.sObject> { opp }.ToArray();
-            opp.Account.Cou
             SalesForceSVC.LimitInfo[] infoHeader = getInfoHeader();
 
             serviceClient.create(sessionHeader, ruleHeader, mruHeader, truncateHeader, trackingHeader,

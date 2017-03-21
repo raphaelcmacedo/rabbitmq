@@ -24,7 +24,7 @@ namespace SalesForce.Services
             opportunity.Type = "Renewal";
             opportunity.WCType = "Renewals";
             opportunity.GeneratedBy = "Renewals";
-            
+
             decimal totalBillingValue = 0;
             decimal totalBillingCost = 0;
             foreach (LineItem lineItem in salesData.LineItems)
@@ -47,7 +47,7 @@ namespace SalesForce.Services
         {
             Dictionary<string, int> accountManagerIDs = new Dictionary<string, int>();
             Dictionary<string, int> salesPractices = new Dictionary<string, int>();
-            
+
             foreach (LineItem lineItem in salesData.LineItems)
             {
                 string accountManager = lineItem.AccountManagerId;
@@ -72,7 +72,7 @@ namespace SalesForce.Services
                 }
                 totalSalesPractice++;
                 salesPractices[salesPractice] = totalSalesPractice;
-                
+
             }
             //Account Manager
             int maxAccountManagers = accountManagerIDs.Values.Max();
@@ -84,20 +84,35 @@ namespace SalesForce.Services
             string ownerID = salesPractices.FirstOrDefault(x => x.Value == maxSalesPractice).Key;
             opportunity.OwnerID = ownerID;
 
-            //Close Date
+            opportunity.CloseDate = CalculateEndDate(salesData);
+
+
+
+        }
+
+        private static DateTime? CalculateEndDate(SalesData salesData)
+        {
+            //Try to fetch date from EndDate
             DateTime? closeDate = salesData.LineItems.Min(x => x.EndDate);
-            if (closeDate == null)
-            {
+            if (closeDate != null)
+            {// If we have the EndDate, we need to add 1 Month
+                 closeDate = closeDate.Value.AddMonths(1);
+            }
+            else
+            {//Try to fetch date from BillingDate
                 closeDate = salesData.LineItems.Min(x => x.EarliestBillingPostDate);
+                if (closeDate != null)
+                {// If we have the Billing Date, we need to add 13 Month
+                    closeDate = closeDate.Value.AddMonths(13);
+                }
             }
 
-            if (closeDate != null && (closeDate??DateTime.MinValue).Year < 2000)
+            if (closeDate == null || (closeDate ?? DateTime.MinValue).Year < 2000)
             {
-                closeDate = (DateTime)System.Data.SqlTypes.SqlDateTime.MinValue;
+                throw new Exception("The sales data " + salesData.SalesOrderNo + " does not contain any valid Close Date.");
             }
-            opportunity.CloseDate = closeDate;
 
-            
+            return closeDate;
         }
     }
 }

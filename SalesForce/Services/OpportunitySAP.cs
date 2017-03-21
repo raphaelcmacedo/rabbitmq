@@ -156,7 +156,7 @@ namespace Main.Services
             SalesForceIntegration.SalesForceService service = new SalesForceIntegration.SalesForceService();
             //Required fields
             opportunity.CreatedDate = DateTime.Now;
-            opportunity.CloseDate = DateTime.Now.AddDays(10);
+            opportunity.CloseDate = opp.CloseDate;
             opportunity.CloseDateSpecified = true;
 
             //Opportunity fields

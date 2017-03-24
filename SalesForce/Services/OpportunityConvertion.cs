@@ -47,47 +47,73 @@ namespace SalesForce.Services
         {
             Dictionary<string, int> accountManagerIDs = new Dictionary<string, int>();
             Dictionary<string, int> salesPractices = new Dictionary<string, int>();
+            Dictionary<string, int> manufacturerIDs = new Dictionary<string, int>();
 
             foreach (LineItem lineItem in salesData.LineItems)
             {
                 string accountManager = lineItem.AccountManagerId;
                 string salesPractice = lineItem.SalesPractice;
+                string manufacturer = lineItem.ManufacturerID;
                 string sku = lineItem.SKU;
 
                 int totalAccountManager = 0;
                 int totalSalesPractice = 0;
+                int totalManufacturer = 0;
 
                 //Count account manager
-                if (accountManagerIDs.ContainsKey(accountManager))
+                if (accountManager != null)
                 {
-                    totalAccountManager = accountManagerIDs[accountManager];
+                    if (accountManagerIDs.ContainsKey(accountManager))
+                    {
+                        totalAccountManager = accountManagerIDs[accountManager];
+                    }
+                    totalAccountManager++;
+                    accountManagerIDs[accountManager] = totalAccountManager;
                 }
-                totalAccountManager++;
-                accountManagerIDs[accountManager] = totalAccountManager;
-
                 //Count sales practices
-                if (salesPractices.ContainsKey(salesPractice))
+                if (salesPractice != null)
                 {
-                    totalSalesPractice = salesPractices[salesPractice];
+                    if (salesPractices.ContainsKey(salesPractice))
+                    {
+                        totalSalesPractice = salesPractices[salesPractice];
+                    }
+                    totalSalesPractice++;
+                    salesPractices[salesPractice] = totalSalesPractice;
                 }
-                totalSalesPractice++;
-                salesPractices[salesPractice] = totalSalesPractice;
 
+                //Count ManufacturerIds
+                if(manufacturer != null)
+                {
+                    if (manufacturerIDs.ContainsKey(manufacturer))
+                    {
+                        totalManufacturer = manufacturerIDs[manufacturer];
+                    }
+                    totalManufacturer++;
+                    manufacturerIDs[manufacturer] = totalManufacturer++;
+                }
             }
             //Account Manager
-            int maxAccountManagers = accountManagerIDs.Values.Max();
-            string mainAccountManager = accountManagerIDs.FirstOrDefault(x => x.Value == maxAccountManagers).Key;
+            int maxAccountManagers = (accountManagerIDs.Count > 0) ? accountManagerIDs.Values.Max() : 0;
+            string mainAccountManager = (accountManagerIDs.Count > 0) 
+                ? accountManagerIDs.FirstOrDefault(x => x.Value == maxAccountManagers).Key
+                : null;
             opportunity.MainAccountManagerID = mainAccountManager;
 
             //Sales Practice
-            int maxSalesPractice = salesPractices.Values.Max();
-            string ownerID = salesPractices.FirstOrDefault(x => x.Value == maxSalesPractice).Key;
+            int maxSalesPractice = (salesPractices.Count > 0) ? salesPractices.Values.Max() : 0;
+            string ownerID = (salesPractices.Count > 0) 
+                ? salesPractices.FirstOrDefault(x => x.Value == maxSalesPractice).Key
+                :null ;
             opportunity.OwnerID = ownerID;
 
+            //Manufacturer
+            int maxManufacturer = (manufacturerIDs.Count > 0) ? manufacturerIDs.Values.Max() : 0;
+            string manufacturerID = (manufacturerIDs.Count > 0)
+                ? manufacturerIDs.FirstOrDefault(x => x.Value == maxManufacturer).Key
+                : null;
+            opportunity.ManufacturerID = manufacturerID;
+
             opportunity.CloseDate = CalculateEndDate(salesData);
-
-
-
         }
 
         private static DateTime? CalculateEndDate(SalesData salesData)

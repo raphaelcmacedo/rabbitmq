@@ -101,6 +101,19 @@ namespace Main.SalesForceIntegration
             return queryResult;
         }
 
+        //public SalesForceSVC.QueryResult FindManufacturerByExternalId(string externalId)
+        //{
+        //    SalesForceSVC.QueryResult queryResult = null;
+
+        //    ConfigureHeaders();
+
+        //    SalesForceSVC.QueryOptions queryOptions = new SalesForceSVC.QueryOptions();
+        //    string queryString = "SELECT WC_Authorized_Vendors__c FROM Account where WC_SAP_Cust_ID__c = '" + externalId + "'";
+        //    serviceClient.query(sessionHeader, queryOptions, mruHeader, versionHeader, queryString, out queryResult);
+
+        //    return queryResult;
+        //}
+
         public SalesForceSVC.QueryResult FindAllRabbitMQ()
         {
             SalesForceSVC.QueryResult queryResult = null;

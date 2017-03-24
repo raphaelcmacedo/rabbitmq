@@ -15,30 +15,38 @@ namespace Main.Services
 {
     public class OpportunityIntegration
     {
+        private static int i = 0;
+
         public string CreateOpportunity(string message)
         {
-
-            //Read xml
-            OpportunitySAP sap = new OpportunitySAP();
-            SalesData salesData = sap.ReadXML(message);
-            AttachmentToFile attachmentService = new AttachmentToFile();
-
-            //Create sales data spreadsheet
-            string sheetBase64 = attachmentService.CreateExcel(salesData);
-
-            //Convert sales data to opportunity
-            Opportunity opportunity = OpportunityConvertion.SalesDataToOpportunity(salesData);
-            opportunity.RelatedAttachment_base64 = sheetBase64;
-
-            using (OpportunityRepository repository = new OpportunityRepository())
+            try
             {
-                repository.SaveMessageEntries(salesData, opportunity);
-            }
+                //Read xml
+                OpportunitySAP sap = new OpportunitySAP();
+                SalesData salesData = sap.ReadXML(message);
+                AttachmentToFile attachmentService = new AttachmentToFile();
 
-            //Create xml message
-            string xml = Util.ToXml(opportunity, typeof(Opportunity));
-            
-            return xml;
+                //Create sales data spreadsheet
+                string sheetBase64 = attachmentService.CreateExcel(salesData);
+
+                //Convert sales data to opportunity
+                Opportunity opportunity = OpportunityConvertion.SalesDataToOpportunity(salesData);
+                opportunity.RelatedAttachment_base64 = sheetBase64;
+
+                using (OpportunityRepository repository = new OpportunityRepository())
+                {
+                    repository.SaveMessageEntries(salesData, opportunity);
+                }
+
+                //Create xml message
+                string xml = Util.ToXml(opportunity, typeof(Opportunity));
+                Console.WriteLine(++i);
+                return xml;
+            }catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return "";
+            }
         }
 
         public void CreateSalesForceOpportunity(string messsage)

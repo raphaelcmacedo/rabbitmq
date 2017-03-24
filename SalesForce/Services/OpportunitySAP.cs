@@ -174,7 +174,20 @@ namespace Main.Services
             {
                 throw new Exception("The account with ID " + opp.AccountID + " has not be found in SalesForce, so the Opportunity " + opp.Name + " has not been created");
             }
-            
+
+            result = service.FindAccountByExternalId(opp.ManufacturerID);
+            if (result != null && result.records != null && result.records.Length > 0)
+            {
+                opportunity.WC_Authorized_Vendors__r = (SalesForceSVC.Account)result.records[0];
+                opportunity.WC_Authorized_Vendors__c = opportunity.WC_Authorized_Vendors__r.Id;
+            }
+            else
+            {
+                throw new Exception("The manufacturer account with ID " + opp.ManufacturerID + " has not be found in SalesForce, so the Opportunity " + opp.Name + " has not been created");
+
+            }
+
+            //opportunity.WC_Authorized_Vendors__c = opp.ManufacturerName;
             opportunity.WC_Westcon_Opportunity_Type__c = opp.WCType;
 
             result = service.FindUserByName(opp.MainAccountManagerID);

@@ -161,9 +161,12 @@ namespace Main.Services
 
             //Opportunity fields
             opportunity.Name = opp.Name;
-
-            result = service.FindUserByName(opp.OwnerID);
+            /*opp.OwnerID = "Linda.Cardellini@westcon.com";
+            result = service.FindUserByEmail(opp.OwnerID);
             opportunity.Owner = (result != null && result.records != null && result.records.Length > 0) ? (SalesForceSVC.User)result.records[0] : null;
+            */
+
+            opportunity.Owner = null;
 
             result = service.FindAccountByExternalId(opp.AccountID);
             if (result != null && result.records != null && result.records.Length > 0)
@@ -203,8 +206,11 @@ namespace Main.Services
             {
                 opportunity.WC_Gross_Margin_Percent__c = (double)((opp.TotalBillingValue - opp.TotalBillingCost) * 100 / opp.TotalBillingValue);
             }
-
+            opportunity.Amount = (double)opp.TotalBillingValue;
             opportunity.Type = opp.Type;
+
+            //INNO-217
+            opportunity.WC_End_User__c = opp.EndUserName;
 
             return opportunity;
 

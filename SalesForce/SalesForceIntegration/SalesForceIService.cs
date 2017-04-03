@@ -88,6 +88,27 @@ namespace Main.SalesForceIntegration
             return queryResult;
         }
 
+        public SalesForceSVC.QueryResult FindUserByEmail(string email)
+        {
+            SalesForceSVC.QueryResult queryResult = null;
+
+            try
+            {
+                ConfigureHeaders();
+                SalesForceSVC.QueryOptions queryOptions = new SalesForceSVC.QueryOptions();
+                string queryString = "SELECT Id,WC_External_Username__c FROM User where Email = '" + email + "'";
+                serviceClient.query(sessionHeader, queryOptions, mruHeader, versionHeader, queryString, out queryResult);
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return queryResult;
+        }
+
         public SalesForceSVC.QueryResult FindAccountByExternalId(string externalId)
         {
             SalesForceSVC.QueryResult queryResult = null;

@@ -17,6 +17,6 @@ namespace Main.Contexts
         public DbSet<Contract> Contracts { get; set; }
         public DbSet<LineItem> LineItems { get; set; }
         public DbSet<SalesData> SalesDatas { get; set; }
-
+        public DbSet<Settings> Settings { get; set; }
     }
 }

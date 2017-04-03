@@ -32,12 +32,17 @@ namespace Main.Models
         public String WCType { get; set; }
         public String OwnerID { get; set; }
         public String OwnerName { get; set; }
+        public String OwnerEmail { get; set; }
         public String MainAccountManagerID { get; set; }
         public String MainAccountManagerName { get; set; }
         public String CurrencyCode { get; set; }
         public decimal TotalBillingValue { get; set; }
         public decimal TotalBillingCost { get; set; }
         public String GeneratedBy { get; set; }
+        public String ManufacturerID { get; set; }
+        public String ManufacturerName { get; set; }
+        public String EndUserID { get; set; }
+        public String EndUserName { get; set; }
         [NotMapped]
         public String RelatedAttachment_base64 { get; set; }
         public string SalesForceID { get; set; }

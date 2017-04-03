@@ -9,8 +9,16 @@ namespace SalesForce.Services
 {
     public static class OpportunityConvertion
     {
+        public static Dictionary<string, string> Settings { get; set; }
+
         public static Opportunity SalesDataToOpportunity(SalesData salesData)
         {
+            if(Settings == null)
+            {
+                Main.Repositories.SettingsRepository settingsRepository = new Main.Repositories.SettingsRepository();
+                Settings = settingsRepository.GetConfig(Main.Helpers.Settings.ApplicationName);
+            }
+
             Opportunity opportunity = new Opportunity();
             opportunity.Name = salesData.SalesOrderNo;
             if (salesData.SoldTo != null)
@@ -18,12 +26,12 @@ namespace SalesForce.Services
                 opportunity.AccountID = salesData.SoldTo.WestconId;
             }
 
-            /* Hardcoded */
+          
             //opportunity.CloseDate = 
-            opportunity.StageName = "Qualification";
-            opportunity.Type = "Renewal";
-            opportunity.WCType = "Renewals";
-            opportunity.GeneratedBy = "Renewals";
+            opportunity.StageName = Settings["Stage Name"];// "Qualification";
+            opportunity.Type = Settings["Type"];//"Renewal";
+            opportunity.WCType = Settings["Westcon Type"]; //"Renewals";
+            opportunity.GeneratedBy = Settings["Created By"]; //"Renewals";
 
             decimal totalBillingValue = 0;
             decimal totalBillingCost = 0;
@@ -48,17 +56,22 @@ namespace SalesForce.Services
             Dictionary<string, int> accountManagerIDs = new Dictionary<string, int>();
             Dictionary<string, int> salesPractices = new Dictionary<string, int>();
             Dictionary<string, int> manufacturerIDs = new Dictionary<string, int>();
+            Dictionary<string, int> endUsers = new Dictionary<string, int>();
 
             foreach (LineItem lineItem in salesData.LineItems)
             {
                 string accountManager = lineItem.AccountManagerId;
                 string salesPractice = lineItem.SalesPractice;
                 string manufacturer = lineItem.ManufacturerID;
+                //concatenates the ID and the name of enduser
+                string endUser = lineItem.EndUser.WestconId + ";" + lineItem.EndUser.Name;
+
                 string sku = lineItem.SKU;
 
                 int totalAccountManager = 0;
                 int totalSalesPractice = 0;
                 int totalManufacturer = 0;
+                int totalEndUser = 0;
 
                 //Count account manager
                 if (accountManager != null)
@@ -91,20 +104,24 @@ namespace SalesForce.Services
                     totalManufacturer++;
                     manufacturerIDs[manufacturer] = totalManufacturer++;
                 }
+
+                //Count EndUser
+                if (endUser != null)
+                {
+                    if (endUsers.ContainsKey(endUser))
+                    {
+                        totalEndUser = endUsers[endUser];
+                    }
+                    totalEndUser++;
+                    endUsers[endUser] = totalEndUser++;
+                }
             }
             //Account Manager
             int maxAccountManagers = (accountManagerIDs.Count > 0) ? accountManagerIDs.Values.Max() : 0;
             string mainAccountManager = (accountManagerIDs.Count > 0) 
                 ? accountManagerIDs.FirstOrDefault(x => x.Value == maxAccountManagers).Key
                 : null;
-            opportunity.MainAccountManagerID = mainAccountManager;
-
-            //Sales Practice
-            int maxSalesPractice = (salesPractices.Count > 0) ? salesPractices.Values.Max() : 0;
-            string ownerID = (salesPractices.Count > 0) 
-                ? salesPractices.FirstOrDefault(x => x.Value == maxSalesPractice).Key
-                :null ;
-            opportunity.OwnerID = ownerID;
+            opportunity.MainAccountManagerID = mainAccountManager;           
 
             //Manufacturer
             int maxManufacturer = (manufacturerIDs.Count > 0) ? manufacturerIDs.Values.Max() : 0;
@@ -112,6 +129,37 @@ namespace SalesForce.Services
                 ? manufacturerIDs.FirstOrDefault(x => x.Value == maxManufacturer).Key
                 : null;
             opportunity.ManufacturerID = manufacturerID;
+
+            //Sales Practice
+            int maxSalesPractice = (salesPractices.Count > 0) ? salesPractices.Values.Max() : 0;
+            string salesPracticeName = (salesPractices.Count > 0)
+                ? salesPractices.FirstOrDefault(x => x.Value == maxSalesPractice).Key
+                : null;
+           
+            //Owner
+            opportunity.OwnerID = salesPracticeName;            
+            #region "INNO-182"
+            //Main.Repositories.SalesMappingRepository repository = new Main.Repositories.SalesMappingRepository();
+            //opportunity.OwnerEmail = repository.GetMappedUserID(salesData.SalesOrg, salesPracticeName, manufacturerID);
+            #endregion "INNO-182"
+
+            //End User
+            int maxEndUser = (endUsers.Count > 0) ? endUsers.Values.Max() : 0;
+            string endUserStr = (endUsers.Count > 0)
+                ? endUsers.FirstOrDefault(x => x.Value == maxEndUser).Key
+                : null;
+
+            if (!string.IsNullOrEmpty(endUserStr))
+            {
+                opportunity.EndUserID = endUserStr.Split(';')[0];
+                opportunity.EndUserName = endUserStr.Split(';')[1];
+            }
+            else
+            {
+                opportunity.EndUserID = null;
+                opportunity.EndUserName = null;
+            }
+
 
             opportunity.CloseDate = CalculateEndDate(salesData);
         }

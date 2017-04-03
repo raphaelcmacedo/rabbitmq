@@ -11,12 +11,12 @@ namespace Queue.Opportunity
         public void Send(string message)
         {
 
-            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "qa"};
+            var factory = new ConnectionFactory() { HostName = Main.Helpers.Settings.QueueHost, UserName = Main.Helpers.Settings.QueueUserName, Password = Main.Helpers.Settings.QueuePassword, VirtualHost = Main.Helpers.Settings.QueueVirtualHostQA };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {
-            
-                string queue = "ha.bwopportunity.queue";
+
+                string queue = Main.Helpers.Settings.BwOpportunityQueue;
 
                 var properties = channel.CreateBasicProperties();
                 properties.Persistent = true;
@@ -39,10 +39,10 @@ namespace Queue.Opportunity
 
         public void SendToExchange(string message)
         {
-            string exchange = "renewal.opportunity.topic";
-            var routingKey = "opportunity.global.renewal.rk";
-            
-            var factory = new ConnectionFactory() { HostName = "DV0219", UserName = "queue_user", Password = "testing1", VirtualHost = "qa" };
+            string exchange = Main.Helpers.Settings.QueueExchange;
+            var routingKey = Main.Helpers.Settings.RoutingKey;
+
+            var factory = new ConnectionFactory() { HostName = Main.Helpers.Settings.QueueHost, UserName = Main.Helpers.Settings.QueueUserName, Password = Main.Helpers.Settings.QueuePassword, VirtualHost = Main.Helpers.Settings.QueueVirtualHostQA };
             using (var connection = factory.CreateConnection())
             using (var channel = connection.CreateModel())
             {

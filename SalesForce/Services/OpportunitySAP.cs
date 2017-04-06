@@ -161,12 +161,14 @@ namespace Main.Services
 
             //Opportunity fields
             opportunity.Name = opp.Name;
-            /*opp.OwnerID = "Linda.Cardellini@westcon.com";
-            result = service.FindUserByEmail(opp.OwnerID);
-            opportunity.Owner = (result != null && result.records != null && result.records.Length > 0) ? (SalesForceSVC.User)result.records[0] : null;
-            */
+            //opp.OwnerID = "sino.kochevar@westcongroup.com.wcuat"; //"andre.vellinha@westcon.com";
+            result = service.FindUserByUsername(opp.OwnerSFUserName);
 
-            opportunity.Owner = null;
+            if (result != null && result.records != null && result.records.Length > 0)
+            {
+                opportunity.OwnerId = ((SalesForceSVC.User)result.records[0]).Id;
+            }        
+           
 
             result = service.FindAccountByExternalId(opp.AccountID);
             if (result != null && result.records != null && result.records.Length > 0)
@@ -200,13 +202,16 @@ namespace Main.Services
             opportunity.CurrencyIsoCode = opp.CurrencyCode;
             //opportunity.Amount = 0;
             opportunity.WC_Forecast_Revenue__c = (double)opp.TotalBillingValue;
+            opportunity.WC_Forecast_Revenue__cSpecified = true;
             opportunity.WC_Gross_Margin_Amount__c = (double)(opp.TotalBillingValue - opp.TotalBillingCost);
             opportunity.WC_Gross_Margin_Amount__cSpecified = true;
             if (opp.TotalBillingValue > 0)
             {
                 opportunity.WC_Gross_Margin_Percent__c = (double)((opp.TotalBillingValue - opp.TotalBillingCost) * 100 / opp.TotalBillingValue);
+                opportunity.WC_Gross_Margin_Percent__cSpecified = true;
             }
             opportunity.Amount = (double)opp.TotalBillingValue;
+            opportunity.AmountSpecified = true;
             opportunity.Type = opp.Type;
 
             //INNO-217

@@ -25,7 +25,7 @@ namespace Main.Repositories
             parameters.Add(salesOrgParam);
 
             String sql = @"SELECT sm.SalesMappingId as SalesMappingId, sm.ApplicationId as ApplicationId, sm.SalesOrg as SalesOrg,sm.SalesPractice as SalesPractice, sm.Manufacturer as Manufacturer, 
-                            sm.MappedUserId as MappedUserId FROM [sap].[SalesMapping] as sm INNER JOIN[sap].[Application] as app ON app.ApplicationId = sm.ApplicationId ";
+                            sm.MappedUserId as MappedUserId, sm.MappedSFUserName  as MappedSFUserName FROM [sap].[SalesMapping] as sm INNER JOIN[sap].[Application] as app ON app.ApplicationId = sm.ApplicationId ";
 
 
             StringBuilder where = new StringBuilder();

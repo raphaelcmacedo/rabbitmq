@@ -88,7 +88,7 @@ namespace Main.SalesForceIntegration
             return queryResult;
         }
 
-        public SalesForceSVC.QueryResult FindUserByEmail(string email)
+        public SalesForceSVC.QueryResult FindUserByUsername(string userName)
         {
             SalesForceSVC.QueryResult queryResult = null;
 
@@ -96,15 +96,23 @@ namespace Main.SalesForceIntegration
             {
                 ConfigureHeaders();
                 SalesForceSVC.QueryOptions queryOptions = new SalesForceSVC.QueryOptions();
-                string queryString = "SELECT Id,WC_External_Username__c FROM User where Email = '" + email + "'";
+                string queryString = "SELECT Id FROM User where UserName = '" + userName + "'";
                 serviceClient.query(sessionHeader, queryOptions, mruHeader, versionHeader, queryString, out queryResult);
 
-
+                //List<SalesForceSVC.User> users = new List<SalesForceSVC.User>();
+                //for (int i = 0, len = queryResult.records.Length; i < len; i++)
+                //{
+                //    SalesForceSVC.User user = (SalesForceSVC.User)queryResult.records[i];
+                //    if (user.WC_External_Username__c != null && (user.IsActive??false))
+                //    {
+                //        users.Add(user);
+                //    }
+                //}
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                throw e;
             }
             return queryResult;
         }

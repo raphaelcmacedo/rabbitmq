@@ -140,7 +140,7 @@ namespace SalesForce.Services
             opportunity.OwnerID = salesPracticeName;            
             #region "INNO-182"
             //Main.Repositories.SalesMappingRepository repository = new Main.Repositories.SalesMappingRepository();
-            //opportunity.OwnerEmail = repository.GetMappedUserID(salesData.SalesOrg, salesPracticeName, manufacturerID);
+            //opportunity.OwnerSFUserName = repository.GetMappedUserID(salesData.SalesOrg, salesPracticeName, manufacturerID);
             #endregion "INNO-182"
 
             //End User

@@ -32,7 +32,7 @@ namespace Main.Models
         public String WCType { get; set; }
         public String OwnerID { get; set; }
         public String OwnerName { get; set; }
-        public String OwnerEmail { get; set; }
+        public String OwnerSFUserName { get; set; }
         public String MainAccountManagerID { get; set; }
         public String MainAccountManagerName { get; set; }
         public String CurrencyCode { get; set; }

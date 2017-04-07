@@ -161,14 +161,16 @@ namespace Main.Services
 
             //Opportunity fields
             opportunity.Name = opp.Name;
-            //opp.OwnerID = "sino.kochevar@westcongroup.com.wcuat"; //"andre.vellinha@westcon.com";
-            result = service.FindUserByUsername(opp.OwnerSFUserName);
 
-            if (result != null && result.records != null && result.records.Length > 0)
+            if (!string.IsNullOrEmpty(opp.OwnerSFUserName))
             {
-                opportunity.OwnerId = ((SalesForceSVC.User)result.records[0]).Id;
-            }        
-           
+                result = service.FindUserByUsername(opp.OwnerSFUserName);
+
+                if (result != null && result.records != null && result.records.Length > 0)
+                {
+                    opportunity.OwnerId = ((SalesForceSVC.User)result.records[0]).Id;
+                }
+            }
 
             result = service.FindAccountByExternalId(opp.AccountID);
             if (result != null && result.records != null && result.records.Length > 0)
@@ -184,7 +186,7 @@ namespace Main.Services
             if (result != null && result.records != null && result.records.Length > 0)
             {
                 opportunity.WC_Authorized_Vendors__r = (SalesForceSVC.Account)result.records[0];
-                opportunity.WC_Authorized_Vendors__c = opportunity.WC_Authorized_Vendors__r.Id;
+                opportunity.WC_Authorized_Vendors__c = opportunity.WC_Authorized_Vendors__r.Id;               
             }
             else
             {
@@ -192,6 +194,7 @@ namespace Main.Services
 
             }
 
+            opportunity.WC_Authorized_Vendors_MS__c = opp.ManufacturerName;
             //opportunity.WC_Authorized_Vendors__c = opp.ManufacturerName;
             opportunity.WC_Westcon_Opportunity_Type__c = opp.WCType;
 

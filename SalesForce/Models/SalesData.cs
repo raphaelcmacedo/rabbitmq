@@ -19,6 +19,7 @@ namespace Main.Models
         public String SourceSystem { get; set; }
         public String ExtractionRuleType { get; set; }
         public String Message { get; set; }
+        public DateTime CreationTimestamp { get; set; }
 
         [ForeignKey("SoldToId")]
         public virtual Company SoldTo { get; set; }

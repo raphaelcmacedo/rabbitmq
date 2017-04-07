@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 Salesforce.com Enterprise Web Services API Version 39.0
-Generated on 2017-04-06 17:36:10 +0000.
+Generated on 2017-01-31 18:25:18 +0000.
 
 Package Versions:
-SalesforceIQ Inbox (Version: 1.9, Namespace: relateiq)
-Salesforce1 and Chatter Apps (Version: 1.12, Namespace: sf_chttr_apps)
+Salesforce1 and Chatter Apps (Version: 1.11, Namespace: sf_chttr_apps)
 Salesforce Connected Apps (Version: 1.7, Namespace: sf_com_apps)
-Knowledge Tree (Version: 1.32, Namespace: kt)
 Custom Quote Sync (Version: 1.6, Namespace: quotesync)
-S4G Automatic Currency Updater (Version: 3.6, Namespace: s4g_currencies)
 
 Copyright 1999-2017 salesforce.com, inc.
 All Rights Reserved
@@ -35,6 +32,8 @@ All Rights Reserved
                     <element name="fieldsToNull"       type="xsd:string" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
                     <element name="Id"                 type="tns:ID" nillable="true" />
                 </sequence>
+                <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="AggregateResult">
@@ -43,6 +42,8 @@ All Rights Reserved
                         <sequence>
                             <any namespace="##targetNamespace" minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
                         </sequence>
+                        <attribute name="tmp" type="xsd:string" /> 
+                    
                     </extension>
                 </complexContent>
             </complexType>
@@ -154,7 +155,7 @@ All Rights Reserved
                         <element name="Phone" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="PhotoUrl" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="Posts" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Price_Agreement__c" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="Price_Agreements__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="ProcessInstances" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="ProcessSteps" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="Rebate_Program__c" nillable="true" minOccurs="0" type="xsd:string"/>
@@ -194,23 +195,16 @@ All Rights Reserved
                         <element name="WC_Comstor_Segment_GP_Forecast__c" nillable="true" minOccurs="0" type="xsd:double"/>
                         <element name="WC_Comstor_Segment_Revenue_Forecast__c" nillable="true" minOccurs="0" type="xsd:double"/>
                         <element name="WC_Comstor_Segment__c" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="WC_Count_of_invoiced_orders__c" nillable="true" minOccurs="0" type="xsd:double"/>
                         <element name="WC_Current_Fiscal_Year_Sales__c" nillable="true" minOccurs="0" type="xsd:double"/>
                         <element name="WC_Customer_Account_Group__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Email_Address__c" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="WC_Finance_Representative__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Freight_Plan__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_High_Level_Customer_Number__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Insurance__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Last_Fiscal_Year_Sales__c" nillable="true" minOccurs="0" type="xsd:double"/>
                         <element name="WC_Last_Invoice_Date__c" nillable="true" minOccurs="0" type="xsd:date"/>
                         <element name="WC_Marked_For_Deletion__c" nillable="true" minOccurs="0" type="xsd:boolean"/>
-                        <element name="WC_Number_of_Finance_Data__c" nillable="true" minOccurs="0" type="xsd:double"/>
-                        <element name="WC_Number_of_SAP_Quote_summaries__c" nillable="true" minOccurs="0" type="xsd:double"/>
-                        <element name="WC_Number_of_invoiced_orders__c" nillable="true" minOccurs="0" type="xsd:double"/>
-                        <element name="WC_Number_of_opportunities__c" nillable="true" minOccurs="0" type="xsd:double"/>
                         <element name="WC_Opportunity_Total__c" nillable="true" minOccurs="0" type="xsd:double"/>
-                        <element name="WC_Payment_Terms__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_SAP_Cust_ID__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Security_Segment_GP_Dollar_Forecast__c" nillable="true" minOccurs="0" type="xsd:double"/>
                         <element name="WC_Security_Segment_GP_Forecast__c" nillable="true" minOccurs="0" type="xsd:double"/>
@@ -222,7 +216,6 @@ All Rights Reserved
                         <element name="WC_UCC_Segment_Revenue_Forecast__c" nillable="true" minOccurs="0" type="xsd:double"/>
                         <element name="WC_UCC_Segment__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_USFinance_Rep__c" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="WC_US_CAN_Finance_Representative__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Vertical_Markets__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="Website" nillable="true" minOccurs="0" type="xsd:string"/>
                         </sequence>
@@ -796,6 +789,8 @@ All Rights Reserved
                         <element name="SystemModstamp" nillable="true" minOccurs="0" type="xsd:dateTime"/>
                         <element name="TestSuiteName" nillable="true" minOccurs="0" type="xsd:string"/>
                         </sequence>
+                        <attribute name="tmp" type="xsd:string" /> 
+                    
                     </extension>
                 </complexContent>
             </complexType>
@@ -2384,6 +2379,7 @@ All Rights Reserved
                         <element name="Opportunities__r" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="OpportunityContactRoles" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="OtherPhone" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="OutgoingEmailRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="Owner" nillable="true" minOccurs="0" type="ens:User"/>
                         <element name="OwnerId" nillable="true" minOccurs="0" type="tns:ID"/>
                         <element name="Personas" nillable="true" minOccurs="0" type="tns:QueryResult"/>
@@ -3837,6 +3833,8 @@ All Rights Reserved
                         <element name="ToIds" nillable="true" minOccurs="0" maxOccurs="unbounded" type="tns:ID"/>
                         <element name="ValidatedFromAddress" nillable="true" minOccurs="0" type="xsd:string"/>
                         </sequence>
+                      <attribute name="tmp" type="xsd:string" /> 
+                      
                     </extension>
                 </complexContent>
             </complexType>
@@ -4219,6 +4217,8 @@ All Rights Reserved
                         <element name="WhoCount" nillable="true" minOccurs="0" type="xsd:int"/>
                         <element name="WhoId" nillable="true" minOccurs="0" type="tns:ID"/>
                         </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                    
                     </extension>
                 </complexContent>
             </complexType>
@@ -5299,6 +5299,7 @@ All Rights Reserved
                         <element name="NotesAndAttachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="NumberOfEmployees" nillable="true" minOccurs="0" type="xsd:int"/>
                         <element name="OpenActivities" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="OutgoingEmailRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="Owner" nillable="true" minOccurs="0" type="ens:Name"/>
                         <element name="OwnerId" nillable="true" minOccurs="0" type="tns:ID"/>
                         <element name="Personas" nillable="true" minOccurs="0" type="tns:QueryResult"/>
@@ -5326,10 +5327,10 @@ All Rights Reserved
                         <element name="UndecidedEventRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="UserRecordAccess" nillable="true" minOccurs="0" type="ens:UserRecordAccess"/>
                         <element name="WC_Additional_Vendor_Name_s__c" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="WC_Authorized_Vendors_MS__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Annual_Spend__c" nillable="true" minOccurs="0" type="xsd:double"/>
                         <element name="WC_Authorized_Vendors__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Business_Unit__c" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="WC_Category__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Disqualified_Reason__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Type__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Vertical_Markets__c" nillable="true" minOccurs="0" type="xsd:string"/>
@@ -5423,6 +5424,78 @@ All Rights Reserved
                         <element name="MasterLabel" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="SortOrder" nillable="true" minOccurs="0" type="xsd:int"/>
                         <element name="SystemModstamp" nillable="true" minOccurs="0" type="xsd:dateTime"/>
+                        </sequence>
+                    </extension>
+                </complexContent>
+            </complexType>
+
+            <complexType name="Leave_Request__History">
+                <complexContent>
+                    <extension base="ens:sObject">
+                        <sequence>
+                        <element name="CreatedBy" nillable="true" minOccurs="0" type="ens:Name"/>
+                        <element name="CreatedById" nillable="true" minOccurs="0" type="tns:ID"/>
+                        <element name="CreatedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
+                        <element name="Field" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="IsDeleted" nillable="true" minOccurs="0" type="xsd:boolean"/>
+                        <element name="NewValue" nillable="true" minOccurs="0" type="xsd:anyType"/>
+                        <element name="OldValue" nillable="true" minOccurs="0" type="xsd:anyType"/>
+                        <element name="Parent" nillable="true" minOccurs="0" type="ens:Leave_Request__c"/>
+                        <element name="ParentId" nillable="true" minOccurs="0" type="tns:ID"/>
+                        </sequence>
+                    </extension>
+                </complexContent>
+            </complexType>
+
+            <complexType name="Leave_Request__c">
+                <complexContent>
+                    <extension base="ens:sObject">
+                        <sequence>
+                        <element name="ActivityHistories" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="Approver__c" nillable="true" minOccurs="0" type="tns:ID"/>
+                        <element name="Approver__r" nillable="true" minOccurs="0" type="ens:User"/>
+                        <element name="AttachedContentDocuments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="Attachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="CombinedAttachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="ContentDocumentLinks" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="CreatedBy" nillable="true" minOccurs="0" type="ens:User"/>
+                        <element name="CreatedById" nillable="true" minOccurs="0" type="tns:ID"/>
+                        <element name="CreatedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
+                        <element name="CurrencyIsoCode" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="DuplicateRecordItems" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="Emails" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="EndDate__c" nillable="true" minOccurs="0" type="xsd:dateTime"/>
+                        <element name="EventRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="Events" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="FeedSubscriptionsForEntity" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="Histories" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="IsDeleted" nillable="true" minOccurs="0" type="xsd:boolean"/>
+                        <element name="LastActivityDate" nillable="true" minOccurs="0" type="xsd:date"/>
+                        <element name="LastModifiedBy" nillable="true" minOccurs="0" type="ens:User"/>
+                        <element name="LastModifiedById" nillable="true" minOccurs="0" type="tns:ID"/>
+                        <element name="LastModifiedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
+                        <element name="LastReferencedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
+                        <element name="LastViewedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
+                        <element name="LookedUpFromActivities" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="Name" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="Notes" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="NotesAndAttachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="OpenActivities" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="Owner" nillable="true" minOccurs="0" type="ens:Name"/>
+                        <element name="OwnerId" nillable="true" minOccurs="0" type="tns:ID"/>
+                        <element name="ProcessInstances" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="ProcessSteps" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="Reason__c" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="RecordAssociatedGroups" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="RecordType" nillable="true" minOccurs="0" type="ens:RecordType"/>
+                        <element name="RecordTypeId" nillable="true" minOccurs="0" type="tns:ID"/>
+                        <element name="StartDate__c" nillable="true" minOccurs="0" type="xsd:dateTime"/>
+                        <element name="Status__c" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="SystemModstamp" nillable="true" minOccurs="0" type="xsd:dateTime"/>
+                        <element name="TaskRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="Tasks" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="TopicAssignments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="UserRecordAccess" nillable="true" minOccurs="0" type="ens:UserRecordAccess"/>
                         </sequence>
                     </extension>
                 </complexContent>
@@ -6016,6 +6089,7 @@ All Rights Reserved
                         <element name="CampaignId" nillable="true" minOccurs="0" type="tns:ID"/>
                         <element name="CloseDate" nillable="true" minOccurs="0" type="xsd:date"/>
                         <element name="CombinedAttachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="Competiting_Distributor__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="ContentDocumentLinks" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="CreatedBy" nillable="true" minOccurs="0" type="ens:User"/>
                         <element name="CreatedById" nillable="true" minOccurs="0" type="tns:ID"/>
@@ -6082,14 +6156,12 @@ All Rights Reserved
                         <element name="TopicAssignments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="Type" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="UserRecordAccess" nillable="true" minOccurs="0" type="ens:UserRecordAccess"/>
-                        <element name="Vendor__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Account_Manager_Name__c" nillable="true" minOccurs="0" type="tns:ID"/>
                         <element name="WC_Account_Manager_Name__r" nillable="true" minOccurs="0" type="ens:User"/>
                         <element name="WC_Additional_Vendor_Name_s__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Authorized_Vendors_MS__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Authorized_Vendors__c" nillable="true" minOccurs="0" type="tns:ID"/>
                         <element name="WC_Authorized_Vendors__r" nillable="true" minOccurs="0" type="ens:Account"/>
-                        <element name="WC_Competing_Distributor__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Coop_Dollars__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Currency_key__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_End_User_Vertical__c" nillable="true" minOccurs="0" type="xsd:string"/>
@@ -6097,10 +6169,9 @@ All Rights Reserved
                         <element name="WC_Expected_Gross_Profit__c" nillable="true" minOccurs="0" type="xsd:double"/>
                         <element name="WC_Forecast_Revenue__c" nillable="true" minOccurs="0" type="xsd:double"/>
                         <element name="WC_Gross_Margin_Amount__c" nillable="true" minOccurs="0" type="xsd:double"/>
-                        <element name="WC_Gross_Margin_Dollars__c" nillable="true" minOccurs="0" type="xsd:double"/>
                         <element name="WC_Gross_Margin_Percent__c" nillable="true" minOccurs="0" type="xsd:double"/>
-                        <element name="WC_Gross_Margin__c" nillable="true" minOccurs="0" type="xsd:double"/>
                         <element name="WC_Hybris_Opportunity_Id__c" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="WC_Opportunity_Main_Vendor__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Owner_External_Username__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Reason_for_Loss__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Region__c" nillable="true" minOccurs="0" type="xsd:string"/>
@@ -6110,7 +6181,6 @@ All Rights Reserved
                         <element name="WC_VAR_Contact_Name__r" nillable="true" minOccurs="0" type="ens:Contact"/>
                         <element name="WC_Vendor_Contact_Name__c" nillable="true" minOccurs="0" type="tns:ID"/>
                         <element name="WC_Vendor_Contact_Name__r" nillable="true" minOccurs="0" type="ens:Contact"/>
-                        <element name="WC_Vendor__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Westcon_Opportunity_Type__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         </sequence>
                     </extension>
@@ -6265,7 +6335,7 @@ All Rights Reserved
                         <element name="UserRecordAccess" nillable="true" minOccurs="0" type="ens:UserRecordAccess"/>
                         <element name="WC_Gross_Margin_Percent_Product__c" nillable="true" minOccurs="0" type="xsd:double"/>
                         <element name="WC_Gross_Margin_Product__c" nillable="true" minOccurs="0" type="xsd:double"/>
-                        <element name="WC_Vendor__c" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="WC_Vendor2__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         </sequence>
                     </extension>
                 </complexContent>
@@ -6687,7 +6757,6 @@ All Rights Reserved
                         <element name="OrganizationType" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="Phone" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="PostalCode" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="PreferencesActivityAnalyticsEnabled" nillable="true" minOccurs="0" type="xsd:boolean"/>
                         <element name="PreferencesRequireOpportunityProducts" nillable="true" minOccurs="0" type="xsd:boolean"/>
                         <element name="PrimaryContact" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="ReceivesAdminInfoEmails" nillable="true" minOccurs="0" type="xsd:boolean"/>
@@ -6701,6 +6770,50 @@ All Rights Reserved
                         <element name="UiSkin" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="UsesStartDateAsFiscalYearName" nillable="true" minOccurs="0" type="xsd:boolean"/>
                         <element name="WebToCaseDefaultOrigin" nillable="true" minOccurs="0" type="xsd:string"/>
+                        </sequence>
+                    </extension>
+                </complexContent>
+            </complexType>
+
+            <complexType name="OutgoingEmail">
+                <complexContent>
+                    <extension base="ens:sObject">
+                        <sequence>
+                        <element name="BccAddress" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="BccIds" nillable="true" minOccurs="0" maxOccurs="unbounded" type="tns:ID"/>
+                        <element name="CcAddress" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="CcIds" nillable="true" minOccurs="0" maxOccurs="unbounded" type="tns:ID"/>
+                        <element name="ContentDocumentIds" nillable="true" minOccurs="0" maxOccurs="unbounded" type="tns:ID"/>
+                        <element name="ContentDocumentLinks" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="ExternalId" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="HtmlBody" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="OutgoingEmailRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="RelatedTo" nillable="true" minOccurs="0" type="ens:Name"/>
+                        <element name="RelatedToId" nillable="true" minOccurs="0" type="tns:ID"/>
+                        <element name="Subject" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="TextBody" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="ToAddress" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="ToIds" nillable="true" minOccurs="0" maxOccurs="unbounded" type="tns:ID"/>
+                        <element name="ValidatedFromAddress" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="Who" nillable="true" minOccurs="0" type="ens:Name"/>
+                        <element name="WhoId" nillable="true" minOccurs="0" type="tns:ID"/>
+                        </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                    
+                    </extension>
+                </complexContent>
+            </complexType>
+
+            <complexType name="OutgoingEmailRelation">
+                <complexContent>
+                    <extension base="ens:sObject">
+                        <sequence>
+                        <element name="ExternalId" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="OutgoingEmail" nillable="true" minOccurs="0" type="ens:OutgoingEmail"/>
+                        <element name="OutgoingEmailId" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="Relation" nillable="true" minOccurs="0" type="ens:Name"/>
+                        <element name="RelationAddress" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="RelationId" nillable="true" minOccurs="0" type="tns:ID"/>
                         </sequence>
                     </extension>
                 </complexContent>
@@ -7650,7 +7763,6 @@ All Rights Reserved
                         <element name="WC_Account_Assignment_Group__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_External_Product_ID__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_V_ID__c" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="WC_Valuation_class__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Vendor__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         </sequence>
                     </extension>
@@ -8110,7 +8222,6 @@ All Rights Reserved
                         <element name="CreatedBy" nillable="true" minOccurs="0" type="ens:User"/>
                         <element name="CreatedById" nillable="true" minOccurs="0" type="tns:ID"/>
                         <element name="CreatedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
-                        <element name="CurrencyISOCode__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="CurrencyIsoCode" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="Description" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="Discount" nillable="true" minOccurs="0" type="xsd:double"/>
@@ -8159,6 +8270,52 @@ All Rights Reserved
                         <element name="LastModifiedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
                         <element name="Name" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="SystemModstamp" nillable="true" minOccurs="0" type="xsd:dateTime"/>
+                        <element name="UserRecordAccess" nillable="true" minOccurs="0" type="ens:UserRecordAccess"/>
+                        </sequence>
+                    </extension>
+                </complexContent>
+            </complexType>
+
+            <complexType name="Reassign_Helper__c">
+                <complexContent>
+                    <extension base="ens:sObject">
+                        <sequence>
+                        <element name="Assign_to__c" nillable="true" minOccurs="0" type="tns:ID"/>
+                        <element name="Assign_to__r" nillable="true" minOccurs="0" type="ens:User"/>
+                        <element name="AttachedContentDocuments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="Attachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="ClosedDate_From__c" nillable="true" minOccurs="0" type="xsd:date"/>
+                        <element name="ClosedDate_To__c" nillable="true" minOccurs="0" type="xsd:date"/>
+                        <element name="CombinedAttachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="ContentDocumentLinks" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="CreatedBy" nillable="true" minOccurs="0" type="ens:User"/>
+                        <element name="CreatedById" nillable="true" minOccurs="0" type="tns:ID"/>
+                        <element name="CreatedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
+                        <element name="CurrencyIsoCode" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="DuplicateRecordItems" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="Emails" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="EventRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="FeedSubscriptionsForEntity" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="From__c" nillable="true" minOccurs="0" type="xsd:date"/>
+                        <element name="IsDeleted" nillable="true" minOccurs="0" type="xsd:boolean"/>
+                        <element name="LastModifiedBy" nillable="true" minOccurs="0" type="ens:User"/>
+                        <element name="LastModifiedById" nillable="true" minOccurs="0" type="tns:ID"/>
+                        <element name="LastModifiedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
+                        <element name="LookedUpFromActivities" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="Name" nillable="true" minOccurs="0" type="xsd:string"/>
+                        <element name="Notes" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="NotesAndAttachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="Owner" nillable="true" minOccurs="0" type="ens:Name"/>
+                        <element name="OwnerId" nillable="true" minOccurs="0" type="tns:ID"/>
+                        <element name="Owner__c" nillable="true" minOccurs="0" type="tns:ID"/>
+                        <element name="Owner__r" nillable="true" minOccurs="0" type="ens:User"/>
+                        <element name="ProcessInstances" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="ProcessSteps" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="RecordAssociatedGroups" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="SystemModstamp" nillable="true" minOccurs="0" type="xsd:dateTime"/>
+                        <element name="TaskRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="To__c" nillable="true" minOccurs="0" type="xsd:date"/>
+                        <element name="TopicAssignments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="UserRecordAccess" nillable="true" minOccurs="0" type="ens:UserRecordAccess"/>
                         </sequence>
                     </extension>
@@ -9084,6 +9241,8 @@ All Rights Reserved
                         <element name="WhoCount" nillable="true" minOccurs="0" type="xsd:int"/>
                         <element name="WhoId" nillable="true" minOccurs="0" type="tns:ID"/>
                         </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                    
                     </extension>
                 </complexContent>
             </complexType>
@@ -9483,7 +9642,6 @@ All Rights Reserved
                         <element name="InstalledMobileApps" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="IsActive" nillable="true" minOccurs="0" type="xsd:boolean"/>
                         <element name="IsProfilePhotoActive" nillable="true" minOccurs="0" type="xsd:boolean"/>
-                        <element name="Is_EU_User__c" nillable="true" minOccurs="0" type="xsd:boolean"/>
                         <element name="LanguageLocaleKey" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="LastLoginDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
                         <element name="LastModifiedBy" nillable="true" minOccurs="0" type="ens:User"/>
@@ -9499,6 +9657,8 @@ All Rights Reserved
                         <element name="ManagedUsers" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="Manager" nillable="true" minOccurs="0" type="ens:User"/>
                         <element name="ManagerId" nillable="true" minOccurs="0" type="tns:ID"/>
+                        <element name="Mass_Reassign_Opportunities_Helper1__r" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="Mass_Reassign_Opportunities_Helper__r" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="MediumBannerPhotoUrl" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="MediumPhotoUrl" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="MiddleName" nillable="true" minOccurs="0" type="xsd:string"/>
@@ -9509,6 +9669,7 @@ All Rights Reserved
                         <element name="Opportunities__r" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="OpportunityTeams" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="Opportunity_Team__r" nillable="true" minOccurs="0" type="tns:QueryResult"/>
+                        <element name="OutgoingEmailRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="OwnedContentDocuments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="PermissionSetAssignments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="PermissionSetLicenseAssignments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
@@ -9518,6 +9679,7 @@ All Rights Reserved
                         <element name="ProfileId" nillable="true" minOccurs="0" type="tns:ID"/>
                         <element name="ReceivesAdminInfoEmails" nillable="true" minOccurs="0" type="xsd:boolean"/>
                         <element name="ReceivesInfoEmails" nillable="true" minOccurs="0" type="xsd:boolean"/>
+                        <element name="Request_Approver__r" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="SAP_Quote_Summaries__r" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="SenderEmail" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="SenderName" nillable="true" minOccurs="0" type="xsd:string"/>
@@ -9649,7 +9811,6 @@ All Rights Reserved
                         <element name="WC_Sales_Org__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_September_Gross_Margin_Quota__c" nillable="true" minOccurs="0" type="xsd:double"/>
                         <element name="WC_September_Revenue_Quota__c" nillable="true" minOccurs="0" type="xsd:double"/>
-                        <element name="s4g_currencies__EndPoint__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         </sequence>
                     </extension>
                 </complexContent>
@@ -10587,7 +10748,6 @@ All Rights Reserved
                         <element name="TopicAssignments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
                         <element name="UserRecordAccess" nillable="true" minOccurs="0" type="ens:UserRecordAccess"/>
                         <element name="WC_Cause__c" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="WC_External_Document_Part_2__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_External_Document__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Integration_Method_Name__c" nillable="true" minOccurs="0" type="xsd:string"/>
                         <element name="WC_Line_Number__c" nillable="true" minOccurs="0" type="xsd:double"/>
@@ -11017,211 +11177,6 @@ All Rights Reserved
                 </complexContent>
             </complexType>
 
-            <complexType name="s4g_currencies__Batch_Script__c">
-                <complexContent>
-                    <extension base="ens:sObject">
-                        <sequence>
-                        <element name="AttachedContentDocuments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Attachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="CombinedAttachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="ContentDocumentLinks" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="CreatedBy" nillable="true" minOccurs="0" type="ens:User"/>
-                        <element name="CreatedById" nillable="true" minOccurs="0" type="tns:ID"/>
-                        <element name="CreatedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
-                        <element name="CurrencyIsoCode" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="DuplicateRecordItems" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Emails" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="EventRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="FeedSubscriptionsForEntity" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="IsDeleted" nillable="true" minOccurs="0" type="xsd:boolean"/>
-                        <element name="LastModifiedBy" nillable="true" minOccurs="0" type="ens:User"/>
-                        <element name="LastModifiedById" nillable="true" minOccurs="0" type="tns:ID"/>
-                        <element name="LastModifiedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
-                        <element name="LookedUpFromActivities" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Name" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="Notes" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="NotesAndAttachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Owner" nillable="true" minOccurs="0" type="ens:Name"/>
-                        <element name="OwnerId" nillable="true" minOccurs="0" type="tns:ID"/>
-                        <element name="ProcessInstances" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="ProcessSteps" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="RecordAssociatedGroups" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="SystemModstamp" nillable="true" minOccurs="0" type="xsd:dateTime"/>
-                        <element name="TaskRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="TopicAssignments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="UserRecordAccess" nillable="true" minOccurs="0" type="ens:UserRecordAccess"/>
-                        </sequence>
-                    </extension>
-                </complexContent>
-            </complexType>
-
-            <complexType name="s4g_currencies__Currency_Updater_Job__c">
-                <complexContent>
-                    <extension base="ens:sObject">
-                        <sequence>
-                        <element name="ActivityHistories" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="AttachedContentDocuments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Attachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="CombinedAttachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="ContentDocumentLinks" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="CreatedBy" nillable="true" minOccurs="0" type="ens:User"/>
-                        <element name="CreatedById" nillable="true" minOccurs="0" type="tns:ID"/>
-                        <element name="CreatedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
-                        <element name="CurrencyIsoCode" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="DuplicateRecordItems" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Emails" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="EventRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Events" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="FeedSubscriptionsForEntity" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="IsDeleted" nillable="true" minOccurs="0" type="xsd:boolean"/>
-                        <element name="LastActivityDate" nillable="true" minOccurs="0" type="xsd:date"/>
-                        <element name="LastModifiedBy" nillable="true" minOccurs="0" type="ens:User"/>
-                        <element name="LastModifiedById" nillable="true" minOccurs="0" type="tns:ID"/>
-                        <element name="LastModifiedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
-                        <element name="LookedUpFromActivities" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Name" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="Notes" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="NotesAndAttachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="OpenActivities" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Owner" nillable="true" minOccurs="0" type="ens:Name"/>
-                        <element name="OwnerId" nillable="true" minOccurs="0" type="tns:ID"/>
-                        <element name="ProcessInstances" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="ProcessSteps" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="RecordAssociatedGroups" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="SystemModstamp" nillable="true" minOccurs="0" type="xsd:dateTime"/>
-                        <element name="TaskRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Tasks" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="TopicAssignments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="UserRecordAccess" nillable="true" minOccurs="0" type="ens:UserRecordAccess"/>
-                        <element name="s4g_currencies__Executed__c" nillable="true" minOccurs="0" type="xsd:boolean"/>
-                        <element name="s4g_currencies__Job_Id__c" nillable="true" minOccurs="0" type="xsd:double"/>
-                        <element name="s4g_currencies__Job_Launched_Id__c" nillable="true" minOccurs="0" type="xsd:string"/>
-                        </sequence>
-                    </extension>
-                </complexContent>
-            </complexType>
-
-            <complexType name="s4g_currencies__LogCurrency__History">
-                <complexContent>
-                    <extension base="ens:sObject">
-                        <sequence>
-                        <element name="CreatedBy" nillable="true" minOccurs="0" type="ens:Name"/>
-                        <element name="CreatedById" nillable="true" minOccurs="0" type="tns:ID"/>
-                        <element name="CreatedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
-                        <element name="Field" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="IsDeleted" nillable="true" minOccurs="0" type="xsd:boolean"/>
-                        <element name="NewValue" nillable="true" minOccurs="0" type="xsd:anyType"/>
-                        <element name="OldValue" nillable="true" minOccurs="0" type="xsd:anyType"/>
-                        <element name="Parent" nillable="true" minOccurs="0" type="ens:s4g_currencies__LogCurrency__c"/>
-                        <element name="ParentId" nillable="true" minOccurs="0" type="tns:ID"/>
-                        </sequence>
-                    </extension>
-                </complexContent>
-            </complexType>
-
-            <complexType name="s4g_currencies__LogCurrency__c">
-                <complexContent>
-                    <extension base="ens:sObject">
-                        <sequence>
-                        <element name="AttachedContentDocuments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Attachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="CombinedAttachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="ContentDocumentLinks" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="CreatedBy" nillable="true" minOccurs="0" type="ens:User"/>
-                        <element name="CreatedById" nillable="true" minOccurs="0" type="tns:ID"/>
-                        <element name="CreatedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
-                        <element name="CurrencyIsoCode" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="DuplicateRecordItems" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Emails" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="EventRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="FeedSubscriptionsForEntity" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Histories" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="IsDeleted" nillable="true" minOccurs="0" type="xsd:boolean"/>
-                        <element name="LastModifiedBy" nillable="true" minOccurs="0" type="ens:User"/>
-                        <element name="LastModifiedById" nillable="true" minOccurs="0" type="tns:ID"/>
-                        <element name="LastModifiedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
-                        <element name="LookedUpFromActivities" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Name" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="Notes" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="NotesAndAttachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Owner" nillable="true" minOccurs="0" type="ens:Name"/>
-                        <element name="OwnerId" nillable="true" minOccurs="0" type="tns:ID"/>
-                        <element name="ProcessInstances" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="ProcessSteps" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="RecordAssociatedGroups" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="SystemModstamp" nillable="true" minOccurs="0" type="xsd:dateTime"/>
-                        <element name="TaskRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="TopicAssignments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="UserRecordAccess" nillable="true" minOccurs="0" type="ens:UserRecordAccess"/>
-                        <element name="s4g_currencies__Date__c" nillable="true" minOccurs="0" type="xsd:date"/>
-                        <element name="s4g_currencies__Logs__c" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="s4g_currencies__Status__c" nillable="true" minOccurs="0" type="xsd:string"/>
-                        </sequence>
-                    </extension>
-                </complexContent>
-            </complexType>
-
-            <complexType name="s4g_currencies__S4G_Config__Share">
-                <complexContent>
-                    <extension base="ens:sObject">
-                        <sequence>
-                        <element name="AccessLevel" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="IsDeleted" nillable="true" minOccurs="0" type="xsd:boolean"/>
-                        <element name="LastModifiedBy" nillable="true" minOccurs="0" type="ens:User"/>
-                        <element name="LastModifiedById" nillable="true" minOccurs="0" type="tns:ID"/>
-                        <element name="LastModifiedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
-                        <element name="Parent" nillable="true" minOccurs="0" type="ens:s4g_currencies__S4G_Config__c"/>
-                        <element name="ParentId" nillable="true" minOccurs="0" type="tns:ID"/>
-                        <element name="RowCause" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="UserOrGroup" nillable="true" minOccurs="0" type="ens:Name"/>
-                        <element name="UserOrGroupId" nillable="true" minOccurs="0" type="tns:ID"/>
-                        </sequence>
-                    </extension>
-                </complexContent>
-            </complexType>
-
-            <complexType name="s4g_currencies__S4G_Config__c">
-                <complexContent>
-                    <extension base="ens:sObject">
-                        <sequence>
-                        <element name="AttachedContentDocuments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Attachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="CombinedAttachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="ContentDocumentLinks" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="CreatedBy" nillable="true" minOccurs="0" type="ens:User"/>
-                        <element name="CreatedById" nillable="true" minOccurs="0" type="tns:ID"/>
-                        <element name="CreatedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
-                        <element name="CurrencyIsoCode" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="DuplicateRecordItems" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Emails" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="EventRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="FeedSubscriptionsForEntity" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="IsDeleted" nillable="true" minOccurs="0" type="xsd:boolean"/>
-                        <element name="LastModifiedBy" nillable="true" minOccurs="0" type="ens:User"/>
-                        <element name="LastModifiedById" nillable="true" minOccurs="0" type="tns:ID"/>
-                        <element name="LastModifiedDate" nillable="true" minOccurs="0" type="xsd:dateTime"/>
-                        <element name="LookedUpFromActivities" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Name" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="Notes" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="NotesAndAttachments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Owner" nillable="true" minOccurs="0" type="ens:Name"/>
-                        <element name="OwnerId" nillable="true" minOccurs="0" type="tns:ID"/>
-                        <element name="ProcessInstances" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="ProcessSteps" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="RecordAssociatedGroups" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="Shares" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="SystemModstamp" nillable="true" minOccurs="0" type="xsd:dateTime"/>
-                        <element name="TaskRelations" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="TopicAssignments" nillable="true" minOccurs="0" type="tns:QueryResult"/>
-                        <element name="UserRecordAccess" nillable="true" minOccurs="0" type="ens:UserRecordAccess"/>
-                        <element name="s4g_currencies__Password__c" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="s4g_currencies__Token__c" nillable="true" minOccurs="0" type="xsd:string"/>
-                        <element name="s4g_currencies__Username__c" nillable="true" minOccurs="0" type="xsd:string"/>
-                        </sequence>
-                    </extension>
-                </complexContent>
-            </complexType>
-
 
         </schema>
 
@@ -11294,6 +11249,8 @@ All Rights Reserved
                     
                     
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="SearchRecord">
@@ -11308,6 +11265,8 @@ All Rights Reserved
                     <element name="text" nillable="true" minOccurs="0" maxOccurs="1" type="xsd:string"/>
                     <element name="wholeFields" minOccurs="0" maxOccurs="unbounded" type="tns:NameValuePair"/>
                 </sequence>
+                <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -11320,6 +11279,8 @@ All Rights Reserved
               			<element name="entityMetadata" nillable="false" minOccurs="0" maxOccurs="unbounded" type="tns:EntitySearchMetadata"/>
            			
        			</sequence>
+            <attribute name="tmp" type="xsd:string" /> 
+            
    			</complexType>
 
 
@@ -11328,6 +11289,8 @@ All Rights Reserved
 					<element name="entityFieldLabels" nillable="false" minOccurs="0" maxOccurs="unbounded" type="tns:NameValuePair"/>
 					<element name="entityName" nillable="false" minOccurs="1" maxOccurs="1" type="xsd:string"/>
 				</sequence>
+        <attribute name="tmp" type="xsd:string" /> 
+      
 			</complexType>
 
 
@@ -11336,6 +11299,8 @@ All Rights Reserved
                 	<element name="entityName" nillable="false" minOccurs="1" maxOccurs="1" type="xsd:string"/>
                 	<element name="fieldMetadata" nillable="false" minOccurs="0" maxOccurs="unbounded" type="tns:FieldLevelSearchMetadata"/>
                 </sequence>
+                <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -11352,6 +11317,8 @@ All Rights Reserved
                 <sequence>
                     <element name="referenceTo" minOccurs="0" maxOccurs="unbounded" type="xsd:string"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -11359,6 +11326,8 @@ All Rights Reserved
                 <sequence>
                     <element name="recordTypeInfos" minOccurs="0" maxOccurs="unbounded" type="tns:RecordTypeInfo"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -11366,6 +11335,8 @@ All Rights Reserved
                 <sequence>
                     <element name="names" minOccurs="0" maxOccurs="unbounded" type="xsd:string"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -11374,6 +11345,8 @@ All Rights Reserved
                     <element name="applicable" type="xsd:boolean"/>
                     <element name="buttons" minOccurs="0" maxOccurs="unbounded" type="tns:SearchLayoutButton"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+           
            </complexType>
 
            <complexType name="SearchLayoutButton">
@@ -11388,6 +11361,8 @@ All Rights Reserved
                     <element name="applicable" type="xsd:boolean"/>
                     <element name="fields" minOccurs="0" maxOccurs="unbounded" type="tns:SearchLayoutField"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+           
            </complexType>
 
            <complexType name="SearchLayoutField">
@@ -11411,6 +11386,8 @@ All Rights Reserved
                     <element name="name" type="xsd:string"/>
                     <element name="value" type="xsd:anyType" minOccurs="1" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -11421,6 +11398,8 @@ All Rights Reserved
                     <element name="latestDateCovered" type="xsd:dateTime"/>
                     
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <!-- GetDeleted Result -->
@@ -11431,6 +11410,8 @@ All Rights Reserved
                     <element name="latestDateCovered" type="xsd:dateTime"/>
                     
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+          
             </complexType>
 
             <complexType name="DeletedRecord">
@@ -11454,6 +11435,8 @@ All Rights Reserved
                     <element name="errors"  type="tns:Error" minOccurs="0" maxOccurs="unbounded"/>
                     <element name="success"   type="xsd:boolean"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="SetPasswordResult">
@@ -11848,6 +11831,8 @@ All Rights Reserved
                     <element name="extendedErrorCode" type="tns:ExtendedErrorCode"/>
                     <any namespace="##targetNamespace" minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
             <complexType name="Error">
                 <sequence>
@@ -11856,6 +11841,7 @@ All Rights Reserved
                     <element name="message"    type="xsd:string"/>
                     <element name="statusCode" type="tns:StatusCode"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" />             
             </complexType>
 
             <complexType name="SendEmailError">
@@ -11865,6 +11851,7 @@ All Rights Reserved
                     <element name="statusCode" type="tns:StatusCode"/>
                     <element name="targetObjectId"     type="tns:ID"  nillable="true"/>
                 </sequence>
+                  <attribute name="tmp" type="xsd:string" />                     
             </complexType>
 
             <complexType name="SaveResult">
@@ -11873,6 +11860,8 @@ All Rights Reserved
                     <element name="id"        type="tns:ID" nillable="true"/>
                     <element name="success"   type="xsd:boolean"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="RenderEmailTemplateError">
@@ -11891,6 +11880,8 @@ All Rights Reserved
                     <element name="id"       type="tns:ID" nillable="true"/>
                     <element name="success"   type="xsd:boolean"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -11904,6 +11895,8 @@ All Rights Reserved
                     <element name="success"   type="xsd:boolean"/>
                     <element name="successMessage" type="xsd:string" minOccurs="0" nillable="true"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+          
             </complexType>
 
 
@@ -11923,6 +11916,8 @@ All Rights Reserved
                     <element name="masterRecord" type="ens:sObject"/>
                     <element name="recordToMergeIds" type="tns:ID" minOccurs="1" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="MergeResult">
@@ -11933,6 +11928,8 @@ All Rights Reserved
                     <element name="success"   type="xsd:boolean"/>
                     <element name="updatedRelatedIds" type="tns:ID" minOccurs="0" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="ProcessRequest">
@@ -11940,6 +11937,8 @@ All Rights Reserved
                     <element name="comments"       type="xsd:string" nillable="true"/>
                     <element name="nextApproverIds" type="tns:ID" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="ProcessSubmitRequest">
@@ -11972,6 +11971,8 @@ All Rights Reserved
                     <element name="contextId"      type="tns:ID" nillable="true"/>                    <element name="quickActionName"  type="xsd:string"/>
                     <element name="records"       type="ens:sObject" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -12015,6 +12016,8 @@ All Rights Reserved
                     <element name="visualforcePageUrl" type="xsd:string" nillable="true"/> 
                     <element name="width"         type="xsd:int" nillable="true"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeQuickActionDefaultValue">
@@ -12054,6 +12057,8 @@ All Rights Reserved
                     <element name="newWorkitemIds"  type="tns:ID" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
                     <element name="success"         type="xsd:boolean"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -12074,6 +12079,8 @@ All Rights Reserved
                     <element name="id"        type="tns:ID" nillable="true"/>
                     <element name="success"   type="xsd:boolean"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="EmptyRecycleBinResult">
@@ -12082,6 +12089,8 @@ All Rights Reserved
                     <element name="id"        type="tns:ID" nillable="true"/>
                     <element name="success"   type="xsd:boolean"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="LeadConvert">
@@ -12107,6 +12116,8 @@ All Rights Reserved
                     <element name="opportunityId" type="tns:ID" nillable="true"/>
                     <element name="success"       type="xsd:boolean"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
             
 
@@ -12150,6 +12161,8 @@ All Rights Reserved
                     <element name="urlEdit"             type="xsd:string" nillable="true"/>
                     <element name="urlNew"              type="xsd:string" nillable="true"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -12195,6 +12208,8 @@ All Rights Reserved
                     <element name="relationshipName" type="xsd:string" minOccurs="0"/>
                     <element name="restrictedDelete" type="xsd:boolean" minOccurs="0"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeGlobalResult">
@@ -12203,6 +12218,8 @@ All Rights Reserved
                     <element name="maxBatchSize"   type="xsd:int"/>
                     <element name="sobjects"       type="tns:DescribeGlobalSObjectResult" minOccurs="0" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+          
             </complexType>
 
 
@@ -12304,6 +12321,8 @@ All Rights Reserved
                             <element name="optionalFilter"              type="xsd:boolean"/>
 
                         </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="Field">
@@ -12364,6 +12383,8 @@ All Rights Reserved
                     <element name="updateable"                 type="xsd:boolean"/>
                     <element name="writeRequiresMasterRead"    type="xsd:boolean" minOccurs="0"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="PicklistEntry">
@@ -12394,6 +12415,8 @@ All Rights Reserved
                     <element name="sobject"       type="xsd:string"/>
                     <element name="topCategories" type="tns:DataCategory" minOccurs="0" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DataCategoryGroupSobjectTypePair">
@@ -12409,6 +12432,8 @@ All Rights Reserved
                     <element name="label"           type="xsd:string"/>
                     <element name="name"            type="xsd:string"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -12418,6 +12443,8 @@ All Rights Reserved
                        <element name="knowledgeEnabled" type="xsd:boolean"/>
                        <element name="languages"        type="tns:KnowledgeLanguageItem" minOccurs="0" maxOccurs="unbounded"/>
                    </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="KnowledgeLanguageItem">
@@ -12458,6 +12485,8 @@ All Rights Reserved
                        <element name="matchConfidence" type="xsd:double"/>
                        <element name="record" type="ens:sObject"/>
                    </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="MatchResult">
@@ -12470,6 +12499,8 @@ All Rights Reserved
                        <element name="size" type="xsd:int"/>
                        <element name="success"   type="xsd:boolean"/>
                    </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DuplicateResult">
@@ -12480,6 +12511,8 @@ All Rights Reserved
                        <element name="errorMessage" type="xsd:string" nillable="true"/>
                        <element name="matchResults" minOccurs="0" maxOccurs="unbounded" type="tns:MatchResult"/>
                    </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+          
             </complexType>
 
             <complexType name="DuplicateError">
@@ -12502,6 +12535,8 @@ All Rights Reserved
                        <element name="pluralAlias" type="xsd:string" nillable="true"/>
                     <element name="startsWith" nillable="true" type="tns:StartsWith"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
            <complexType name="NameCaseValue">
@@ -12593,6 +12628,8 @@ All Rights Reserved
                     <sequence>
                         <element name="sObjects" type="ens:sObject" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -12601,6 +12638,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:FindDuplicatesResult" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -12610,6 +12649,8 @@ All Rights Reserved
                     <element name="errors"    type="tns:Error" minOccurs="0" maxOccurs="unbounded"/>
                     <element name="success"   type="xsd:boolean"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -12618,6 +12659,8 @@ All Rights Reserved
                 <sequence>
                     <element name="appMenuItems"    type="tns:DescribeAppMenuItem" minOccurs="0" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeAppMenuItem">
@@ -12630,6 +12673,8 @@ All Rights Reserved
                     <element name="type"            type="xsd:string"/>
                     <element name="url"             type="xsd:string"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -12638,6 +12683,8 @@ All Rights Reserved
                 <sequence>
                     <element name="themeItems"    type="tns:DescribeThemeItem" minOccurs="0" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeThemeItem">
@@ -12646,6 +12693,8 @@ All Rights Reserved
                     <element name="icons" type="tns:DescribeIcon" minOccurs="0" maxOccurs="unbounded"/>
                     <element name="name"            type="xsd:string"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeSoftphoneLayoutResult">
@@ -12654,6 +12703,8 @@ All Rights Reserved
                     <element name="id" type="tns:ID"/>
                     <element name="name" type="xsd:string"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeSoftphoneLayoutCallType">
@@ -12664,6 +12715,8 @@ All Rights Reserved
                     <element name="screenPopsOpenWithin" type="xsd:string" minOccurs="0"/>
                     <element name="sections" type="tns:DescribeSoftphoneLayoutSection" minOccurs="0" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeSoftphoneScreenPopOption">
@@ -12685,6 +12738,8 @@ All Rights Reserved
                     <element name="entityApiName" type="xsd:string"/>
                     <element name="items" type="tns:DescribeSoftphoneLayoutItem" minOccurs="1" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeSoftphoneLayoutItem">
@@ -12700,6 +12755,8 @@ All Rights Reserved
                     <element name="defaultCompactLayoutId" type="tns:ID"/>
                     <element name="recordTypeCompactLayoutMappings" type="tns:RecordTypeCompactLayoutMapping" minOccurs="0" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeCompactLayout">
@@ -12712,6 +12769,8 @@ All Rights Reserved
                     <element name="name" type="xsd:string"/>
                     <element name="objectType" type="xsd:string"/> 
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="RecordTypeCompactLayoutMapping">
@@ -12729,6 +12788,8 @@ All Rights Reserved
                 <sequence>
                     <element name="pathAssistants" type="tns:DescribePathAssistant" minOccurs="0" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribePathAssistant">
@@ -12741,6 +12802,8 @@ All Rights Reserved
                     <element name="recordTypeId" type="tns:ID" nillable="true"/>
                     <element name="steps" type="tns:DescribePathAssistantStep" minOccurs="0" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribePathAssistantStep">
@@ -12754,6 +12817,8 @@ All Rights Reserved
                     <element name="picklistValue" type="xsd:string"/>
                     <element name="won" type="xsd:boolean"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribePathAssistantField">
@@ -12770,6 +12835,8 @@ All Rights Reserved
                 <sequence>
                     <element name="approvalLayouts" type="tns:DescribeApprovalLayout" minOccurs="0" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeApprovalLayout">
@@ -12779,6 +12846,8 @@ All Rights Reserved
                     <element name="layoutItems" type="tns:DescribeLayoutItem" minOccurs="1" maxOccurs="unbounded"/>
                     <element name="name" type="xsd:string"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -12788,6 +12857,8 @@ All Rights Reserved
                     <element name="recordTypeMappings" type="tns:RecordTypeMapping" minOccurs="0" maxOccurs="unbounded"/>
                     <element name="recordTypeSelectorRequired" type="xsd:boolean" />
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+          
             </complexType>
 
             <complexType name="DescribeLayout">
@@ -12815,6 +12886,8 @@ All Rights Reserved
                     <element name="saveOptions"                    type="tns:DescribeLayoutSaveOption" minOccurs="0" maxOccurs="unbounded" />
 
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -12822,6 +12895,8 @@ All Rights Reserved
                 <sequence>
                     <element name="quickActionListItems"       type="tns:DescribeQuickActionListItemResult" minOccurs="0" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeQuickActionListItemResult">
@@ -12836,6 +12911,8 @@ All Rights Reserved
                     <element name="targetSobjectType"    type="xsd:string" nillable="true"/>
                     <element name="type"         type="xsd:string"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -12843,6 +12920,8 @@ All Rights Reserved
                 <sequence>
                     <element name="feedFilters" type="tns:DescribeLayoutFeedFilter" minOccurs="0" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <simpleType name="FeedLayoutFilterType">
@@ -12893,18 +12972,24 @@ All Rights Reserved
                     <element name="useCollapsibleSection"   type="xsd:boolean"/>
                     <element name="useHeading"              type="xsd:boolean"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeLayoutButtonSection">
                 <sequence>
                     <element name="detailButtons"         type="tns:DescribeLayoutButton" minOccurs="1" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
             <complexType name="DescribeLayoutRow">
                 <sequence>
                     <element name="layoutItems"      type="tns:DescribeLayoutItem" minOccurs="1" maxOccurs="unbounded"/>
                     <element name="numItems"         type="xsd:int"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeLayoutItem">
@@ -12918,6 +13003,8 @@ All Rights Reserved
                     <element name="placeholder"      type="xsd:boolean"/>
                     <element name="required"         type="xsd:boolean"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <simpleType name="WebLinkWindowType">
@@ -12985,6 +13072,8 @@ All Rights Reserved
                     <element name="windowPosition"        type="tns:WebLinkPosition" nillable="true" minOccurs="0"/>
                     
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeLayoutComponent">
@@ -13045,6 +13134,8 @@ All Rights Reserved
                             <element name="components"             type="tns:DescribeLayoutComponent" minOccurs="0" maxOccurs="unbounded"/>
                             <element name="fieldType"              type="tns:fieldType"/>
                         </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                    
                     </extension>
                 </complexContent>
             </complexType>
@@ -13168,6 +13259,8 @@ All Rights Reserved
                     <element name="picklistsForRecordType"    type="tns:PicklistForRecordType" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
                     <element name="recordTypeId"              type="tns:ID" nillable="true"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="PicklistForRecordType">
@@ -13175,6 +13268,8 @@ All Rights Reserved
                     <element name="picklistName"      type="xsd:string"/>
                     <element name="picklistValues"    type="tns:PicklistEntry" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+          
             </complexType>
 
 
@@ -13182,6 +13277,8 @@ All Rights Reserved
                 <sequence>
                     <element name="relatedContentItems"         type="tns:DescribeRelatedContentItem" minOccurs="1" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+             
             </complexType>
 
             <complexType name="DescribeRelatedContentItem">
@@ -13204,6 +13301,8 @@ All Rights Reserved
                     <element name="sobject"         type="xsd:string" nillable="true"/>
                     <element name="sort"            type="tns:RelatedListSort" minOccurs="0" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="RelatedListColumn">
@@ -13301,6 +13400,8 @@ All Rights Reserved
                             <element name="treatTargetObjectAsRecipient" type="xsd:boolean" nillable="true" />
                             <element name="whatId"              type="tns:ID" nillable="true"/>
                         </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                    
                     </extension>
                 </complexContent>
             </complexType>
@@ -13310,6 +13411,8 @@ All Rights Reserved
                     <element name="errors"              minOccurs="0" maxOccurs="unbounded" type="tns:SendEmailError" />
                     <element name="success"             type="xsd:boolean" />
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+          
             </complexType>
 
 
@@ -13347,12 +13450,16 @@ All Rights Reserved
                     <element name="sobjectType"              type="xsd:string"/>
                     <element name="whereCondition"           type="tns:SoqlWhereCondition" minOccurs="0"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeSoqlListViewsRequest">
                 <sequence>
                     <element name="listViewParams"      type="tns:DescribeSoqlListViewParams" minOccurs="1" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeSoqlListViewParams">
@@ -13366,6 +13473,8 @@ All Rights Reserved
                 <sequence>
                     <element name="describeSoqlListViews"    type="tns:DescribeSoqlListView" minOccurs="1" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+          
             </complexType>
 
             <complexType name="ExecuteListViewRequest">
@@ -13376,6 +13485,8 @@ All Rights Reserved
                     <element name="orderBy"                  type="tns:ListViewOrderBy" minOccurs="1" maxOccurs="unbounded"/>
                     <element name="sobjectType"              type="xsd:string"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="ExecuteListViewResult">
@@ -13388,13 +13499,15 @@ All Rights Reserved
                     <element name="records"                  type="tns:ListViewRecord" minOccurs="1" maxOccurs="unbounded"/>
                     <element name="size"                     type="xsd:int"/>
                 </sequence>
+                <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="ListViewRecord">
                 <sequence>
                     <element name="columns"                  type="tns:ListViewRecordColumn" minOccurs="1" maxOccurs="unbounded"/>
                 </sequence>
-				<xsd:attribute name="tmp" type="xsd:string" />
+                <attribute name="tmp" type="xsd:string" /> 
             </complexType>
 
             <complexType name="ListViewRecordColumn">
@@ -13402,7 +13515,6 @@ All Rights Reserved
                     <element name="fieldNameOrPath"          type="xsd:string"/>
                     <element name="value"                    type="xsd:string" nillable="true"/>
                 </sequence>
-				<xsd:attribute name="tmp" type="xsd:string" />
             </complexType>
 
             <simpleType name="orderByDirection">
@@ -13455,6 +13567,7 @@ All Rights Reserved
                             <element name="operator"                 type="tns:soqlOperator"/>
                             <element name="values"                   type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
                         </sequence>
+                    <attribute name="tmp" type="xsd:string" />                     
                     </extension>
                 </complexContent>
             </complexType>
@@ -13476,6 +13589,7 @@ All Rights Reserved
                             <element name="conditions"               type="tns:SoqlWhereCondition" minOccurs="0" maxOccurs="unbounded"/>
                             <element name="conjunction"              type="tns:soqlConjunction"/>
                         </sequence>
+                      <attribute name="tmp" type="xsd:string" />                     
                     </extension>
                 </complexContent>
             </complexType>
@@ -13503,6 +13617,8 @@ All Rights Reserved
                     <element name="objectType" type="xsd:string"/>
                     <element name="searchColumns" type="tns:DescribeColumn" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
         
 
@@ -13546,6 +13662,8 @@ All Rights Reserved
                     <element name="tabSetId"        type="xsd:string" />
                     <element name="tabs"            type="tns:DescribeTab" minOccurs="0" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="DescribeTab">
@@ -13560,6 +13678,8 @@ All Rights Reserved
                     <element name="sobjectName"          type="xsd:string" nillable="true" />
                     <element name="url"                  type="xsd:string" />
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
 
@@ -13682,6 +13802,8 @@ All Rights Reserved
                 <sequence>
                     <element name="sobjectType" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
         </element>
         <element name="describeThemeResponse">
@@ -13782,6 +13904,8 @@ All Rights Reserved
                         <element name="layoutName" type="xsd:string" nillable="true"/>
                         <element name="recordTypeIds" type="tns:ID" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="describeLayoutResponse">
@@ -13799,6 +13923,8 @@ All Rights Reserved
                         <element name="sObjectType" type="xsd:string"/>
                         <element name="recordTypeIds" type="tns:ID" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="describeCompactLayoutsResponse">
@@ -13815,6 +13941,8 @@ All Rights Reserved
                     <sequence>
                         <element name="sObjectTypes" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="describePrimaryCompactLayoutsResponse">
@@ -13822,6 +13950,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:DescribeCompactLayout" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -13833,6 +13963,8 @@ All Rights Reserved
                         <element name="picklistValue" type="xsd:string" nillable="true"/>
                         <element name="recordTypeIds" type="tns:ID" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="describePathAssistantsResponse">
@@ -13850,6 +13982,8 @@ All Rights Reserved
                         <element name="sObjectType" type="xsd:string"/>
                         <element name="approvalProcessNames" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="describeApprovalLayoutResponse">
@@ -13938,6 +14072,8 @@ All Rights Reserved
                     <sequence>
                         <element name="sObjectType" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="describeSearchLayoutsResponse">
@@ -13945,6 +14081,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:DescribeSearchLayoutResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -13960,6 +14098,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:DescribeSearchScopeOrderResult" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -13977,6 +14117,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:DescribeSearchableEntityResult" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -13992,6 +14134,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:DescribeTabSetResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14006,6 +14150,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:DescribeTab" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14024,6 +14170,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:DescribeNounResult" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14034,6 +14182,8 @@ All Rights Reserved
                     <sequence>
                         <element name="sObjects" type="ens:sObject" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="createResponse">
@@ -14041,6 +14191,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:SaveResult" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14078,6 +14230,8 @@ All Rights Reserved
                     <element name="mergedBody"          type="xsd:string" nillable="true" />
                     <element name="success"             type="xsd:boolean" />
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <complexType name="RenderEmailTemplateResult">
@@ -14086,6 +14240,8 @@ All Rights Reserved
                     <element name="errors"    			type="tns:Error" minOccurs="0" maxOccurs="unbounded"/>
                     <element name="success"             type="xsd:boolean" />
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <element name="renderEmailTemplate">
@@ -14126,6 +14282,8 @@ All Rights Reserved
                     <sequence>
                         <element name="sObjects" type="ens:sObject" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="updateResponse">
@@ -14133,6 +14291,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:SaveResult" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14143,6 +14303,8 @@ All Rights Reserved
                         <element name="externalIDFieldName" type="xsd:string"/>
                         <element name="sObjects" type="ens:sObject" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="upsertResponse">
@@ -14150,6 +14312,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:UpsertResult" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14159,6 +14323,8 @@ All Rights Reserved
                     <sequence>
                         <element name="request" type="tns:MergeRequest" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="mergeResponse">
@@ -14166,6 +14332,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:MergeResult" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+          
                 </complexType>
             </element>
 
@@ -14175,6 +14343,8 @@ All Rights Reserved
                     <sequence>
                         <element name="ids" type="tns:ID" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="deleteResponse">
@@ -14182,6 +14352,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:DeleteResult" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14191,6 +14363,8 @@ All Rights Reserved
                     <sequence>
                         <element name="ids" type="tns:ID" minOccurs="1" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="undeleteResponse">
@@ -14198,6 +14372,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:UndeleteResult" minOccurs="1" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14207,6 +14383,8 @@ All Rights Reserved
                     <sequence>
                         <element name="ids" type="tns:ID" minOccurs="1" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="emptyRecycleBinResponse">
@@ -14214,6 +14392,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:EmptyRecycleBinResult" minOccurs="1" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14223,6 +14403,8 @@ All Rights Reserved
                     <sequence>
                         <element name="actions" type="tns:ProcessRequest" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+          
                 </complexType>
             </element>
             <element name="processResponse">
@@ -14230,6 +14412,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:ProcessResult" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+          
                 </complexType>
             </element>
 
@@ -14240,6 +14424,8 @@ All Rights Reserved
                     <sequence>
                         <element name="quickActions" type="tns:PerformQuickActionRequest" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                        
                 </complexType>
             </element>
             <element name="performQuickActionsResponse">
@@ -14247,6 +14433,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:PerformQuickActionResult" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14257,6 +14445,8 @@ All Rights Reserved
                         <element name="quickActionNames" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
                         <element name="contextId" type="tns:ID" nillable="true"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="retrieveQuickActionTemplatesResponse">
@@ -14264,6 +14454,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:QuickActionTemplateResult" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14272,6 +14464,8 @@ All Rights Reserved
                     <sequence>
                         <element name="quickActions"       type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="describeQuickActionsResponse">
@@ -14279,6 +14473,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:DescribeQuickActionResult" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14294,6 +14490,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:DescribeAvailableQuickActionResult" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14324,6 +14522,8 @@ All Rights Reserved
                         <element name="sObjectType" type="xsd:string"/>
                         <element name="ids"         type="tns:ID" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="retrieveResponse">
@@ -14331,6 +14531,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="ens:sObject" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14342,6 +14544,8 @@ All Rights Reserved
                     <sequence>
                         <element name="leadConverts" type="tns:LeadConvert" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
             <element name="convertLeadResponse">
@@ -14349,6 +14553,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:LeadConvertResult" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14406,6 +14612,8 @@ All Rights Reserved
                     <sequence>
                         <element name="sessionIds" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14414,6 +14622,8 @@ All Rights Reserved
                     <sequence>
                         <element name="result" type="tns:InvalidateSessionsResult" minOccurs="0" maxOccurs="unbounded"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -14598,6 +14808,8 @@ All Rights Reserved
 
                         <element name="debugLevel" type="tns:DebugLevel"/>
                     </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
            </element>
 
@@ -14654,6 +14866,8 @@ All Rights Reserved
      <xsd:sequence>
       <xsd:element name="packageVersions" minOccurs="0" maxOccurs="unbounded" type="tns:PackageVersion"/>
      </xsd:sequence>
+      <xsd:attribute name="tmp" type="xsd:string" /> 
+    
     </xsd:complexType>
    </xsd:element>
 
@@ -14717,6 +14931,8 @@ All Rights Reserved
                 <sequence>
                     <element name="limitInfo" minOccurs="0" maxOccurs="unbounded" type="tns:LimitInfo"/>
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
         </element>
 
@@ -14803,6 +15019,8 @@ All Rights Reserved
                          <element name="options" type="tns:OwnerChangeOption" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
 
                    </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+                
                 </complexType>
             </element>
 
@@ -15154,6 +15372,8 @@ All Rights Reserved
 
 
                 </sequence>
+                    <attribute name="tmp" type="xsd:string" /> 
+            
             </complexType>
 
             <element name="fault" type="fns:ApiFault" />
@@ -17192,7 +17412,7 @@ All Rights Reserved
     <service name="SforceService">
         <documentation>Sforce SOAP API</documentation>
         <port binding="tns:SoapBinding" name="Soap">
-            <soap:address location="https://test.salesforce.com/services/Soap/c/39.0/0DFQ000000002cC"/>
+            <soap:address location="https://test.salesforce.com/services/Soap/c/39.0/0DFP000000001HW"/>
         </port>
     </service>
 </definitions>

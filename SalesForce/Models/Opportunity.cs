@@ -32,6 +32,7 @@ namespace Main.Models
         public String WCType { get; set; }
         public String OwnerID { get; set; }
         public String OwnerName { get; set; }
+        [Column("[OwnerSFUserName]")]
         public String OwnerSFUserName { get; set; }
         public String MainAccountManagerID { get; set; }
         public String MainAccountManagerName { get; set; }
@@ -43,9 +44,12 @@ namespace Main.Models
         public String ManufacturerName { get; set; }
         public String EndUserID { get; set; }
         public String EndUserName { get; set; }
+        public DateTime CreationTimestamp { get; set; }
+
         [NotMapped]
         public String RelatedAttachment_base64 { get; set; }
         public string SalesForceID { get; set; }
+
 
     }
 }

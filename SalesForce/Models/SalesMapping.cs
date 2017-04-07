@@ -18,6 +18,6 @@ namespace Main.Models
         public string SalesPractice { get; set; }
         public string Manufacturer { get; set; }
         public string MappedUserId { get; set; }
-        public string MappedUserEmail { get; set; }
+        public string MappedSFUserName { get; set; }
     }
 }

@@ -62,7 +62,7 @@ namespace SalesForce.Services
             {
                 string accountManager = lineItem.AccountManagerId;
                 string salesPractice = lineItem.SalesPractice;
-                string manufacturer = lineItem.ManufacturerID;
+                string manufacturer = lineItem.ManufacturerID + ";" + lineItem.ManufacturerName;
                 //concatenates the ID and the name of enduser
                 string endUser = lineItem.EndUser.WestconId + ";" + lineItem.EndUser.Name;
 
@@ -128,7 +128,16 @@ namespace SalesForce.Services
             string manufacturerID = (manufacturerIDs.Count > 0)
                 ? manufacturerIDs.FirstOrDefault(x => x.Value == maxManufacturer).Key
                 : null;
-            opportunity.ManufacturerID = manufacturerID;
+            if (!string.IsNullOrEmpty(manufacturerID))
+            {
+                opportunity.ManufacturerID = manufacturerID.Split(';')[0];
+                opportunity.ManufacturerName = manufacturerID.Split(';')[1];
+            }
+            else
+            {
+                opportunity.ManufacturerID = null;
+                opportunity.ManufacturerName = null;
+            }
 
             //Sales Practice
             int maxSalesPractice = (salesPractices.Count > 0) ? salesPractices.Values.Max() : 0;
@@ -139,8 +148,8 @@ namespace SalesForce.Services
             //Owner
             opportunity.OwnerID = salesPracticeName;            
             #region "INNO-182"
-            //Main.Repositories.SalesMappingRepository repository = new Main.Repositories.SalesMappingRepository();
-            //opportunity.OwnerSFUserName = repository.GetMappedUserID(salesData.SalesOrg, salesPracticeName, manufacturerID);
+            Main.Repositories.SalesMappingRepository repository = new Main.Repositories.SalesMappingRepository();
+            opportunity.OwnerSFUserName = repository.GetMappedUserID(salesData.SalesOrg, salesPracticeName, opportunity.ManufacturerName);
             #endregion "INNO-182"
 
             //End User

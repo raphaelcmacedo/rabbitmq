@@ -65,7 +65,15 @@ namespace Main.Services
             SalesForceSVC.Opportunity OpportunitySalesForce = conversor.ConvertOpportunity(opportunity);
             SalesForceService service = new SalesForceService();
             AttachmentToFile fileService = new AttachmentToFile();
-            SalesForceSVC.SaveResult[] result = service.CreateOpportunity(OpportunitySalesForce);
+            SalesForceSVC.SaveResult[] result = null;
+
+            if (string.IsNullOrEmpty(opportunity.SalesForceID))
+            {
+               result = service.CreateOpportunity(OpportunitySalesForce);
+            }else
+            {
+                result = service.UpdateOpportunity(OpportunitySalesForce);
+            }
 
             if (result != null && result.Length > 0)
             {

@@ -19,6 +19,7 @@ namespace SalesForce.Services
                 Settings = settingsRepository.GetConfig(Main.Helpers.Settings.ApplicationName);
             }
 
+            Main.Repositories.OpportunityRepository opportunityRepository = new Main.Repositories.OpportunityRepository();
             Opportunity opportunity = new Opportunity();
             opportunity.Name = salesData.SalesOrderNo;
             if (salesData.SoldTo != null)
@@ -45,7 +46,7 @@ namespace SalesForce.Services
             opportunity.SalesDataId = salesData.SalesDataId;
 
             SetCountingFields(salesData, opportunity);
-
+            opportunity.SalesForceID = opportunityRepository.SearchForSalesForceId(opportunity.Name);
             opportunity.SalesData = salesData;
 
             return opportunity;

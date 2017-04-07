@@ -46,7 +46,10 @@ namespace SalesForce.Services
 
             SetCountingFields(salesData, opportunity);
 
+            salesData.CreationTimestamp = DateTime.Now;
             opportunity.SalesData = salesData;
+
+            opportunity.CreationTimestamp = DateTime.Now;
 
             return opportunity;
         }

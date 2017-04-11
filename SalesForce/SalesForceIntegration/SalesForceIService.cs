@@ -29,6 +29,7 @@ namespace Main.SalesForceIntegration
         private SalesForceSVC.PackageVersion version = new SalesForceSVC.PackageVersion();
         private SalesForceSVC.PackageVersion[] versionHeader = null;
         private SalesForceSVC.EmailHeader emailHeader = new SalesForceSVC.EmailHeader();
+        private SalesForceSVC.OwnerChangeOption[] ownerChanges = null;
 
         /*public ActionResult Index()
         {
@@ -183,6 +184,36 @@ namespace Main.SalesForceIntegration
 
                
                      
+            return saveResult;
+        }
+
+        public SalesForceSVC.SaveResult[] UpdateOpportunity(SalesForceSVC.Opportunity opp = null)
+        {
+
+            SalesForceSVC.SaveResult[] saveResult = null;
+            ConfigureHeaders();
+
+            //Set timeout
+            serviceClient.InnerChannel.OperationTimeout = new TimeSpan(0, 1, 0);
+
+            SalesForceSVC.sObject[] objs = new List<SalesForceSVC.sObject> { opp }.ToArray();
+            SalesForceSVC.LimitInfo[] infoHeader = getInfoHeader();
+
+            serviceClient.update(sessionHeader, ruleHeader, mruHeader, truncateHeader, trackingHeader,
+                streamingHeader, allOrNoneHeader, duplicateHeader, localeOption, debugHeader, versionHeader,
+                    emailHeader,ownerChanges, objs, out infoHeader, out saveResult);
+            if (!saveResult[0].success)
+            {
+                string message = "";
+                foreach (SalesForceSVC.Error error in saveResult[0].errors)
+                {
+                    message += error.message + "\r\n";
+                }
+                throw new Exception(message);
+            }
+
+
+
             return saveResult;
         }
 

@@ -49,7 +49,6 @@ namespace SalesForce.Services
             opportunity.SalesDataId = salesData.SalesDataId;
 
             SetCountingFields(salesData, opportunity);
-            opportunity.SalesForceID = opportunityRepository.SearchForSalesForceId(opportunity.Name);
             salesData.CreationTimestamp = DateTime.Now;
             opportunity.SalesData = salesData;
 
@@ -59,6 +58,9 @@ namespace SalesForce.Services
             string oppFormatedName = String.Format(Main.Helpers.Settings.OpportunityNameFormat.ToString(), salesData.SalesOrderNo, totalBillingValue.ToString(cultureInfo));
             opportunity.Name = oppFormatedName;
             #endregion "INNO-275"
+
+            opportunity.SalesForceID = opportunityRepository.SearchForSalesForceId(opportunity.Name);
+
 
             return opportunity;
         }

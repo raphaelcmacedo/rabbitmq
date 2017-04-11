@@ -228,6 +228,11 @@ namespace Main.Services
             //INNO-217
             opportunity.WC_End_User__c = opp.EndUserName;
 
+            if (!string.IsNullOrEmpty(opp.SalesForceID))
+            {
+                opportunity.Id = opp.SalesForceID;
+            }
+
             return opportunity;
 
         }

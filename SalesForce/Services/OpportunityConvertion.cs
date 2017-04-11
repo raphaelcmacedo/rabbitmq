@@ -1,6 +1,7 @@
 ﻿using Main.Models;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace SalesForce.Services
     public static class OpportunityConvertion
     {
         public static Dictionary<string, string> Settings { get; set; }
+        private static CultureInfo cultureInfo = new CultureInfo("en-US");
 
         public static Opportunity SalesDataToOpportunity(SalesData salesData)
         {
@@ -21,7 +23,7 @@ namespace SalesForce.Services
 
             Main.Repositories.OpportunityRepository opportunityRepository = new Main.Repositories.OpportunityRepository();
             Opportunity opportunity = new Opportunity();
-            opportunity.Name = salesData.SalesOrderNo;
+           
             if (salesData.SoldTo != null)
             {
                 opportunity.AccountID = salesData.SoldTo.WestconId;
@@ -33,6 +35,7 @@ namespace SalesForce.Services
             opportunity.Type = Settings["Type"];//"Renewal";
             opportunity.WCType = Settings["Westcon Type"]; //"Renewals";
             opportunity.GeneratedBy = Settings["Created By"]; //"Renewals";
+           
 
             decimal totalBillingValue = 0;
             decimal totalBillingCost = 0;
@@ -47,7 +50,15 @@ namespace SalesForce.Services
 
             SetCountingFields(salesData, opportunity);
             opportunity.SalesForceID = opportunityRepository.SearchForSalesForceId(opportunity.Name);
+            salesData.CreationTimestamp = DateTime.Now;
             opportunity.SalesData = salesData;
+
+            opportunity.CreationTimestamp = DateTime.Now;
+
+            #region "INNO-275"
+            string oppFormatedName = String.Format(Main.Helpers.Settings.OpportunityNameFormat.ToString(), salesData.SalesOrderNo, totalBillingValue.ToString(cultureInfo));
+            opportunity.Name = oppFormatedName;
+            #endregion "INNO-275"
 
             return opportunity;
         }
@@ -180,14 +191,14 @@ namespace SalesForce.Services
             DateTime? closeDate = salesData.LineItems.Min(x => x.EndDate);
             if (closeDate != null)
             {// If we have the EndDate, we need to add 1 Month
-                 closeDate = closeDate.Value.AddMonths(1);
+                 closeDate = closeDate.Value.AddMonths(Convert.ToInt32(Settings["End Date Additional Months"]));
             }
             else
             {//Try to fetch date from BillingDate
                 closeDate = salesData.LineItems.Min(x => x.EarliestBillingPostDate);
                 if (closeDate != null)
                 {// If we have the Billing Date, we need to add 13 Month
-                    closeDate = closeDate.Value.AddMonths(13);
+                    closeDate = closeDate.Value.AddMonths(Convert.ToInt32(Settings["Billing Date Additional Months"]));
                 }
             }
 

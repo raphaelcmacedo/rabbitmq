@@ -170,6 +170,14 @@ namespace Main.Services
                 {
                     opportunity.OwnerId = ((SalesForceSVC.User)result.records[0]).Id;
                 }
+                else
+                {
+                    result = service.FindUserByUsername(Helpers.Settings.DefaultOwner);
+                    if (result != null && result.records != null && result.records.Length > 0)
+                    {
+                        opportunity.OwnerId = ((SalesForceSVC.User)result.records[0]).Id;
+                    }
+                }
             }
 
             result = service.FindAccountByExternalId(opp.AccountID);

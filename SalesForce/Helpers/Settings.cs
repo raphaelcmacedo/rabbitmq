@@ -70,5 +70,9 @@ namespace Main.Helpers
         {
             get { return GetValue("BwOpportunityQueue"); }
         }
+        public static string OpportunityNameFormat
+        {
+            get { return GetValue("OpportunityNameFormat"); }
+        }
     }
 }

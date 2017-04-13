@@ -76,6 +76,7 @@ namespace Main.Services
                 item.Promo2ID = Util.GetValue(node, "ns0:Promo2ID");
                 item.AccreditationID = Util.GetValue(node, "ns0:AccreditationID");
                 item.LineItemSerialNo = Util.GetValue(node, "ns0:LineItemSerialNo");
+                //item.LineItemSerialNo = this.ReadSerialNumbers(node);               
 
                 //Ship To
                 XmlNode shipToNode = node["ns0:ShipTo"];
@@ -108,6 +109,22 @@ namespace Main.Services
             }
 
             return items;
+        }
+
+        private string ReadSerialNumbers(XmlNode serialNode)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (Int32 i =0,len = serialNode["ns0:QtySerialNos"].ChildNodes.Count; i < len; i++)
+            {
+                sb.Append(Util.GetValue(serialNode["ns0:QtySerialNos"].ChildNodes[i], "ns0:SerialNo" ));
+                sb.Append(",");
+            }
+
+            sb.Remove(sb.Length - 1, 1);
+
+            if(sb.Length < 1) { return null; }
+
+            return sb.ToString();
         }
 
         private Company ReadCompany(XmlNode companyNode, XmlNode contactNode)

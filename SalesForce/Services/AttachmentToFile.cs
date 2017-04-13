@@ -15,11 +15,15 @@ namespace Main.Services
 {
     public class AttachmentToFile
     {
+        private IDataFormat dataFormatCustom;
+
         public string CreateExcel(SalesData salesData)
         {
 
             var workbook = new XSSFWorkbook();
             var sheet = workbook.CreateSheet("Sales Data " + salesData.SalesOrderNo);
+            dataFormatCustom = workbook.CreateDataFormat();
+
             this.CreateExcelHeaderTop(workbook, sheet);
             this.CreateExcelHeader(workbook, sheet);
             this.PopulateExcel(sheet, salesData);
@@ -30,7 +34,9 @@ namespace Main.Services
                 workbook.Write(stream);
                 byteFile = stream.ToArray();
             }
-            
+
+           // File.WriteAllBytes("D:\\Desenvolvimento\\Teste.xlsx", byteFile);
+
             return System.Convert.ToBase64String(byteFile);
         }
 
@@ -378,8 +384,10 @@ namespace Main.Services
         {
             if (value != null)
             {
+                string newValue = (value ?? DateTime.MinValue).ToString("MM/dd/yyyy");
+
                 ICell cell = row.CreateCell(index);
-                cell.SetCellValue(value??DateTime.MinValue);
+                cell.SetCellValue(newValue);
                 cell.CellStyle = cellStyle;
             }
         }

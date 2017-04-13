@@ -35,7 +35,7 @@ namespace Main.Services
                 byteFile = stream.ToArray();
             }
 
-           // File.WriteAllBytes("D:\\Desenvolvimento\\Teste.xlsx", byteFile);
+            File.WriteAllBytes("D:\\Desenvolvimento\\Teste.xlsx", byteFile);
 
             return System.Convert.ToBase64String(byteFile);
         }
@@ -62,6 +62,9 @@ namespace Main.Services
             NPOI.SS.Util.CellRangeAddress mergeEndUser = new NPOI.SS.Util.CellRangeAddress(0, 0, 43, 55);
             sheet.AddMergedRegion(mergeEndUser);
 
+            NPOI.SS.Util.CellRangeAddress mergeSerial = new NPOI.SS.Util.CellRangeAddress(0, 0, 85, 88);
+            sheet.AddMergedRegion(mergeSerial);
+
             style.FillForegroundColor = (short)IndexedColors.BlueGrey.Index;
             ICell cellSoldTo = this.CreateCell(row, style, 4, "Sold To");
             CellUtil.SetAlignment(cellSoldTo, workbook, 2);
@@ -72,6 +75,10 @@ namespace Main.Services
 
             style.FillForegroundColor = (short)IndexedColors.Plum.Index;
             ICell cellEndUser = this.CreateCell(row, style, 43, "End User");
+            CellUtil.SetAlignment(cellEndUser, workbook, 2);
+
+            style.FillForegroundColor = (short)IndexedColors.Grey50Percent.Index;
+            ICell cellSerial = this.CreateCell(row, style, 85, "Serial Numbers");
             CellUtil.SetAlignment(cellEndUser, workbook, 2);
         }
 
@@ -163,7 +170,6 @@ namespace Main.Services
                 "Line Item Promo ID",
                 "Line Item Promo 2 ID",
                 "Line Item Accreditation ID",
-                "Line Item Serial No",
                 "Contract No",
                 "Contract Sales Order",
                 "Contract Manufacturer Invoice No",
@@ -172,7 +178,11 @@ namespace Main.Services
                 "Contract Model No",
                 "Contract NSP",
                 "Contract Start Date",
-                "Contract End Date"
+                "Contract End Date",
+                "Line Item Serial No",
+                "Serial Number",
+                "Equi Manufacturer Serial Number",
+                "Equi Serial Number"
             };
 
             foreach (string header in headers)
@@ -330,7 +340,6 @@ namespace Main.Services
                 this.CreateCell(row, null, cellIndex++, item.PromoID);
                 this.CreateCell(row, null, cellIndex++, item.Promo2ID);
                 this.CreateCell(row, null, cellIndex++, item.AccreditationID);
-                this.CreateCell(row, null, cellIndex++, item.LineItemSerialNo);
 
                 //Contract
                 if (item.Contract != null)
@@ -344,8 +353,16 @@ namespace Main.Services
                     this.CreateCell(row, null, cellIndex++, item.Contract.NSP);
                     this.CreateCell(row, null, cellIndex++, item.Contract.StartDate);
                     this.CreateCell(row, null, cellIndex++, item.Contract.EndDate);
+                }else
+                {
+                    cellIndex += 9;
                 }
-               
+
+                this.CreateCell(row, null, cellIndex++, item.LineItemSerialNo);
+                this.CreateCell(row, null, cellIndex++, item.SerialNo);
+                this.CreateCell(row, null, cellIndex++, item.EquiManufacturerSerialNo);
+                this.CreateCell(row, null, cellIndex++, item.EquiSerialNo);
+
                 line++;
                 cellIndex = 0;
             }

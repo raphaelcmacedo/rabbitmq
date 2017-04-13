@@ -76,7 +76,8 @@ namespace Main.Services
                 item.Promo2ID = Util.GetValue(node, "ns0:Promo2ID");
                 item.AccreditationID = Util.GetValue(node, "ns0:AccreditationID");
                 item.LineItemSerialNo = Util.GetValue(node, "ns0:LineItemSerialNo");
-                //item.LineItemSerialNo = this.ReadSerialNumbers(node);               
+
+                this.ReadSerialNumbers(node, ref item);               
 
                 //Ship To
                 XmlNode shipToNode = node["ns0:ShipTo"];
@@ -111,20 +112,31 @@ namespace Main.Services
             return items;
         }
 
-        private string ReadSerialNumbers(XmlNode serialNode)
+        private void ReadSerialNumbers(XmlNode serialNode, ref LineItem item)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder serialNo = new StringBuilder(),
+             equiManuSerialNo = new StringBuilder(),
+             equiSerialNo = new StringBuilder();
+
             for (Int32 i =0,len = serialNode["ns0:QtySerialNos"].ChildNodes.Count; i < len; i++)
             {
-                sb.Append(Util.GetValue(serialNode["ns0:QtySerialNos"].ChildNodes[i], "ns0:SerialNo" ));
-                sb.Append(",");
+                serialNo.Append(Util.GetValue(serialNode["ns0:QtySerialNos"].ChildNodes[i], "ns0:SerialNo" ));
+                serialNo.Append(",");
+
+                equiManuSerialNo.Append(Util.GetValue(serialNode["ns0:QtySerialNos"].ChildNodes[i], "ns0:EquiManufacturerSerialNo"));
+                equiManuSerialNo.Append(",");
+
+                equiSerialNo.Append(Util.GetValue(serialNode["ns0:QtySerialNos"].ChildNodes[i], "ns0:EquiSerialNo"));
+                equiSerialNo.Append(",");
             }
 
-            sb.Remove(sb.Length - 1, 1);
-
-            if(sb.Length < 1) { return null; }
-
-            return sb.ToString();
+            serialNo.Remove(serialNo.Length - 1, 1);
+            equiManuSerialNo.Remove(serialNo.Length - 1, 1);
+            equiSerialNo.Remove(serialNo.Length - 1, 1);
+            
+            item.SerialNo = serialNo.ToString();
+            item.EquiSerialNo = equiSerialNo.ToString();
+            item.EquiManufacturerSerialNo = equiManuSerialNo.ToString();
         }
 
         private Company ReadCompany(XmlNode companyNode, XmlNode contactNode)

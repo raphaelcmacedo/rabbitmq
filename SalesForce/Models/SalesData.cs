@@ -25,5 +25,13 @@ namespace Main.Models
         public virtual Company SoldTo { get; set; }
 
         public virtual ICollection<LineItem> LineItems { get; set; }
+
+        [NotMapped]
+        public string EquiSerialNo { get; set; }
+        [NotMapped]
+        public string EquiManufacturerSerialNo { get; set; }
+        [NotMapped]
+        public string SerialNo { get; set; }
+
     }
 }

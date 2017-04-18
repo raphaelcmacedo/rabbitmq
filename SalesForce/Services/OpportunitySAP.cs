@@ -118,22 +118,43 @@ namespace Main.Services
              equiManuSerialNo = new StringBuilder(),
              equiSerialNo = new StringBuilder();
 
+            string serialNoStr, equiManuSerStr, equiSerialNoSTR;
+
             for (Int32 i =0,len = serialNode["ns0:QtySerialNos"].ChildNodes.Count; i < len; i++)
             {
-                serialNo.Append(Util.GetValue(serialNode["ns0:QtySerialNos"].ChildNodes[i], "ns0:SerialNo" ));
-                serialNo.Append(",");
 
-                equiManuSerialNo.Append(Util.GetValue(serialNode["ns0:QtySerialNos"].ChildNodes[i], "ns0:EquiManufacturerSerialNo"));
-                equiManuSerialNo.Append(",");
+                serialNoStr = Util.GetValue(serialNode["ns0:QtySerialNos"].ChildNodes[i], "ns0:SerialNo");
+                if (!string.IsNullOrEmpty(serialNoStr))
+                {
+                    serialNo.Append(serialNoStr);
+                    serialNo.Append(",");
+                }
 
-                equiSerialNo.Append(Util.GetValue(serialNode["ns0:QtySerialNos"].ChildNodes[i], "ns0:EquiSerialNo"));
-                equiSerialNo.Append(",");
+                equiManuSerStr = Util.GetValue(serialNode["ns0:QtySerialNos"].ChildNodes[i], "ns0:EquiManufacturerSerialNo");
+                if (!string.IsNullOrEmpty(equiManuSerStr))
+                {
+                    equiManuSerialNo.Append(equiManuSerStr);
+                    equiManuSerialNo.Append(",");
+                }
+                equiSerialNoSTR = Util.GetValue(serialNode["ns0:QtySerialNos"].ChildNodes[i], "ns0:EquiSerialNo");
+                if (!string.IsNullOrEmpty(equiSerialNoSTR)) {
+                    equiSerialNo.Append(equiSerialNoSTR);
+                    equiSerialNo.Append(",");
+                }
+            }
+            if (serialNo.Length > 0)
+            {
+                serialNo.Remove(serialNo.Length - 1, 1);
+            }
+            if (equiManuSerialNo.Length > 0)
+            {
+                equiManuSerialNo.Remove(equiManuSerialNo.Length - 1, 1);
+            }
+            if (equiSerialNo.Length > 0)
+            {
+                equiSerialNo.Remove(equiSerialNo.Length - 1, 1);
             }
 
-            serialNo.Remove(serialNo.Length - 1, 1);
-            equiManuSerialNo.Remove(serialNo.Length - 1, 1);
-            equiSerialNo.Remove(serialNo.Length - 1, 1);
-            
             item.SerialNo = serialNo.ToString();
             item.EquiSerialNo = equiSerialNo.ToString();
             item.EquiManufacturerSerialNo = equiManuSerialNo.ToString();

@@ -35,7 +35,8 @@ namespace Main.Services
                 byteFile = stream.ToArray();
             }
 
-            File.WriteAllBytes("D:\\Desenvolvimento\\Teste.xlsx", byteFile);
+            //Local test only
+            //File.WriteAllBytes("D:\\Desenvolvimento\\Teste.xlsx", byteFile);
 
             return System.Convert.ToBase64String(byteFile);
         }
@@ -62,7 +63,7 @@ namespace Main.Services
             NPOI.SS.Util.CellRangeAddress mergeEndUser = new NPOI.SS.Util.CellRangeAddress(0, 0, 43, 55);
             sheet.AddMergedRegion(mergeEndUser);
 
-            NPOI.SS.Util.CellRangeAddress mergeSerial = new NPOI.SS.Util.CellRangeAddress(0, 0, 85, 88);
+            NPOI.SS.Util.CellRangeAddress mergeSerial = new NPOI.SS.Util.CellRangeAddress(0, 0, 84, 87);
             sheet.AddMergedRegion(mergeSerial);
 
             style.FillForegroundColor = (short)IndexedColors.BlueGrey.Index;
@@ -78,7 +79,7 @@ namespace Main.Services
             CellUtil.SetAlignment(cellEndUser, workbook, 2);
 
             style.FillForegroundColor = (short)IndexedColors.Grey50Percent.Index;
-            ICell cellSerial = this.CreateCell(row, style, 85, "Serial Numbers");
+            ICell cellSerial = this.CreateCell(row, style, 84, "Serial Numbers");
             CellUtil.SetAlignment(cellEndUser, workbook, 2);
         }
 

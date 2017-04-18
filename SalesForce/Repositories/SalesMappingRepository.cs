@@ -20,8 +20,8 @@ namespace Main.Repositories
         {
             SqlParameter appName = new SqlParameter("@ApplicationName", Main.Helpers.Settings.ApplicationName);
             SqlParameter salesOrgParam = new SqlParameter("@SalesOrg", salesOrg);
-            SqlParameter salesPracticeParam = new SqlParameter("@SalesPractice", (!string.IsNullOrEmpty(salesPractice)) ? salesPractice : null);
-            SqlParameter manufacturerParam = new SqlParameter("@Manufacturer", (!string.IsNullOrEmpty(manufacturer)) ? manufacturer : null);
+            SqlParameter salesPracticeParam = new SqlParameter("@SalesPractice", (!string.IsNullOrEmpty(salesPractice)) ? salesPractice : "");
+            SqlParameter manufacturerParam = new SqlParameter("@Manufacturer", (!string.IsNullOrEmpty(manufacturer)) ? manufacturer : "");
 
             List<object> parameters = new List<object>();
 

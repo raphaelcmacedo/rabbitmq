@@ -57,6 +57,13 @@ namespace Main.Models
         public virtual Company EndUser { get; set; }
         [ForeignKey("ContractId")]
         public virtual Contract Contract { get; set; }
+
+        [NotMapped]
+        public string EquiSerialNo { get; set; }
+        [NotMapped]
+        public string EquiManufacturerSerialNo { get; set; }
+        [NotMapped]
+        public string SerialNo { get; set; }
     }
 }
 

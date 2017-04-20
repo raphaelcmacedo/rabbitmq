@@ -274,7 +274,6 @@ namespace Main.Services
             opportunity.Amount = (double)opp.TotalBillingValue;
             opportunity.AmountSpecified = true;
             opportunity.Type = opp.Type;
-
             //INNO-217
             opportunity.WC_End_User__c = opp.EndUserName;
 

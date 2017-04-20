@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
 using System.Net;
+using System.Threading;
 
 namespace Main.SalesForceIntegration
 {
     public class SalesForceService
     {
-        private String login = "andre.vellinha@westcon.com", senha = "Westcon123X1ffRYYPT62EhET1U0AjFCxio";
-
+        private String login = Helpers.Settings.SalesForceUserName, senha = Helpers.Settings.SalesForcePassword + Helpers.Settings.SalesForceToken;
 
         private SalesForceSVC.SoapClient loginClient = new SalesForceSVC.SoapClient();
         private SalesForceSVC.SoapClient serviceClient;
@@ -61,7 +61,6 @@ namespace Main.SalesForceIntegration
             }
             catch (Exception)
             {
-
                 throw;
             }
 
@@ -83,7 +82,6 @@ namespace Main.SalesForceIntegration
             }
             catch (Exception)
             {
-
                 throw;
             }
             return queryResult;
@@ -112,7 +110,6 @@ namespace Main.SalesForceIntegration
             }
             catch (Exception e)
             {
-
                 throw e;
             }
             return queryResult;
@@ -261,8 +258,8 @@ namespace Main.SalesForceIntegration
         private void ConfigureHeaders()
         {
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
+            SalesForceSVC.LoginResult lr = Helpers.SalesForceLoginSingleton.Instance;
 
-            SalesForceSVC.LoginResult lr = loginClient.login(loginHeader, login, senha);
             if (lr.passwordExpired)
             {
                 throw new Exception("Password expired");

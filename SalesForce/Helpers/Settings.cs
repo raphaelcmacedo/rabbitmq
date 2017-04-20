@@ -74,5 +74,21 @@ namespace Main.Helpers
         {
             get { return GetValue("OpportunityNameFormat"); }
         }
+
+        public static string SalesForceUserName
+        {
+            get { return GetValue("SalesForceUserName"); }
+        }
+
+
+        public static string SalesForcePassword
+        {
+            get { return GetValue("SalesForcePassword"); }
+        }
+
+        public static string SalesForceToken
+        {
+            get { return GetValue("SalesForceToken"); }
+        }
     }
 }

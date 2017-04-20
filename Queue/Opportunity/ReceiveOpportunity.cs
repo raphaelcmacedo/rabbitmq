@@ -56,13 +56,13 @@ namespace Queue.Opportunity
                 SendOpportunity send = new SendOpportunity();
                 send.SendToExchange(opportunityMessage);
                 //Send ack to queue
-                channel.BasicAck(ea.DeliveryTag, false);
+                //channel.BasicAck(ea.DeliveryTag, false);
                 
             }
             catch (Exception e)
             {
                 //Send ack
-                channel.BasicReject(ea.DeliveryTag, false);
+                //channel.BasicReject(ea.DeliveryTag, false);
                 //Create ticket
                 Email.SendEmail(salesDataMessage, e.Message);
             }          
@@ -115,6 +115,7 @@ namespace Queue.Opportunity
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 //Send ack
                 channel.BasicReject(ea.DeliveryTag, false);
                 //Create ticket

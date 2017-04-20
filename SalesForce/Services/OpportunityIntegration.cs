@@ -83,7 +83,7 @@ namespace Main.Services
 
                 using (OpportunityRepository repository = new OpportunityRepository())
                 {
-                    opportunity = repository.DbContext.Set<Opportunity>().Find((int) opportunity.OpportunityId);
+                    opportunity = repository.Find((int) opportunity.OpportunityId);
                     opportunity.SalesForceID = parentId;
                     repository.Update(opportunity);
                 }

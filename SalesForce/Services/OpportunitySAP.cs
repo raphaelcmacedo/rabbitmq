@@ -71,7 +71,13 @@ namespace Main.Services
                 item.ManufacturerID = Util.GetValue(node, "ns0:ManufacturerID");
                 item.ManufacturerName = Util.GetValue(node, "ns0:ManufacturerName");
                 item.ManufacturerAccreditationLevelForSoldTo = Util.GetValue(node, "ns0:ManufacturerAccreditationLevelForSoldTo");
-                //item.Discount = Util.ToDecimal(node["ns0:DealID"]["ns0:Discount"].InnerText);
+
+                item.DealID = this.ReadDiscount(node["ns0:DealID"]);
+                item.PromoIDDiscount = this.ReadDiscount(node["ns0:PromoID"]);
+                item.Promo2IDDiscount = this.ReadDiscount(node["ns0:Promo2ID"]);
+                item.AccreditationIDDiscount = this.ReadDiscount(node["ns0:AccreditationID"]);
+
+                item.Discount = item.DealID.Value;
                 item.PromoID = Util.GetValue(node, "ns0:PromoID");
                 item.Promo2ID = Util.GetValue(node, "ns0:Promo2ID");
                 item.AccreditationID = Util.GetValue(node, "ns0:AccreditationID");
@@ -160,6 +166,24 @@ namespace Main.Services
             item.EquiManufacturerSerialNo = equiManuSerialNo.ToString();
         }
 
+        private Discount ReadDiscount(XmlNode serialNode)
+        {
+
+            if (!serialNode.HasChildNodes)
+            {
+                return new Discount();
+            }
+
+            Discount discount = new Discount();
+            discount.AgreementNo = Util.GetValue(serialNode, "ns0:AgreementNo");
+            discount.SBANo = Util.GetValue(serialNode, "ns0:SBANo");
+            discount.RoutingIndicator = Util.GetValue(serialNode, "ns0:RoutingIndicator");
+            discount.Value = Util.ToDecimal(serialNode, "ns0:Discount");
+
+            return discount;
+
+        }
+
         private Company ReadCompany(XmlNode companyNode, XmlNode contactNode)
         {
             Company company = new Company();
@@ -186,14 +210,31 @@ namespace Main.Services
 
             if (contactNode != null)
             {
+                XmlNode contactAddressNode = contactNode["ns0:Address"]; 
+                Address contactAddress = new Address();
                 Contact contact = new Contact();
                 company.Contact = contact;
                 contact.WestconId = Util.GetValue(contactNode, "ns0:WestconID");
+                contact.Name = Util.GetValue(contactNode, "ns0:Name");
                 contact.WorkPhone = Util.GetValue(contactNode, "ns0:WorkPhone");
                 contact.FaxNumber = Util.GetValue(contactNode, "ns0:FaxNumber");
                 contact.EmailAddress = Util.GetValue(contactNode, "ns0:EmailAddress");
                 contact.Extension = Util.GetValue(contactNode, "ns0:Extension");
                 contact.MobilePhone = Util.GetValue(contactNode, "ns0:MobilePhone");
+                
+                if (contactAddressNode != null)
+                {
+                    contactAddress.Addr1 = Util.GetValue(contactAddressNode, "ns0:Addr1");
+                    contactAddress.Addr2 = Util.GetValue(contactAddressNode, "ns0:Addr2");
+                    contactAddress.Addr3 = Util.GetValue(contactAddressNode, "ns0:Addr3");
+                    contactAddress.Addr4 = Util.GetValue(contactAddressNode, "ns0:Addr4");
+                    contactAddress.City = Util.GetValue(contactAddressNode, "ns0:City");
+                    contactAddress.State = Util.GetValue(contactAddressNode, "ns0:State");
+                    contactAddress.PostalCode = Util.GetValue(contactAddressNode, "ns0:PostalCode");
+                    contactAddress.Country = Util.GetValue(contactAddressNode, "ns0:Country");
+                }
+                contact.Address = contactAddress;
+                company.Contact = contact;
             }
 
             return company;

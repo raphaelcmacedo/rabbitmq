@@ -36,7 +36,7 @@ namespace Main.Services
             }
 
             //Local test only
-            //File.WriteAllBytes("D:\\Desenvolvimento\\Teste.xlsx", byteFile);
+           // File.WriteAllBytes("D:\\Desenvolvimento\\Teste.xlsx", byteFile);
 
             return System.Convert.ToBase64String(byteFile);
         }
@@ -54,16 +54,16 @@ namespace Main.Services
             style.SetFont(font);
 
             //Merge cells
-            NPOI.SS.Util.CellRangeAddress mergeSoldTo = new NPOI.SS.Util.CellRangeAddress(0, 0, 4, 20);
+            NPOI.SS.Util.CellRangeAddress mergeSoldTo = new NPOI.SS.Util.CellRangeAddress(0, 0, 4, 31);
             sheet.AddMergedRegion(mergeSoldTo);
 
-            NPOI.SS.Util.CellRangeAddress mergeShipTo = new NPOI.SS.Util.CellRangeAddress(0, 0, 30, 42);
+            NPOI.SS.Util.CellRangeAddress mergeShipTo = new NPOI.SS.Util.CellRangeAddress(0, 0, 41, 68);
             sheet.AddMergedRegion(mergeShipTo);
 
-            NPOI.SS.Util.CellRangeAddress mergeEndUser = new NPOI.SS.Util.CellRangeAddress(0, 0, 43, 55);
+            NPOI.SS.Util.CellRangeAddress mergeEndUser = new NPOI.SS.Util.CellRangeAddress(0, 0, 69, 94);
             sheet.AddMergedRegion(mergeEndUser);
 
-            NPOI.SS.Util.CellRangeAddress mergeSerial = new NPOI.SS.Util.CellRangeAddress(0, 0, 84, 87);
+            NPOI.SS.Util.CellRangeAddress mergeSerial = new NPOI.SS.Util.CellRangeAddress(0, 0, 138, 141);
             sheet.AddMergedRegion(mergeSerial);
 
             style.FillForegroundColor = (short)IndexedColors.BlueGrey.Index;
@@ -71,15 +71,15 @@ namespace Main.Services
             CellUtil.SetAlignment(cellSoldTo, workbook, 2);
 
             style.FillForegroundColor = (short)IndexedColors.Grey25Percent.Index;
-            ICell cellShipTo = this.CreateCell(row, style, 30, "Ship To");
+            ICell cellShipTo = this.CreateCell(row, style, 41, "Ship To");
             CellUtil.SetAlignment(cellShipTo, workbook, 2);
 
             style.FillForegroundColor = (short)IndexedColors.Plum.Index;
-            ICell cellEndUser = this.CreateCell(row, style, 43, "End User");
+            ICell cellEndUser = this.CreateCell(row, style, 69, "End User");
             CellUtil.SetAlignment(cellEndUser, workbook, 2);
 
             style.FillForegroundColor = (short)IndexedColors.Grey50Percent.Index;
-            ICell cellSerial = this.CreateCell(row, style, 84, "Serial Numbers");
+            ICell cellSerial = this.CreateCell(row, style, 138, "Serial Numbers");
             CellUtil.SetAlignment(cellEndUser, workbook, 2);
         }
 
@@ -113,9 +113,21 @@ namespace Main.Services
                 "Company Country Prefix",
                 "Company Work Phone",
                 "Company Fax Number",
+                "Contact Name",
+                "Contact Westcon ID",
+                "Contact Work Phone",
+                "Contact Fax Number",
                 "Contact Email Address",
                 "Contact Extension",
                 "Contact Mobile",
+                "Contact Address 1",
+                "Contact Address 2",
+                "Contact Address 3",
+                "Contact Address 4",
+                "Contact City",
+                "Contact State",
+                "Contact Postal Code",
+                "Contact Country",
                 "Line Item Line Number",
                 "Line Item  SKU",
                 "Line Item SKU Description",
@@ -138,6 +150,21 @@ namespace Main.Services
                 "Company Country Prefix",
                 "Company Work Phone",
                 "Company Fax Number",
+                "Contact Name",
+                "Contact Westcon ID",
+                "Contact Work Phone",
+                "Contact Fax Number",
+                "Contact Email Address",
+                "Contact Extension",
+                "Contact Mobile",
+                "Contact Address 1",
+                "Contact Address 2",
+                "Contact Address 3",
+                "Contact Address 4",
+                "Contact City",
+                "Contact State",
+                "Contact Postal Code",
+                "Contact Country",//64
                 "Company Westcon ID",
                 "Company Name",
                 "Address 1",
@@ -151,6 +178,21 @@ namespace Main.Services
                 "Company Country Prefix",
                 "Company Work Phone",
                 "Company Fax Number",
+                "Contact Name",
+                "Contact Westcon ID",
+                "Contact Work Phone",
+                "Contact Fax Number",
+                "Contact Email Address",
+                "Contact Extension",
+                "Contact Mobile",
+                "Contact Address 1",
+                "Contact Address 2",
+                "Contact Address 3",
+                "Contact Address 4",
+                "Contact City",
+                "Contact State",
+                "Contact Postal Code",
+                "Contact Country",//91
                 "Line Item Sales Order Quantity",
                 "Line Item Sales Unit",
                 "Line Item Billing Cost",
@@ -167,10 +209,22 @@ namespace Main.Services
                 "Line Item Manufacturer ID",
                 "Line Item Manufacturer Name",
                 "Line Item Manufacturer Accreditation Level For Sold To",
-                "Line Item Discount",
-                "Line Item Promo ID",
-                "Line Item Promo 2 ID",
-                "Line Item Accreditation ID",
+                "Line Item Deal ID AgreementNo",
+                "Line Item Deal ID SBANo",
+                "Line Item Deal ID RoutingIndicator",
+                "Line Item Deal ID Discount",
+                "Line Item Promo ID AgreementNo",
+                "Line Item Promo ID SBANo",
+                "Line Item Promo ID RoutingIndicator",
+                "Line Item Promo ID Discount",
+                "Line Item Promo 2 ID AgreementNo",
+                "Line Item Promo 2 ID SBANo",
+                "Line Item Promo 2 ID RoutingIndicator",
+                "Line Item Promo 2 ID Discount",
+                "Line Item Accreditation ID AgreementNo",
+                "Line Item Accreditation ID SBANo",
+                "Line Item Accreditation ID RoutingIndicator",
+                "Line Item Accreditation ID Discount",               
                 "Contract No",
                 "Contract Sales Order",
                 "Contract Manufacturer Invoice No",
@@ -238,18 +292,38 @@ namespace Main.Services
 
                     if (salesData.SoldTo.Contact != null)
                     {
+                        this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.Name);
+                        this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.WestconId);
+                        this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.WorkPhone);
+                        this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.FaxNumber);
                         this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.EmailAddress);
                         this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.Extension);
                         this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.MobilePhone);
+
+                        if (salesData.SoldTo.Contact.Address != null)
+                        {
+                            this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.Address.Addr1);
+                            this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.Address.Addr2);
+                            this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.Address.Addr3);
+                            this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.Address.Addr4);
+                            this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.Address.City);
+                            this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.Address.State);
+                            this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.Address.PostalCode);
+                            this.CreateCell(row, null, cellIndex++, salesData.SoldTo.Contact.Address.Country);
+                        }
+                        else
+                        {
+                            cellIndex += 8;
+                        }
                     }
                     else
                     {
-                        cellIndex += 3;
+                        cellIndex += 14;
                     }
                 }
                 else
                 {
-                    cellIndex += 16;
+                    cellIndex += 27;
                 }
 
                 //Line Item Data
@@ -286,10 +360,40 @@ namespace Main.Services
                     this.CreateCell(row, null, cellIndex++, item.ShipTo.WorkPhone);
                     this.CreateCell(row, null, cellIndex++, item.ShipTo.FaxNumber);
 
+                    if (item.ShipTo.Contact != null)
+                    {
+                        this.CreateCell(row, null, cellIndex++, item.ShipTo.Contact.Name);
+                        this.CreateCell(row, null, cellIndex++, item.ShipTo.Contact.WestconId);
+                        this.CreateCell(row, null, cellIndex++, item.ShipTo.Contact.WorkPhone);
+                        this.CreateCell(row, null, cellIndex++, item.ShipTo.Contact.FaxNumber);
+                        this.CreateCell(row, null, cellIndex++, item.ShipTo.Contact.EmailAddress);
+                        this.CreateCell(row, null, cellIndex++, item.ShipTo.Contact.Extension);
+                        this.CreateCell(row, null, cellIndex++, item.ShipTo.Contact.MobilePhone);
+
+                        if (item.ShipTo.Contact.Address != null)
+                        {
+                            this.CreateCell(row, null, cellIndex++, item.ShipTo.Contact.Address.Addr1);
+                            this.CreateCell(row, null, cellIndex++, item.ShipTo.Contact.Address.Addr2);
+                            this.CreateCell(row, null, cellIndex++, item.ShipTo.Contact.Address.Addr3);
+                            this.CreateCell(row, null, cellIndex++, item.ShipTo.Contact.Address.Addr4);
+                            this.CreateCell(row, null, cellIndex++, item.ShipTo.Contact.Address.City);
+                            this.CreateCell(row, null, cellIndex++, item.ShipTo.Contact.Address.State);
+                            this.CreateCell(row, null, cellIndex++, item.ShipTo.Contact.Address.PostalCode);
+                            this.CreateCell(row, null, cellIndex++, item.ShipTo.Contact.Address.Country);
+                        }
+                        else
+                        {
+                            cellIndex += 8;
+                        }
+                    }
+                    else
+                    {
+                        cellIndex += 14;
+                    }
                 }
                 else
                 {
-                    cellIndex += 13;
+                    cellIndex += 27;
                 }
 
                 //End User
@@ -315,10 +419,41 @@ namespace Main.Services
                     this.CreateCell(row, null, cellIndex++, item.EndUser.WorkPhone);
                     this.CreateCell(row, null, cellIndex++, item.EndUser.FaxNumber);
 
+                    if (item.EndUser.Contact != null)
+                    {
+                        this.CreateCell(row, null, cellIndex++, item.EndUser.Contact.Name);
+                        this.CreateCell(row, null, cellIndex++, item.EndUser.Contact.WestconId);
+                        this.CreateCell(row, null, cellIndex++, item.EndUser.Contact.WorkPhone);
+                        this.CreateCell(row, null, cellIndex++, item.EndUser.Contact.FaxNumber);
+                        this.CreateCell(row, null, cellIndex++, item.EndUser.Contact.EmailAddress);
+                        this.CreateCell(row, null, cellIndex++, item.EndUser.Contact.Extension);
+                        this.CreateCell(row, null, cellIndex++, item.EndUser.Contact.MobilePhone);
+
+                        if (item.EndUser.Contact.Address != null)
+                        {
+                            this.CreateCell(row, null, cellIndex++, item.EndUser.Contact.Address.Addr1);
+                            this.CreateCell(row, null, cellIndex++, item.EndUser.Contact.Address.Addr2);
+                            this.CreateCell(row, null, cellIndex++, item.EndUser.Contact.Address.Addr3);
+                            this.CreateCell(row, null, cellIndex++, item.EndUser.Contact.Address.Addr4);
+                            this.CreateCell(row, null, cellIndex++, item.EndUser.Contact.Address.City);
+                            this.CreateCell(row, null, cellIndex++, item.EndUser.Contact.Address.State);
+                            this.CreateCell(row, null, cellIndex++, item.EndUser.Contact.Address.PostalCode);
+                            this.CreateCell(row, null, cellIndex++, item.EndUser.Contact.Address.Country);
+                        }
+                        else
+                        {
+                            cellIndex += 8;
+                        }
+                    }else
+                    {
+                        cellIndex += 14;
+                    }
+                   
+
                 }
                 else
                 {
-                    cellIndex += 13;
+                    cellIndex += 27;
                 }
 
                 this.CreateCell(row, null, cellIndex++, item.SalesOrderQty);
@@ -337,10 +472,26 @@ namespace Main.Services
                 this.CreateCell(row, null, cellIndex++, item.ManufacturerID);
                 this.CreateCell(row, null, cellIndex++, item.ManufacturerName);
                 this.CreateCell(row, null, cellIndex++, item.ManufacturerAccreditationLevelForSoldTo);
-                this.CreateCell(row, null, cellIndex++, item.Discount);
-                this.CreateCell(row, null, cellIndex++, item.PromoID);
-                this.CreateCell(row, null, cellIndex++, item.Promo2ID);
-                this.CreateCell(row, null, cellIndex++, item.AccreditationID);
+
+                this.CreateCell(row, null, cellIndex++, item.DealID.AgreementNo);
+                this.CreateCell(row, null, cellIndex++, item.DealID.SBANo);
+                this.CreateCell(row, null, cellIndex++, item.DealID.RoutingIndicator);
+                this.CreateCell(row, null, cellIndex++, item.DealID.Value);
+
+                this.CreateCell(row, null, cellIndex++, item.PromoIDDiscount.AgreementNo);
+                this.CreateCell(row, null, cellIndex++, item.PromoIDDiscount.SBANo);
+                this.CreateCell(row, null, cellIndex++, item.PromoIDDiscount.RoutingIndicator);
+                this.CreateCell(row, null, cellIndex++, item.PromoIDDiscount.Value);
+
+                this.CreateCell(row, null, cellIndex++, item.Promo2IDDiscount.AgreementNo);
+                this.CreateCell(row, null, cellIndex++, item.Promo2IDDiscount.SBANo);
+                this.CreateCell(row, null, cellIndex++, item.Promo2IDDiscount.RoutingIndicator);
+                this.CreateCell(row, null, cellIndex++, item.Promo2IDDiscount.Value);
+
+                this.CreateCell(row, null, cellIndex++, item.AccreditationIDDiscount.AgreementNo);
+                this.CreateCell(row, null, cellIndex++, item.AccreditationIDDiscount.SBANo);
+                this.CreateCell(row, null, cellIndex++, item.AccreditationIDDiscount.RoutingIndicator);
+                this.CreateCell(row, null, cellIndex++, item.AccreditationIDDiscount.Value);
 
                 //Contract
                 if (item.Contract != null)

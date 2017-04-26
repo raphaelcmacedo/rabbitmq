@@ -64,6 +64,15 @@ namespace Main.Models
         public string EquiManufacturerSerialNo { get; set; }
         [NotMapped]
         public string SerialNo { get; set; }
+
+        [NotMapped]
+        public Discount DealID { get; set; }
+        [NotMapped]
+        public Discount PromoIDDiscount { get; set; }
+        [NotMapped]
+        public Discount Promo2IDDiscount { get; set; }
+        [NotMapped]
+        public Discount AccreditationIDDiscount { get; set; }
     }
 }
 

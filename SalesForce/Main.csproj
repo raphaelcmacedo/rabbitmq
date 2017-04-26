@@ -83,6 +83,7 @@
     <Compile Include="Contexts\OpportunityContext.cs" />
     <Compile Include="Contexts\SalesDataContext.cs" />
     <Compile Include="Helpers\SalesForceLoginSingleton.cs" />
+    <Compile Include="Models\Discount.cs" />
     <Compile Include="Models\LineItem.cs" />
     <Compile Include="Models\Opportunity.cs" />
     <Compile Include="Models\SalesData.cs" />

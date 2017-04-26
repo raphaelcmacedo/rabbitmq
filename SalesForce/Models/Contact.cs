@@ -19,7 +19,11 @@ namespace Main.Models
         public String EmailAddress { get; set; }
         public String Extension { get; set; }
         public String MobilePhone { get; set; }
-        
-        
+
+        [NotMapped]
+        public string Name { get; set; }
+
+        [NotMapped]
+        public Address Address { get; set; }
     }
 }

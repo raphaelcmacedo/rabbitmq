@@ -21,6 +21,9 @@ namespace Scheduler
                     Console.WriteLine("Opportunity");
                     service.CreateOpportunityListener();
                     break;
+                case "TestSalesForce":
+                    service.TesteSalesForce();
+                    break;
             }
         }
     }

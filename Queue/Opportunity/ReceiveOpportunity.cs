@@ -123,5 +123,12 @@ namespace Queue.Opportunity
             }
         }
 
+        public void TesteSalesForce()
+        {
+            Main.SalesForceIntegration.SalesForceService service = new Main.SalesForceIntegration.SalesForceService();
+            Main.SalesForceSVC.QueryResult res = service.FindUserByUsername("tim.hare2@westcon.com");
+            Console.WriteLine(res.records.Length);
+        }
+
     }
 }

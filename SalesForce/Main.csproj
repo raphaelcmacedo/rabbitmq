@@ -452,7 +452,7 @@
     <None Include="Service References\SalesForceSVC\Main.SalesForceSVC.UpsertResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\SalesForceSVC\salesforce.wsdl" />
+    <None Include="Service References\SalesForceSVC\salesForcewsdl.wsdl" />
     <None Include="wsdl\Alterado_salesforce.wsdl" />
     <None Include="wsdl\salesforce.wsdl" />
   </ItemGroup>

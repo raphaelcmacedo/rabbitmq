@@ -71,6 +71,7 @@ namespace SalesForce.Services
             Dictionary<string, int> salesPractices = new Dictionary<string, int>();
             Dictionary<string, int> manufacturerIDs = new Dictionary<string, int>();
             Dictionary<string, int> endUsers = new Dictionary<string, int>();
+            Dictionary<string, string> currencies = new Dictionary<string, string>();
 
             foreach (LineItem lineItem in salesData.LineItems)
             {
@@ -79,6 +80,7 @@ namespace SalesForce.Services
                 string manufacturer = lineItem.ManufacturerID + ";" + lineItem.ManufacturerName;
                 //concatenates the ID and the name of enduser
                 string endUser = lineItem.EndUser.WestconId + ";" + lineItem.EndUser.Name;
+                string currency = lineItem.DocumentCurrency;
 
                 string sku = lineItem.SKU;
 
@@ -128,6 +130,17 @@ namespace SalesForce.Services
                     }
                     totalEndUser++;
                     endUsers[endUser] = totalEndUser++;
+                }
+
+                //check Currency
+                if(currency != null)
+                {
+                    if (currencies.Keys.Count > 0 && !currencies.ContainsKey(currency))
+                    {
+                        throw new Exception("More than one currency found for Opportunity: " + opportunity.Name);
+                    }
+
+                    currencies[currency] = currency;
                 }
             }
             //Account Manager
@@ -183,7 +196,7 @@ namespace SalesForce.Services
                 opportunity.EndUserName = null;
             }
 
-
+            opportunity.CurrencyCode = currencies.Values.First();
             opportunity.CloseDate = CalculateEndDate(salesData);
         }
 

@@ -301,7 +301,7 @@ namespace Main.Services
             opportunity.WC_Account_Manager_Name__r = (result != null && result.records != null && result.records.Length > 0) ? (SalesForceSVC.User)result.records[0] : null;
 
             opportunity.StageName = opp.StageName;
-            opportunity.CurrencyIsoCode = opp.CurrencyCode;
+            //opportunity.CurrencyIsoCode = opp.CurrencyCode;
             //opportunity.Amount = 0;
             opportunity.WC_Forecast_Revenue__c = (double)opp.TotalBillingValue;
             opportunity.WC_Forecast_Revenue__cSpecified = true;
@@ -321,6 +321,18 @@ namespace Main.Services
             if (!string.IsNullOrEmpty(opp.SalesForceID))
             {
                 opportunity.Id = opp.SalesForceID;
+            }
+
+            //INNO-195
+            result = service.FindCurrency(opp.CurrencyCode);
+
+            if (result != null && result.records != null && result.records.Length > 0)
+            {
+                opportunity.CurrencyIsoCode = ((SalesForceSVC.User)result.records[0]).CurrencyIsoCode;
+            }
+            else
+            {
+                throw new Exception("The currency ISO code " + opp.CurrencyCode + " was not found in SalesForce, so the Opportunity " + opp.Name + " has not been created");
             }
 
             return opportunity;

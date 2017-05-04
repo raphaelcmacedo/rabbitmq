@@ -1,4 +1,5 @@
-﻿using Main.Services;
+﻿using Main.Models;
+using Main.Services;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
@@ -44,11 +45,19 @@ namespace Queue.Opportunity
         private void HandleSalesData(IModel channel, object model, BasicDeliverEventArgs ea)
         {
             string salesDataMessage = "";
+            Log log = new Log();           
+            log.Start = DateTime.Now;
+            log.Operation = "Sales Data consumption";
+            log.Success = true;
+
             try
             {
                 var body = ea.Body;
                 //Get sales data message (sap message)
                 salesDataMessage = Encoding.UTF8.GetString(body);
+                //Add a base64 copy of the message to the log object
+                log.Message = Main.Util.Base64Encode(salesDataMessage);
+
                 //Save sales data on DB and get opportunity message
                 Main.Services.OpportunityIntegration integration = new Main.Services.OpportunityIntegration();
                 string opportunityMessage = integration.CreateOpportunity(salesDataMessage);
@@ -65,7 +74,14 @@ namespace Queue.Opportunity
                 channel.BasicReject(ea.DeliveryTag, false);
                 //Create ticket
                 Email.SendEmail(salesDataMessage, e.Message);
-            }          
+                log.Success = false;
+                log.Details = e.Message;
+            }
+            finally
+            {
+                log.Finish = DateTime.Now;
+                Main.Helpers.LogFacade.Add(log);
+            }         
 
         }
 
@@ -101,11 +117,20 @@ namespace Queue.Opportunity
         private void HandleOpportunity(IModel channel, object model, BasicDeliverEventArgs ea)
         {
             string message = "";
+            Log log = new Log();
+            log.Start = DateTime.Now;
+            log.Operation = "Opportunity consumption";
+            log.Success = true;
+
             try
             {
                 var body = ea.Body;
                 //Get opportunity message
                 message = Encoding.UTF8.GetString(body);
+
+                //Add a base64 copy of the message to the log object
+                log.Message = Main.Util.Base64Encode(message);
+
                 //Send opportunity to sales force
                 Main.Services.OpportunityIntegration integration = new Main.Services.OpportunityIntegration();
                 integration.CreateSalesForceOpportunity(message);
@@ -120,6 +145,13 @@ namespace Queue.Opportunity
                 channel.BasicReject(ea.DeliveryTag, false);
                 //Create ticket
                 Email.SendEmail(message, e.Message);
+                log.Success = false;
+                log.Details = e.Message;
+            }
+            finally
+            {
+                log.Finish = DateTime.Now;
+                Main.Helpers.LogFacade.Add(log);
             }
         }
 

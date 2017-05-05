@@ -18,5 +18,7 @@ namespace Main.Contexts
         public DbSet<LineItem> LineItems { get; set; }
         public DbSet<SalesData> SalesDatas { get; set; }
         public DbSet<Settings> Settings { get; set; }
+        public DbSet<Log> Logs { get; set; }
+
     }
 }

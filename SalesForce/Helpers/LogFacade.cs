@@ -14,12 +14,21 @@ namespace Main.Helpers
 
         public static void Add(Log log)
         {
-            var logEvent = new LogEventInfo(LogLevel.Info, logger.Name, log.ToString());
-            logEvent.Properties.Add("EventID", log.LogId);
-            logger.Log(logEvent);
-
-            Repositories.LogRepository logRepository = new Repositories.LogRepository();
-            logRepository.Add(log);
+            try
+            {
+                Repositories.LogRepository logRepository = new Repositories.LogRepository();
+                logRepository.Add(log);
+                if (!log.Success)
+                {
+                    var logEvent = new LogEventInfo(LogLevel.Info, logger.Name, log.ToString());
+                    logEvent.Properties.Add("EventID", log.LogId);
+                    logger.Log(logEvent);
+                }
+            }catch(Exception e)
+            {
+                throw e;
+            }
+           
         }
     }
 }

@@ -66,7 +66,7 @@ namespace Queue.Opportunity
                 send.SendToExchange(opportunityMessage);
                 //Send ack to queue
                 channel.BasicAck(ea.DeliveryTag, false);
-                
+
             }
             catch (Exception e)
             {

@@ -47,6 +47,10 @@
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.4.8\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NPOI, Version=2.2.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
       <HintPath>..\packages\NPOI.2.2.1\lib\net40\NPOI.dll</HintPath>
       <Private>True</Private>
@@ -82,9 +86,11 @@
     <Compile Include="Contexts\PrionContext.cs" />
     <Compile Include="Contexts\OpportunityContext.cs" />
     <Compile Include="Contexts\SalesDataContext.cs" />
+    <Compile Include="Helpers\LogFacade.cs" />
     <Compile Include="Helpers\SalesForceLoginSingleton.cs" />
     <Compile Include="Models\Discount.cs" />
     <Compile Include="Models\LineItem.cs" />
+    <Compile Include="Models\Log.cs" />
     <Compile Include="Models\Opportunity.cs" />
     <Compile Include="Models\SalesData.cs" />
     <Compile Include="Models\Contract.cs" />
@@ -94,6 +100,7 @@
     <Compile Include="Models\SalesMapping.cs" />
     <Compile Include="Models\Settings.cs" />
     <Compile Include="Repositories\AddressRepository.cs" />
+    <Compile Include="Repositories\LogRepository.cs" />
     <Compile Include="Repositories\OpportunityRepository.cs" />
     <Compile Include="Repositories\SalesDataRepository.cs" />
     <Compile Include="Repositories\LineItemRepository.cs" />
@@ -126,6 +133,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Nlog.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

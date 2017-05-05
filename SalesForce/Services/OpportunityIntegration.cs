@@ -45,7 +45,7 @@ namespace Main.Services
             }catch(Exception e)
             {
                 Console.WriteLine(e.Message);
-                return "";
+                throw e;
             }
         }
 

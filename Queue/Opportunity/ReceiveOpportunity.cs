@@ -76,6 +76,7 @@ namespace Queue.Opportunity
                 Email.SendEmail(salesDataMessage, e.Message);
                 log.Success = false;
                 log.Details = e.Message;
+                Main.Helpers.SalesForceLoginSingleton.KillInstances();
             }
             finally
             {
@@ -147,6 +148,7 @@ namespace Queue.Opportunity
                 Email.SendEmail(message, e.Message);
                 log.Success = false;
                 log.Details = e.Message;
+                Main.Helpers.SalesForceLoginSingleton.KillInstances();
             }
             finally
             {

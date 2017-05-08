@@ -47,5 +47,10 @@ namespace Main.Helpers
                 }
             }
         }
+
+        public static void KillInstances()
+        {
+            _loginResult.Dispose();
+        }
     }
 }

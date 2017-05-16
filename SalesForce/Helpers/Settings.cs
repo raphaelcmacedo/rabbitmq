@@ -24,6 +24,12 @@ namespace Main.Helpers
             get { return GetValue("QueueHost"); }
         }
 
+        public static string QueueHostBackup
+        {
+            get { return GetValue("QueueHostBackup"); }
+        }
+
+
         public static string QueueUserName
         {
             get { return GetValue("QueueUserName"); }

@@ -15,9 +15,22 @@ namespace Queue.Opportunity
         public void CreateSalesDataListener()
         {
             listen = true;
-            string queue = Main.Helpers.Settings.SalesDataQueue; 
-            var factory = new ConnectionFactory() { HostName = Main.Helpers.Settings.QueueHost, UserName = Main.Helpers.Settings.QueueUserName, Password = Main.Helpers.Settings.QueuePassword, VirtualHost = Main.Helpers.Settings.QueueVirtualHostQA };
-            using (var connection = factory.CreateConnection())
+            string queue = Main.Helpers.Settings.SalesDataQueue;
+            ConnectionFactory factory;
+            IConnection connection;
+            try
+            {
+                factory = new ConnectionFactory() { HostName = Main.Helpers.Settings.QueueHost, UserName = Main.Helpers.Settings.QueueUserName, Password = Main.Helpers.Settings.QueuePassword, VirtualHost = Main.Helpers.Settings.QueueVirtualHostQA };
+                connection = factory.CreateConnection();
+
+            }
+            catch
+            {
+                factory = new ConnectionFactory() { HostName = Main.Helpers.Settings.QueueHostBackup, UserName = Main.Helpers.Settings.QueueUserName, Password = Main.Helpers.Settings.QueuePassword, VirtualHost = Main.Helpers.Settings.QueueVirtualHostQA };
+                connection = factory.CreateConnection();
+            }
+
+            using (connection)
             using (var channel = connection.CreateModel())
             {
 
@@ -81,7 +94,7 @@ namespace Queue.Opportunity
             finally
             {
                 log.Finish = DateTime.Now;
-                Main.Helpers.LogFacade.Add(log);
+                //Main.Helpers.LogFacade.Add(log);
             }         
 
         }
@@ -90,8 +103,21 @@ namespace Queue.Opportunity
         {
             listen = true;
             string queue = Main.Helpers.Settings.OpportunityQueue;
-            var factory = new ConnectionFactory() { HostName = Main.Helpers.Settings.QueueHost, UserName = Main.Helpers.Settings.QueueUserName, Password = Main.Helpers.Settings.QueuePassword, VirtualHost = Main.Helpers.Settings.QueueVirtualHostQA };
-            using (var connection = factory.CreateConnection())
+            ConnectionFactory factory;
+            IConnection connection;
+            try
+            {
+                factory = new ConnectionFactory() { HostName = Main.Helpers.Settings.QueueHost, UserName = Main.Helpers.Settings.QueueUserName, Password = Main.Helpers.Settings.QueuePassword, VirtualHost = Main.Helpers.Settings.QueueVirtualHostQA };
+                connection = factory.CreateConnection();
+
+            }
+            catch
+            {
+                factory = new ConnectionFactory() { HostName = Main.Helpers.Settings.QueueHostBackup, UserName = Main.Helpers.Settings.QueueUserName, Password = Main.Helpers.Settings.QueuePassword, VirtualHost = Main.Helpers.Settings.QueueVirtualHostQA };
+                connection = factory.CreateConnection();
+            }
+
+            using (connection)
             using (var channel = connection.CreateModel())
             {
 
@@ -142,18 +168,19 @@ namespace Queue.Opportunity
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                //Send ack
-                channel.BasicReject(ea.DeliveryTag, false);
+               
                 //Create ticket
                 Email.SendEmail(message, e.Message);
                 log.Success = false;
                 log.Details = e.Message;
                 Main.Helpers.SalesForceLoginSingleton.KillInstances();
+                //Send ack
+                channel.BasicReject(ea.DeliveryTag, false);
             }
             finally
             {
                 log.Finish = DateTime.Now;
-                Main.Helpers.LogFacade.Add(log);
+                //Main.Helpers.LogFacade.Add(log);
             }
         }
 

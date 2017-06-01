@@ -11,8 +11,21 @@ namespace Queue.Opportunity
         public void Send(string message)
         {
 
-            var factory = new ConnectionFactory() { HostName = Main.Helpers.Settings.QueueHost, UserName = Main.Helpers.Settings.QueueUserName, Password = Main.Helpers.Settings.QueuePassword, VirtualHost = Main.Helpers.Settings.QueueVirtualHostQA };
-            using (var connection = factory.CreateConnection())
+            ConnectionFactory factory;
+            IConnection connection;
+            try
+            {
+                factory = new ConnectionFactory() { HostName = Main.Helpers.Settings.QueueHost, UserName = Main.Helpers.Settings.QueueUserName, Password = Main.Helpers.Settings.QueuePassword, VirtualHost = Main.Helpers.Settings.QueueVirtualHostQA };
+                connection = factory.CreateConnection();
+
+            }
+            catch
+            {
+                factory = new ConnectionFactory() { HostName = Main.Helpers.Settings.QueueHostBackup, UserName = Main.Helpers.Settings.QueueUserName, Password = Main.Helpers.Settings.QueuePassword, VirtualHost = Main.Helpers.Settings.QueueVirtualHostQA };
+                connection = factory.CreateConnection();
+            }
+
+            using (connection)
             using (var channel = connection.CreateModel())
             {
 
@@ -42,8 +55,21 @@ namespace Queue.Opportunity
             string exchange = Main.Helpers.Settings.QueueExchange;
             var routingKey = Main.Helpers.Settings.RoutingKey;
 
-            var factory = new ConnectionFactory() { HostName = Main.Helpers.Settings.QueueHost, UserName = Main.Helpers.Settings.QueueUserName, Password = Main.Helpers.Settings.QueuePassword, VirtualHost = Main.Helpers.Settings.QueueVirtualHostQA };
-            using (var connection = factory.CreateConnection())
+            ConnectionFactory factory;
+            IConnection connection;
+            try
+            {
+                factory = new ConnectionFactory() { HostName = Main.Helpers.Settings.QueueHost, UserName = Main.Helpers.Settings.QueueUserName, Password = Main.Helpers.Settings.QueuePassword, VirtualHost = Main.Helpers.Settings.QueueVirtualHostQA };
+                connection = factory.CreateConnection();
+
+            }
+            catch
+            {
+                factory = new ConnectionFactory() { HostName = Main.Helpers.Settings.QueueHostBackup, UserName = Main.Helpers.Settings.QueueUserName, Password = Main.Helpers.Settings.QueuePassword, VirtualHost = Main.Helpers.Settings.QueueVirtualHostQA };
+                connection = factory.CreateConnection();
+            }
+
+            using (connection)
             using (var channel = connection.CreateModel())
             {
                 var properties = channel.CreateBasicProperties();

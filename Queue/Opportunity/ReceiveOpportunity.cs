@@ -94,7 +94,7 @@ namespace Queue.Opportunity
             finally
             {
                 log.Finish = DateTime.Now;
-                //Main.Helpers.LogFacade.Add(log);
+                Main.Helpers.LogFacade.Add(log);
             }         
 
         }
